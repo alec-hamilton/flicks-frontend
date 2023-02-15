@@ -1,12 +1,11 @@
 import Head from "next/head";
-import { useState } from "react";
+import { InstantSearch, Hits, SearchBox } from "react-instantsearch-hooks-web";
+import { instantMeiliSearch } from "@meilisearch/instant-meilisearch";
 
 export default function Home() {
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const onChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
+  const searchClient = instantMeiliSearch("http://localhost:7700", "", {
+    primaryKey: "Id",
+  });
 
   return (
     <>
@@ -18,9 +17,19 @@ export default function Home() {
       </Head>
       <div>
         <h1>Search</h1>
-        <input type="text" value={searchTerm} onChange={onChange} />
-        <button type="submit">Search</button>
+        <InstantSearch indexName="movies" searchClient={searchClient}>
+          <SearchBox />
+          <Hits hitComponent={Hit} />
+        </InstantSearch>
       </div>
     </>
   );
 }
+
+const Hit = ({ hit }) => {
+  return (
+    <div>
+      <p>{hit.Title}</p>
+    </div>
+  );
+};

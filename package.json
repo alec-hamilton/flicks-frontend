@@ -8,17 +8,20 @@
     "start": "next start"
   },
   "dependencies": {
+    "@meilisearch/instant-meilisearch": "^0.11.0",
     "@next/font": "13.1.6",
     "@supabase/supabase-js": "^2.7.1",
+    "meilisearch": "^0.31.1",
     "next": "13.1.6",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-instantsearch-hooks-web": "^6.40.0"
   },
   "devDependencies": {
     "eslint": "^8.34.0",
     "eslint-config-next": "^13.1.6",
     "eslint-config-prettier": "^8.6.0",
-    "prettier": "^2.8.4",
-    "eslint-plugin-prettier": "^4.2.1"
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.4"
   }
 }
