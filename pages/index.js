@@ -16,9 +16,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <h1>Search</h1>
+        <h1>Search the Catalogue</h1>
         <InstantSearch indexName="movies" searchClient={searchClient}>
-          <SearchBox />
+          <SearchBox placeholder="Search for a movie" />
           <Hits hitComponent={Hit} />
         </InstantSearch>
       </div>
@@ -29,7 +29,13 @@ export default function Home() {
 const Hit = ({ hit }) => {
   return (
     <div>
-      <p>{hit.Title}</p>
+      <p>{`${hit.Title} - ${hit.Year}`}</p>
+      <p>
+        {hit.Format.map((format) => {
+          return <i key={format}>{format} </i>;
+        })}
+      </p>
+      <p>Certificate: {hit.Certificate}</p>
     </div>
   );
 };
