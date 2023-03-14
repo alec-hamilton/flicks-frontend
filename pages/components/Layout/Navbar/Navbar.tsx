@@ -1,5 +1,11 @@
+import NavLogo from "./NavLogo";
+
 const Navbar = () => {
-  return <h1 className="text-3xl underline">Navbar</h1>;
+  return (
+    <div className="flex">
+      <NavLogo />
+    </div>
+  );
 };
 
 export default Navbar;
