@@ -17,10 +17,10 @@ const bladerunner = localFont({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={`${robotoMono.className} ${bladerunner.variable}`}>
+    <main className={`${robotoMono.className} ${bladerunner.variable}`}>
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </div>
+    </main>
   );
 }

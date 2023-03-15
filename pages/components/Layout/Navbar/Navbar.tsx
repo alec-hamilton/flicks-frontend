@@ -1,9 +1,11 @@
+import BurgerMenu from "./BurgerMenu";
 import NavLogo from "./NavLogo";
 
 const Navbar = () => {
   return (
-    <div className="flex">
+    <div className="flex justify-between">
       <NavLogo />
+      <BurgerMenu />
     </div>
   );
 };
