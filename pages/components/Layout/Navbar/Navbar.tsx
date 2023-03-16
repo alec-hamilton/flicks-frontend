@@ -5,7 +5,7 @@ import DesktopMenu from "./DesktopMenu";
 const Navbar = () => {
 
   return (
-    <div className="flex justify-between m-3">
+    <div className="flex justify-between m-3 md:justify-start">
       <NavLogo />
       <BurgerMenu />
       <DesktopMenu />

@@ -15,8 +15,8 @@ const BurgerMenu = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center border-2 border-primary z-50 md:hidden">
-        <button onClick={toggleOpen} className="p-4">
+      <div className="flex items-center justify-center border-2 border-primary z-50 md:hidden w-[62px]">
+        <button onClick={toggleOpen}>
           {open ? closeButton : burgerButton}
         </button>
       </div>

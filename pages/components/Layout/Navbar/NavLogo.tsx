@@ -1,7 +1,7 @@
 const NavLogo = () => {
   return (
-    <div className="flex flex-col border-2 border-primary">
-      <div className="border-b-2 border-primary">
+    <div className="flex flex-col border border-primary">
+      <div className="border-b border-primary">
         <p className="text-primary px-1 text-xs">Welcome to...</p>
       </div>
       <div className="flex flex-col items-center justify-center h-full">
