@@ -9,9 +9,9 @@ const BurgerMenu = () => {
     setOpen(!open);
   };
 
-  const burgerButton = <BiMenu size="2rem" className="text-primary" />;
+  const burgerButton = <BiMenu size="2rem" />;
 
-  const closeButton = <BiX size="2rem" className="text-primary" />;
+  const closeButton = <BiX size="2rem" />;
 
   return (
     <>
