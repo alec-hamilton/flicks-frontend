@@ -15,11 +15,14 @@ const BurgerMenu = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center border border-primary z-50 mdx:hidden w-[62px]">
-        <button onClick={toggleOpen}>
+      <button
+        onClick={toggleOpen}
+        className="border border-primary z-50 mdx:hidden w-[62px]"
+      >
+        <span className="flex items-center justify-center">
           {open ? closeButton : burgerButton}
-        </button>
-      </div>
+        </span>
+      </button>
       <MobileMenu open={open} />
     </>
   );
