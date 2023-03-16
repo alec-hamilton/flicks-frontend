@@ -13,6 +13,9 @@ module.exports = {
       fontFamily: {
         logo: ["var(--font-bladerunner)"],
       },
+      screens: {
+        mdx: "868px",
+      },
     },
   },
   plugins: [],

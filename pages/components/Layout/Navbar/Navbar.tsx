@@ -3,12 +3,11 @@ import NavLogo from "./NavLogo";
 import DesktopMenu from "./DesktopMenu";
 
 const Navbar = () => {
-
   return (
-    <div className="flex justify-between m-3 md:justify-start">
+    <div className="flex justify-between m-3 mdx:justify-start">
       <NavLogo />
-      <BurgerMenu />
       <DesktopMenu />
+      <BurgerMenu />
     </div>
   );
 };

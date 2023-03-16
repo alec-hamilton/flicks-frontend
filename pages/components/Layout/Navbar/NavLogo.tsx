@@ -5,7 +5,7 @@ const NavLogo = () => {
         <p className="text-primary px-1 text-xs">Welcome to...</p>
       </div>
       <div className="flex flex-col items-center justify-center h-full">
-        <p className="text-primary py-2 px-4 font-logo text-l">
+        <p className="text-primary py-2 px-4 font-logo text-l whitespace-nowrap">
           20th Century Flicks
         </p>
       </div>
