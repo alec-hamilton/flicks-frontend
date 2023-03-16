@@ -7,14 +7,16 @@ const isKeyboardEvent = (event: Event): event is KeyboardEvent => {
 };
 
 export const useOnClickOutside = <T extends HTMLElement = HTMLElement>(
-  ref: RefObject<T>,
+  dropdownRef: RefObject<T>,
+  buttonRef: RefObject<T>,
   handler: (event: Event) => void
 ) => {
   useEffect(() => {
     const listener = (event: Event) => {
-      const elem = ref.current;
+      const dropdown = dropdownRef.current;
+      const button = buttonRef.current;
 
-      if (!elem) return;
+      if (!dropdown || !button) return;
 
       if (isKeyboardEvent(event)) {
         if (event.key === "Escape") {
@@ -22,7 +24,10 @@ export const useOnClickOutside = <T extends HTMLElement = HTMLElement>(
         }
       }
 
-      if (elem.contains(event.target as HTMLElement)) {
+      if (
+        dropdown.contains(event.target as HTMLElement) ||
+        button.contains(event.target as HTMLElement)
+      ) {
         return;
       }
 
@@ -38,5 +43,5 @@ export const useOnClickOutside = <T extends HTMLElement = HTMLElement>(
       document.removeEventListener("touchstart", listener);
       document.removeEventListener("keydown", listener);
     };
-  }, [ref, handler]);
+  }, [buttonRef, dropdownRef, handler]);
 };

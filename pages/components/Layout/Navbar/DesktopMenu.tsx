@@ -5,8 +5,9 @@ import { BiChevronDown, BiSearch } from "react-icons/bi";
 
 const DesktopMenu = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownMenu = useRef<HTMLDivElement>(null);
-  useOnClickOutside(dropdownMenu, () => setDropdownOpen(false));
+  const dropdownRef = useRef(null);
+  const buttonRef = useRef(null);
+  useOnClickOutside(dropdownRef, buttonRef, () => setDropdownOpen(false));
 
   return (
     <nav className="hidden mdx:flex ml-4 gap-2 justify-between w-full">
@@ -23,6 +24,7 @@ const DesktopMenu = () => {
         <li className="flex relative">
           <button
             type="button"
+            ref={buttonRef}
             onClick={() => setDropdownOpen(!dropdownOpen)}
             className="border border-primary"
           >
@@ -35,7 +37,7 @@ const DesktopMenu = () => {
           </button>
           {dropdownOpen && (
             <div
-              ref={dropdownMenu}
+              ref={dropdownRef}
               className="absolute left-0 top-16 border border-primary p-4"
             >
               Dropdown content
