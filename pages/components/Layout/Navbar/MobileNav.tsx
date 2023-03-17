@@ -34,7 +34,7 @@ const MobileNav = () => {
           </span>
         </button>
       </div>
-      <MobileMenu open={open} />
+      <MobileMenu open={open} setOpen={setOpen} />
     </>
   );
 };
