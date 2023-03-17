@@ -10,7 +10,7 @@ const DesktopMenu = () => {
   useOnClickOutside(dropdownRef, buttonRef, () => setDropdownOpen(false));
 
   return (
-    <nav className="hidden mdx:flex ml-4 gap-2 justify-between w-full">
+    <div className="hidden mdx:flex ml-4 gap-2 justify-between w-full">
       <ul className="flex gap-2">
         <li className="flex items-center border border-primary px-4">
           <Link href="/browse">Browse</Link>
@@ -53,7 +53,7 @@ const DesktopMenu = () => {
           <span>Search</span>
         </span>
       </button>
-    </nav>
+    </div>
   );
 };
 

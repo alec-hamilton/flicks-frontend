@@ -1,14 +1,14 @@
-import BurgerMenu from "./BurgerMenu";
+import MobileNav from "./MobileNav";
 import NavLogo from "./NavLogo";
 import DesktopMenu from "./DesktopMenu";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between m-3 mdx:justify-start">
+    <nav className="flex justify-between m-2 md:m-3 mdx:justify-start">
       <NavLogo />
       <DesktopMenu />
-      <BurgerMenu />
-    </div>
+      <MobileNav />
+    </nav>
   );
 };
 

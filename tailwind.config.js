@@ -14,6 +14,7 @@ module.exports = {
         logo: ["var(--font-bladerunner)"],
       },
       screens: {
+        xs: "456px",
         mdx: "868px",
       },
     },
