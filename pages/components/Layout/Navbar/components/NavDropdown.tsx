@@ -1,6 +1,10 @@
 import { useRef, useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
+import Link from "next/link";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
+import navbarConstants from "../navbarConstants";
+
+const { aboutLinks } = navbarConstants;
 
 const NavDropDown = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -26,9 +30,26 @@ const NavDropDown = () => {
       {dropdownOpen && (
         <div
           ref={dropdownRef}
-          className="absolute left-0 top-16 border border-primary p-4"
+          className="absolute left-0 top-16 w-60 border border-primary p-3"
         >
-          Dropdown content
+          <ul className="flex flex-col gap-2">
+            {aboutLinks.map(({ title, url }, index) => {
+              return (
+                <li
+                  key={index}
+                  className="flex border border-primary items-center justify-center"
+                >
+                  <Link
+                    href={url}
+                    onClick={() => setDropdownOpen(false)}
+                    className="flex p-3 w-full items-center justify-center"
+                  >
+                    {title}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       )}
     </li>

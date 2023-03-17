@@ -1,4 +1,7 @@
 import MobileMenuLink from "./components/MobileMenuLink";
+import navbarConstants from "./navbarConstants";
+
+const { regularLinks, aboutLinks } = navbarConstants;
 
 type MobileMenuProps = {
   open: boolean;
@@ -6,18 +9,6 @@ type MobileMenuProps = {
 };
 
 const MobileMenu = ({ open, setOpen }: MobileMenuProps) => {
-  const regularLinks = [
-    { title: "Browse", url: "/browse" },
-    { title: "Cinemas", url: "/cinemas" },
-    { title: "Contact", url: "/contact" },
-  ];
-
-  const aboutLinks = [
-    { title: "The shop", url: "/about/the-shop" },
-    { title: "Rent by post", url: "/about/rent-by-post" },
-    { title: "Faqs", url: "/about/faqs" },
-  ];
-
   return open ? (
     <div className="flex flex-col fixed inset-0 sm:left-2/4 xs:border-l xs:border-primary bg-black gap-4 mdx:hidden">
       <ul className="mt-16 xs:mt-20 m-2 xs:m-3 flex flex-col gap-4">
