@@ -10,7 +10,7 @@ type MobileMenuProps = {
 
 const MobileMenu = ({ open, setOpen }: MobileMenuProps) => {
   return open ? (
-    <div className="flex flex-col fixed inset-0 sm:left-2/4 xs:border-l xs:border-primary bg-black gap-4 mdx:hidden">
+    <nav className="flex flex-col fixed inset-0 sm:left-2/4 xs:border-l xs:border-primary bg-black gap-4 mdx:hidden">
       <ul className="mt-16 xs:mt-20 m-2 xs:m-3 flex flex-col gap-4">
         {regularLinks.map(({ title, url }, index) => {
           return (
@@ -36,7 +36,7 @@ const MobileMenu = ({ open, setOpen }: MobileMenuProps) => {
           );
         })}
       </ul>
-    </div>
+    </nav>
   ) : (
     <></>
   );
