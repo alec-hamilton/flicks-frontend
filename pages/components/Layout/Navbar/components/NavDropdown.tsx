@@ -18,11 +18,11 @@ const NavDropDown = () => {
         type="button"
         ref={buttonRef}
         onClick={() => setDropdownOpen(!dropdownOpen)}
-        className="border border-primary"
+        className="border border-primary bg-black"
       >
         <span className="flex items-center h-full">
-          <span className="px-4">About</span>
-          <span className="flex items-center border-l h-full px-1">
+          <span className="px-4 font-bold">About</span>
+          <span className="flex items-center border-l border-primary h-full px-1">
             <BiChevronDown size="1.5rem" />
           </span>
         </span>
@@ -30,7 +30,7 @@ const NavDropDown = () => {
       {dropdownOpen && (
         <div
           ref={dropdownRef}
-          className="absolute left-0 top-16 w-60 border border-primary p-3"
+          className="absolute left-0 top-16 w-60 border border-primary p-3 bg-black"
         >
           <ul className="flex flex-col gap-2">
             {aboutLinks.map(({ title, url }, index) => {
@@ -42,7 +42,7 @@ const NavDropDown = () => {
                   <Link
                     href={url}
                     onClick={() => setDropdownOpen(false)}
-                    className="flex p-3 w-full items-center justify-center"
+                    className="flex p-3 w-full items-center justify-center font-bold bg-black"
                   >
                     {title}
                   </Link>

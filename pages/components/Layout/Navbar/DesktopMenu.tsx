@@ -11,10 +11,13 @@ const DesktopMenu = () => {
       <ul className="flex gap-2">
         {regularLinks.map(({ title, url }, index) => {
           return (
-            <li key={index} className="flex items-center border border-primary">
+            <li
+              key={index}
+              className="flex items-center border border-primary bg-black"
+            >
               <Link
                 href={url}
-                className="px-4 flex items-center justify-center h-full"
+                className="px-4 flex items-center justify-center h-full font-bold"
               >
                 {title}
               </Link>

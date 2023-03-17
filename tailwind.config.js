@@ -5,10 +5,6 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    colors: {
-      black: "#151515",
-      primary: "#9E6E10",
-    },
     extend: {
       fontFamily: {
         logo: ["var(--font-bladerunner)"],
@@ -16,6 +12,12 @@ module.exports = {
       screens: {
         xs: "456px",
         mdx: "868px",
+      },
+      colors: {
+        black: "#1A1A1A",
+        primary: "#3898B7",
+        body: "#6FC9E5",
+        darkBlack: "#0F0F0F",
       },
     },
   },

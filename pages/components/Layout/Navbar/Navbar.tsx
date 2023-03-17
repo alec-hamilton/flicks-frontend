@@ -1,5 +1,5 @@
 import MobileNav from "./MobileNav";
-import NavLogo from "./NavLogo";
+import NavLogo from "./components/NavLogo";
 import DesktopMenu from "./DesktopMenu";
 
 const Navbar = () => {
