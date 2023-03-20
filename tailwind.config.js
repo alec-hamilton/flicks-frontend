@@ -16,11 +16,12 @@ module.exports = {
       colors: {
         black0: "#0F0F0F",
         black1: "#1A1A1A",
+        black2: "#242424",
         primary: "#3898B7",
         body: "#6FC9E5",
       },
       boxShadow: {
-        button: "3px 3px #3898B799",
+        button: "3px 3px #e879f999",
       },
     },
   },

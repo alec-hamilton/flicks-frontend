@@ -9,7 +9,7 @@ const StandardButton = ({ children }: ChildrenProps) => {
   return (
     <button
       type="button"
-      className="border border-primary p-3 font-bold bg-black1 hover:bg-primary/20"
+      className="p-3 text-fuchsia-400 font-bold border border-fuchsia-400 shadow-button bg-fuchsia-700/5 hover:bg-fuchsia-400/20"
     >
       {children}
     </button>
