@@ -8,7 +8,7 @@ type MobileMenuLinkProps = {
 
 const MobileMenuLink = ({ title, url, setOpen }: MobileMenuLinkProps) => {
   return (
-    <li className="flex border border-primary items-center justify-center bg-black">
+    <li className="flex border border-primary items-center justify-center bg-black1">
       <Link
         href={url}
         onClick={() => setOpen(false)}

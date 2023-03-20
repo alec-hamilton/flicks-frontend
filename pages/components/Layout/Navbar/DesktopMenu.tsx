@@ -13,7 +13,7 @@ const DesktopMenu = () => {
           return (
             <li
               key={index}
-              className="flex items-center border border-primary bg-black hover:bg-primary/20"
+              className="flex items-center border border-primary bg-black1 hover:bg-primary/20"
             >
               <Link
                 href={url}

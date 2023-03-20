@@ -4,7 +4,7 @@ const NavSearchButton = () => {
   return (
     <button
       type="button"
-      className="border border-violet-400 hover:bg-violet-400/20 px-4 bg-black"
+      className="border border-violet-400 hover:bg-violet-400/20 px-4 bg-black1"
     >
       <span className="flex gap-4">
         <span>
