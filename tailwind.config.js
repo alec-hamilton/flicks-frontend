@@ -19,6 +19,9 @@ module.exports = {
         body: "#6FC9E5",
         darkBlack: "#0F0F0F",
       },
+      boxShadow: {
+        button: "3px 3px #3898B799",
+      },
     },
   },
   plugins: [],
