@@ -3,10 +3,11 @@ import StandardButton from "./components/buttons/StandardButton";
 import twinPeaksCinema from "../assets/images/twin-peaks-style-cinema.png";
 import videodromeCinema from "../assets/images/bladerunner-style-cinema.png";
 import shopFront from "../assets/images/bladerunner-style-movie-store.png";
+import PageContentWrapper from "./components/surfaces/PageContentWrapper";
 
 const Cinemas = () => {
   return (
-    <div className="border border-primary m-2 xs:m-3 bg-black1">
+    <PageContentWrapper>
       <section className="p-4 md:p-6">
         <h1>Our Cinemas</h1>
         <div className="flex flex-col sm:flex-row sm:gap-6">
@@ -68,7 +69,7 @@ const Cinemas = () => {
           />
         </div>
       </section>
-    </div>
+    </PageContentWrapper>
   );
 };
 
