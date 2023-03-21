@@ -1,4 +1,4 @@
-const navbarConstants = {
+export const navbarConstants = {
   regularLinks: [
     { title: "Browse", url: "/browse" },
     { title: "Cinemas", url: "/cinemas" },
@@ -10,5 +10,3 @@ const navbarConstants = {
     { title: "FAQs", url: "/about/faqs" },
   ],
 };
-
-export default navbarConstants;

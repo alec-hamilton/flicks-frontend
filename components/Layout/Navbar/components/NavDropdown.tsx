@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 import Link from "next/link";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
-import navbarConstants from "../navbarConstants";
+import { navbarConstants } from "../navbarConstants";
 
 const { aboutLinks } = navbarConstants;
 

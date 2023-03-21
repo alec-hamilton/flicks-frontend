@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import Layout from "./components/Layout/Layout";
+import Layout from "../components/Layout/Layout";
 import { Roboto_Mono } from "next/font/google";
 import localFont from "next/font/local";
 
