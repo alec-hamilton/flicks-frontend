@@ -1,6 +1,8 @@
 const PageContentWrapper = ({ children }: ChildrenProps) => {
   return (
-    <div className="border border-primary m-2 xs:m-3 bg-black1">{children}</div>
+    <div className="border border-primary m-2 xs:m-3 p-4 md:p-6 bg-black1">
+      {children}
+    </div>
   );
 };
 

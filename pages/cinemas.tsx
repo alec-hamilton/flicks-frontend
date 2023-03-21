@@ -8,7 +8,7 @@ import PageContentWrapper from "./components/surfaces/PageContentWrapper";
 const Cinemas = () => {
   return (
     <PageContentWrapper>
-      <section className="p-4 md:p-6">
+      <section className="">
         <h1>Our Cinemas</h1>
         <div className="flex flex-col sm:flex-row sm:gap-6">
           <div className="flex flex-col sm:py-2">
@@ -29,7 +29,7 @@ const Cinemas = () => {
           />
         </div>
       </section>
-      <section className="p-4 m-4 md:m-6 md:p-6 border border-primary bg-black2">
+      <section className="p-4 md:p-6 my-4 md:my-6 border border-primary bg-black2">
         <h2>The Kino</h2>
         <div className="flex flex-col sm:flex-row sm:gap-6">
           <div>
@@ -49,7 +49,7 @@ const Cinemas = () => {
           />
         </div>
       </section>
-      <section className="p-4 m-4 md:m-6 md:p-6 border border-primary bg-black2">
+      <section className="p-4 md:p-6 border border-primary bg-black2">
         <h2>The Videodrome</h2>
         <div className="flex flex-col sm:flex-row sm:gap-6">
           <div>

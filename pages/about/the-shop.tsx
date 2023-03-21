@@ -6,7 +6,7 @@ import shopFront from "../../assets/images/bladerunner-style-movie-store.png";
 const TheShop = () => {
   return (
     <PageContentWrapper>
-      <section className="p-4 md:p-6">
+      <section>
         <h1>The Shop</h1>
         <div className="flex flex-col sm:flex-row sm:gap-6">
           <div className="flex flex-col sm:py-2">
@@ -27,7 +27,7 @@ const TheShop = () => {
           />
         </div>
       </section>
-      <div className="flex flex-col gap-4 mx-4 mb-4 sm:flex-row sm:gap-6 md:mx-6 md:mb-6">
+      <div className="flex flex-col gap-4 my-4 md:my-6 sm:flex-row sm:gap-6">
         <section className="p-4 md:p-6 border border-primary bg-black2 sm:w-6/12">
           <h2 className="pb-4">Address</h2>
           <address className="not-italic">
@@ -46,7 +46,7 @@ const TheShop = () => {
           </p>
         </section>
       </div>
-      <section className="p-4 md:p-6 border border-primary bg-black2 mx-4 mb-4 md:mx-6 md:mb-6">
+      <section className="p-4 md:p-6 border border-primary bg-black2">
         <h2 className="pb-4">Accessibility</h2>
         <p>
           The shop is on Christmas Steps, a historic, cobbled pedestrian street
