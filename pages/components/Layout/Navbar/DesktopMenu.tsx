@@ -1,7 +1,7 @@
 import Link from "next/link";
 import NavDropDown from "./components/NavDropdown";
 import NavSearchButton from "./components/NavSearchButton";
-import navbarConstants from "./navbarConstants";
+import { navbarConstants } from "./navbarConstants";
 
 const { regularLinks } = navbarConstants;
 

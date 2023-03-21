@@ -1,5 +1,5 @@
 import MobileMenuLink from "./components/MobileMenuLink";
-import navbarConstants from "./navbarConstants";
+import { navbarConstants } from "./navbarConstants";
 
 const { regularLinks, aboutLinks } = navbarConstants;
 

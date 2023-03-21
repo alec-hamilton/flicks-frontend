@@ -1,4 +1,4 @@
-const globalConstants = {
+export const globalConstants = {
   rentByPost: {
     pageTitle: "Rent by post",
     headerText:
@@ -126,5 +126,3 @@ const globalConstants = {
     },
   ],
 };
-
-export default globalConstants;

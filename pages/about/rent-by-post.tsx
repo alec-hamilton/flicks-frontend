@@ -2,7 +2,7 @@ import Image from "next/image";
 import PageContentWrapper from "../components/surfaces/PageContentWrapper";
 import PageContentHeader from "../components/surfaces/PageContentHeader";
 import shopFront from "../../assets/images/bladerunner-style-movie-store.png";
-import globalConstants from "@/constants/globalConstants";
+import { globalConstants } from "@/constants/globalConstants";
 
 const {
   rentByPost: {

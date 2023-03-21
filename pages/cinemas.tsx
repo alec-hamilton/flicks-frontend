@@ -5,7 +5,7 @@ import videodromeCinema from "../assets/images/bladerunner-style-cinema.png";
 import shopFront from "../assets/images/bladerunner-style-movie-store.png";
 import PageContentWrapper from "./components/surfaces/PageContentWrapper";
 import PageContentHeader from "./components/surfaces/PageContentHeader";
-import globalConstants from "@/constants/globalConstants";
+import { globalConstants } from "@/constants/globalConstants";
 
 const {
   cinemas: {

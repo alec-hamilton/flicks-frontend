@@ -1,5 +1,5 @@
 import PageContentWrapper from "../components/surfaces/PageContentWrapper";
-import globalConstants from "@/constants/globalConstants";
+import { globalConstants } from "@/constants/globalConstants";
 
 const { faqs } = globalConstants;
 
