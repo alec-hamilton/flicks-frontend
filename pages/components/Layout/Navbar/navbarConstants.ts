@@ -7,7 +7,7 @@ const navbarConstants = {
   aboutLinks: [
     { title: "The shop", url: "/about/the-shop" },
     { title: "Rent by post", url: "/about/rent-by-post" },
-    { title: "Faqs", url: "/about/faqs" },
+    { title: "FAQs", url: "/about/faqs" },
   ],
 };
 

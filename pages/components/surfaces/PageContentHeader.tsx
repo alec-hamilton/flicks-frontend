@@ -16,7 +16,7 @@ const PageContentHeader = ({
   children,
 }: PageContentHeaderProps) => {
   return (
-    <section>
+    <header>
       <h1>{title}</h1>
       <div className="flex flex-col my-4 md:my-6 sm:flex-row sm:gap-6">
         <div className="flex flex-col sm:py-2">
@@ -28,7 +28,7 @@ const PageContentHeader = ({
         </div>
         {children}
       </div>
-    </section>
+    </header>
   );
 };
 

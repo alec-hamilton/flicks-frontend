@@ -79,6 +79,52 @@ const globalConstants = {
       button: "Book the videodrome",
     },
   },
+  faqs: [
+    {
+      question: "Are you a Video Shop?",
+      answer:
+        "Yes, we have over 20,000 movies available to hire, like a library. We also have two screening rooms which you can watch movies in. It’s free to become a member, just pop into the shop. New movies cost £4 for 3 nights rental. All others are available to rent for £3 for 7 nights. We can leave films for you to collect 24/7 from our dropbox the same day if you let us know what you'd like before 5pm.",
+    },
+    {
+      question: "How much are your cinemas?",
+      answer:
+        "The Videodrome (1pm and 7pm daily) seats 10 and costs £100, though up to 8 extra people are allowed at £10 per person payable on arrival. The Kino (4pm) seats 8 and costs £80. The Kino is available for couples (up to 3) at 7pm for £50.",
+    },
+    {
+      question: "What is the capacity for each screening room?",
+      answer:
+        "The Kino has a total capacity of 8 people and The Videodrome has a total capacity of 18 people. This does include any adults accompanying under 18s groups. We require a minimum of 1 adult per 8 children.",
+    },
+    {
+      question: "Do you do kids parties?",
+      answer:
+        "Our screening rooms can be hired for under 18s, but please see our Guidelines below. They must be accompanied by at least one responsible adult. Normal age restrictions for movies apply. We encourage the use of the Videodrome. It has enough space for buggies, party bags and gifts. Unfortunately, we do not allow candles, confetti or party poppers in the shop. Please see our guidelines at the bottom of the page.",
+    },
+    {
+      question: "Can we bring food and drink?",
+      answer:
+        "We sell popcorn, crisps, chocolate, fizzy drinks, tea and coffee. You are welcome to bring in other refreshments.",
+    },
+    {
+      question: "What’s the Cancellation Policy?",
+      answer:
+        "We can reschedule your screening free of charge for up to 1 year from time of booking, so long as we receive a minimum of 48 hours notice. If you wish to cancel later than 48 hours before your scheduled booking we keep 50% of the fee paid. The remaining 50% can be put towards future bookings. A no-show will result in the full loss of your booking fee. All cancellations and re-bookings must be processed in person or by phone.",
+    },
+    {
+      question: "Do you do a newsletter?",
+      answer: "We're working on it!",
+    },
+    {
+      question: "Do you offer a postal service?",
+      answer:
+        "Yes, it costs £12 for 3 movies. You can set it up by visiting the shop, over the phone or from the website.",
+    },
+    {
+      question: "Do you buy and sell VHS?",
+      answer:
+        "No, but we do have 3000 VHS. They are available to hire at the same rates as the DVDs and Blurays.",
+    },
+  ],
 };
 
 export default globalConstants;
