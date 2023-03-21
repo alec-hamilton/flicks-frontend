@@ -1,10 +1,3 @@
-type ChildrenProps = {
-  children: React.ReactNode;
-};
-
-// Alternative hover classes
-// shadow-button hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all
-
 const StandardButton = ({ children }: ChildrenProps) => {
   return (
     <button
