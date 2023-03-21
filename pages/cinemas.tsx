@@ -3,11 +3,12 @@ import StandardButton from "./components/buttons/StandardButton";
 import twinPeaksCinema from "../assets/images/twin-peaks-style-cinema.png";
 import videodromeCinema from "../assets/images/bladerunner-style-cinema.png";
 import shopFront from "../assets/images/bladerunner-style-movie-store.png";
+import PageContentWrapper from "./components/surfaces/PageContentWrapper";
 
 const Cinemas = () => {
   return (
-    <div className="border border-primary m-2 xs:m-3 bg-black1">
-      <div className="p-4 md:p-6">
+    <PageContentWrapper>
+      <section className="p-4 md:p-6">
         <h1>Our Cinemas</h1>
         <div className="flex flex-col sm:flex-row sm:gap-6">
           <div className="flex flex-col sm:py-2">
@@ -27,8 +28,8 @@ const Cinemas = () => {
             className="border border-primary sm:w-4/12 sm:mt-4"
           />
         </div>
-      </div>
-      <div className="p-4 m-4 md:m-6 md:p-6 border border-primary bg-black2">
+      </section>
+      <section className="p-4 m-4 md:m-6 md:p-6 border border-primary bg-black2">
         <h2>The Kino</h2>
         <div className="flex flex-col sm:flex-row sm:gap-6">
           <div>
@@ -47,8 +48,8 @@ const Cinemas = () => {
             className="border border-primary sm:w-5/12 sm:mt-4"
           />
         </div>
-      </div>
-      <div className="p-4 m-4 md:m-6 md:p-6 border border-primary bg-black2">
+      </section>
+      <section className="p-4 m-4 md:m-6 md:p-6 border border-primary bg-black2">
         <h2>The Videodrome</h2>
         <div className="flex flex-col sm:flex-row sm:gap-6">
           <div>
@@ -67,8 +68,8 @@ const Cinemas = () => {
             className="border border-primary sm:w-5/12 sm:mt-4"
           />
         </div>
-      </div>
-    </div>
+      </section>
+    </PageContentWrapper>
   );
 };
 
