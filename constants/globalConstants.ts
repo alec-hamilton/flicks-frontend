@@ -59,6 +59,26 @@ const globalConstants = {
           quieter.`,
     },
   },
+  cinemas: {
+    pageTitle: "Our Cinemas",
+    headerText:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisis mauris sit amet massa vitae tortor condimentum. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi. Purus non enim praesent elementum facilisis leo vel.",
+    buttonOneText: "Book a cinema",
+    buttonTwoText: "Take virtual tour",
+    sectionOne: {
+      title: "The Kino",
+      content:
+        "Our Twin Peaks-y Kino seats 8 people and The Videodrome seats up to 18. For more details or to check availability and book a screening",
+      button: "Book the Kino",
+    },
+    sectionTwo: {
+      title: "The Videodrome",
+      content: `Unfixed for the time being! Usually Dave is in 4ish til 7ish pm,
+            Monday to Thursday and PG is in Friday evenings and Saturday and
+            Sunday daytimes. Phone or email to check!`,
+      button: "Book the videodrome",
+    },
+  },
 };
 
 export default globalConstants;
