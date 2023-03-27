@@ -1,7 +1,7 @@
 import MobileMenuLink from "./components/MobileMenuLink";
 import { navbarConstants } from "./navbarConstants";
 
-const { regularLinks, aboutLinks } = navbarConstants;
+const { regularLinks, rentalsLinks } = navbarConstants;
 
 type MobileMenuProps = {
   open: boolean;
@@ -25,7 +25,7 @@ const MobileMenu = ({ open, setOpen }: MobileMenuProps) => {
       </ul>
       <hr className="border-primary w-9/12 mx-auto" />
       <ul className="flex m-2 xs:m-3 flex-col gap-4">
-        {aboutLinks.map(({ title, url }, index) => {
+        {rentalsLinks.map(({ title, url }, index) => {
           return (
             <MobileMenuLink
               title={title}
