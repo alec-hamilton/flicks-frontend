@@ -23,9 +23,7 @@ const NavSearchButton = () => {
           </span>
         </span>
       </button>
-      <SearchModal isOpen={isOpen} handleClose={() => setIsOpen(false)}>
-        This is the modal content!
-      </SearchModal>
+      <SearchModal isOpen={isOpen} handleClose={() => setIsOpen(false)} />
     </>
   );
 };

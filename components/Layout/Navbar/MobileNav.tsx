@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BiMenu, BiSearch, BiX } from "react-icons/bi";
+import { BiMenu, BiX } from "react-icons/bi";
 import NavSearchButton from "./components/NavSearchButton";
 import MobileMenu from "./MobileMenu";
 
