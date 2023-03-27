@@ -6,7 +6,10 @@ export const navbarConstants = {
   ],
   aboutLinks: [
     { title: "The shop", url: "/about/the-shop" },
-    { title: "Rent by post", url: "/about/rent-by-post" },
     { title: "FAQs", url: "/about/faqs" },
+  ],
+  rentalsLinks: [
+    { title: "Rent locally", url: "/rentals/rent-locally" },
+    { title: "Rent by post", url: "/rentals/rent-by-post" },
   ],
 };

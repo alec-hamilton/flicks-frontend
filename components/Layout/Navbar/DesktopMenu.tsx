@@ -4,6 +4,8 @@ import NavSearchButton from "./components/NavSearchButton";
 import { navbarConstants } from "./navbarConstants";
 
 const { regularLinks } = navbarConstants;
+const { aboutLinks } = navbarConstants;
+const { rentalsLinks } = navbarConstants;
 
 const DesktopMenu = () => {
   return (
@@ -24,7 +26,8 @@ const DesktopMenu = () => {
             </li>
           );
         })}
-        <NavDropDown />
+        <NavDropDown buttonTitle="Rentals" dropdownLinks={rentalsLinks} />
+        <NavDropDown buttonTitle="About" dropdownLinks={aboutLinks} />
       </ul>
       <NavSearchButton />
     </div>
