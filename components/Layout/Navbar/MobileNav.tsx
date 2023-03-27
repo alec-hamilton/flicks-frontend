@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { BiMenu, BiSearch, BiX } from "react-icons/bi";
+import { BiMenu, BiX } from "react-icons/bi";
+import NavSearchButton from "./components/NavSearchButton";
 import MobileMenu from "./MobileMenu";
 
 const MobileNav = () => {
@@ -15,19 +16,12 @@ const MobileNav = () => {
 
   return (
     <>
-      <div className="flex gap-2">
-        <button
-          type="button"
-          className="border border-primary bg-black1 mdx:hidden w-[42px] xs:w-[62px]"
-        >
-          <span className="flex items-center justify-center">
-            <BiSearch size="1.5rem" />
-          </span>
-        </button>
+      <div className="flex gap-2 mdx:hidden">
+        <NavSearchButton />
         <button
           onClick={toggleOpen}
           type="button"
-          className="border border-primary z-50 bg-black1 mdx:hidden w-[42px] xs:w-[62px]"
+          className="border border-primary z-50 bg-black1 w-[42px] xs:w-[62px]"
         >
           <span className="flex items-center justify-center">
             {open ? closeButton : burgerButton}
