@@ -3,7 +3,8 @@ import { FiTwitter, FiInstagram } from "react-icons/fi";
 import { layoutConstants } from "../Navbar/layoutConstants";
 
 const { usefulLinks, aboutLinks, contactLinks } = layoutConstants;
-const footerLinks = [usefulLinks, aboutLinks, contactLinks];
+const footerLinks = [usefulLinks, aboutLinks];
+const contactMinusWhat3 = contactLinks.links.slice(0, -1);
 
 const Footer = () => {
   return (
@@ -16,49 +17,45 @@ const Footer = () => {
               <ul className="p-4 flex flex-col gap-2 text-sm">
                 {links.map(({ title, url }, index) => {
                   return (
-                    <Link href={url} key={index}>
-                      <li className="whitespace-pre-wrap underline">{title}</li>
-                    </Link>
+                    <li
+                      className="underline lg:hover:text-fuchsia-400"
+                      key={index}
+                    >
+                      <Link href={url}>{title}</Link>
+                    </li>
                   );
                 })}
               </ul>
             </section>
           );
         })}
-        {/* <section className="border border-primary md:flex-1">
-          <h3 className="border-b border-primary p-4">Useful links</h3>
+        <section className="border border-primary md:flex-1">
+          <h3 className="border-b border-primary p-4">
+            {contactLinks.groupName}
+          </h3>
           <ul className="p-4 flex flex-col gap-2 text-sm">
-            <li>Browse</li>
-            <li>Cinemas</li>
-            <li>Rent locally</li>
-            <li>Rent by post</li>
+            {contactMinusWhat3.map(({ title, url, name }) => {
+              return name === "address" ? (
+                <li
+                  key={title}
+                  className="underline lg:hover:text-fuchsia-400 whitespace-pre-wrap"
+                >
+                  <a href={url} target="_blank" rel="noreferrer">
+                    <address className="not-italic">{title}</address>
+                  </a>
+                </li>
+              ) : (
+                <li className="underline lg:hover:text-fuchsia-400" key={title}>
+                  <a href={url} target="_blank" rel="noreferrer">
+                    {title}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </section>
-        <section className="border border-primary md:flex-1">
-          <h3 className="border-b border-primary p-4">About</h3>
-          <ul className="p-4 flex flex-col gap-2 text-sm">
-            <li>About us</li>
-            <li>The shop</li>
-            <li>FAQs</li>
-          </ul>
-        </section>
-        <section className="border border-primary md:flex-1">
-          <h3 className="border-b border-primary p-4">Contact</h3>
-          <ul className="p-4 flex flex-col gap-2 text-sm">
-            <li>0117 925 8432</li>
-            <li>info@20thcenturyflicks.co.uk</li>
-            <li>
-              <address className="not-italic">
-                <p>20th Century Flicks Ltd</p>
-                <p>19 Christmas Steps</p>
-                <p>Bristol</p>
-                <p>BS1 5BS</p>
-              </address>
-            </li>
-          </ul>
-        </section> */}
       </div>
-      <div className="flex border-t-2 border-primary items-center justify-between mt-2 xs:mt-4 p-2 xs:p-4">
+      <div className="flex border-t border-primary items-center justify-between mt-2 xs:mt-4 p-2 xs:p-4">
         <h3 className="font-logo whitespace-nowrap p-2 text-xs">
           20th Century Flicks
         </h3>
