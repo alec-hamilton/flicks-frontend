@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import ReactPortal from "./ReactPortal";
 import { BiX } from "react-icons/bi";
 
@@ -7,6 +8,17 @@ type SearchModalProps = {
 };
 
 const SearchModal = ({ isOpen, handleClose }: SearchModalProps) => {
+  useEffect(() => {
+    const closeOnEscapeKey = (event: KeyboardEvent) => {
+      event.key === "Escape" ? handleClose() : null;
+    };
+    document.body.addEventListener("keydown", closeOnEscapeKey);
+
+    return () => {
+      document.body.removeEventListener("keydown", closeOnEscapeKey);
+    };
+  }, [handleClose]);
+
   if (!isOpen) return null;
   return (
     <ReactPortal wrapperId="react-portal-modal">
