@@ -18,7 +18,7 @@ const bladerunner = localFont({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <main
-      className={`${robotoMono.className} ${bladerunner.variable} max-w-5xl mx-auto text-primary`}
+      className={`${robotoMono.className} ${bladerunner.variable} text-primary`}
     >
       <Layout>
         <Component {...pageProps} />
