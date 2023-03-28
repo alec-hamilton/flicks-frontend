@@ -10,4 +10,8 @@
   h2 {
     @apply text-xl font-bold text-body;
   }
+
+  h3 {
+    @apply text-lg font-bold text-body;
+  }
 }

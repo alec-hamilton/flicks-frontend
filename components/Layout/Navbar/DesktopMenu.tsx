@@ -1,11 +1,11 @@
 import Link from "next/link";
 import NavDropDown from "./components/NavDropdown";
 import NavSearchButton from "./components/NavSearchButton";
-import { navbarConstants } from "./navbarConstants";
+import { layoutConstants } from "./layoutConstants";
 
-const { regularLinks } = navbarConstants;
-const { rentalsLinks } = navbarConstants;
-const { aboutLinks } = navbarConstants;
+const { regularLinks } = layoutConstants;
+const { rentalsLinks } = layoutConstants;
+const { aboutLinks } = layoutConstants;
 
 const DesktopMenu = () => {
   return (

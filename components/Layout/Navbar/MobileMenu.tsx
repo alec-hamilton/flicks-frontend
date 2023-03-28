@@ -1,7 +1,7 @@
 import MobileMenuLink from "./components/MobileMenuLink";
-import { navbarConstants } from "./navbarConstants";
+import { layoutConstants } from "./layoutConstants";
 
-const { regularLinks, rentalsLinks } = navbarConstants;
+const { regularLinks, rentalsLinks } = layoutConstants;
 
 type MobileMenuProps = {
   open: boolean;
