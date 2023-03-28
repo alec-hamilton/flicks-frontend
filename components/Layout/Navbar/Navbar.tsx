@@ -4,7 +4,7 @@ import DesktopMenu from "./DesktopMenu";
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-between m-2 xs:m-3 mdx:justify-start">
+    <nav className="flex border-b-2 border-primary p-2 justify-between xs:p-4 lg:justify-start">
       <NavLogo />
       <DesktopMenu />
       <MobileNav />

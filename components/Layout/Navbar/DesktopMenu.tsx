@@ -1,14 +1,15 @@
 import Link from "next/link";
 import NavDropDown from "./components/NavDropdown";
 import NavSearchButton from "./components/NavSearchButton";
-import { navbarConstants } from "./navbarConstants";
+import { layoutConstants } from "./layoutConstants";
 
-const { regularLinks } = navbarConstants;
-const { rentalsLinks } = navbarConstants;
+const { regularLinks } = layoutConstants;
+const { rentalsLinks } = layoutConstants;
+const { aboutLinks } = layoutConstants;
 
 const DesktopMenu = () => {
   return (
-    <div className="hidden mdx:flex ml-4 gap-2 justify-between w-full">
+    <div className="hidden lg:flex ml-4 gap-2 justify-between w-full">
       <ul className="flex gap-2">
         {regularLinks.map(({ title, url }, index) => {
           return (
@@ -25,7 +26,8 @@ const DesktopMenu = () => {
             </li>
           );
         })}
-        <NavDropDown buttonTitle="Rentals" dropdownLinks={rentalsLinks} />
+        <NavDropDown dropdownLinks={rentalsLinks} />
+        <NavDropDown dropdownLinks={aboutLinks} />
       </ul>
       <NavSearchButton />
     </div>
