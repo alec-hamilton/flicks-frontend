@@ -16,7 +16,7 @@ const MobileNav = () => {
 
   return (
     <>
-      <div className="flex gap-2 mdx:hidden">
+      <div className="flex gap-2 lg:hidden">
         <NavSearchButton />
         <button
           onClick={toggleOpen}

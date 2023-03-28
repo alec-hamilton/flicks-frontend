@@ -9,16 +9,16 @@ const NavSearchButton = () => {
       <button
         onClick={() => setIsOpen(true)}
         type="button"
-        className="border border-primary mdx:border-fuchsia-400 mdx:hover:bg-fuchsia-400/20 px-4 bg-black1 w-[42px] xs:w-[62px] mdx:w-auto"
+        className="border border-primary lg:border-fuchsia-400 lg:hover:bg-fuchsia-400/20 px-4 bg-black1 w-[42px] xs:w-[62px] lg:w-auto"
       >
         <span className="flex gap-4 items-center justify-center">
           <span>
             <BiSearch
               size="1.5rem"
-              className="text-primary mdx:text-fuchsia-400"
+              className="text-primary lg:text-fuchsia-400"
             />
           </span>
-          <span className="font-bold text-fuchsia-400 hidden mdx:block">
+          <span className="font-bold text-fuchsia-400 hidden lg:block">
             Search
           </span>
         </span>
