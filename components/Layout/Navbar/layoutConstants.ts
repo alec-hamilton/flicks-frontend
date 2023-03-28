@@ -12,10 +12,13 @@ export const layoutConstants = {
       { title: "FAQs", url: "/about/faqs" },
     ],
   },
-  rentalsLinks: [
-    { title: "Rent locally", url: "/rentals/rent-locally" },
-    { title: "Rent by post", url: "/rentals/rent-by-post" },
-  ],
+  rentalsLinks: {
+    groupName: "Rentals",
+    links: [
+      { title: "Rent locally", url: "/rentals/rent-locally" },
+      { title: "Rent by post", url: "/rentals/rent-by-post" },
+    ],
+  },
   usefulLinks: {
     groupName: "Useful links",
     links: [
@@ -25,19 +28,18 @@ export const layoutConstants = {
       { title: "Rent by post", url: "/rentals/rent-by-post" },
     ],
   },
-  contactLinks: [
-    { title: "0117 925 8432", url: "tel:01179258432" },
-    {
-      title: "info@20thcenturyflicks.co.uk",
-      url: "mailto:info@20thcenturyflicks.co.uk",
-    },
-    {
-      title: "info@20thcenturyflicks.co.uk",
-      url: "mailto:info@20thcenturyflicks.co.uk",
-    },
-    {
-      title: "info@20thcenturyflicks.co.uk",
-      url: "mailto:info@20thcenturyflicks.co.uk",
-    },
-  ],
+  contactLinks: {
+    groupName: "Contact",
+    links: [
+      { title: "0117 925 8432", url: "tel:01179258432" },
+      {
+        title: "info@20thcenturyflicks.co.uk",
+        url: "mailto:info@20thcenturyflicks.co.uk",
+      },
+      {
+        title: "20th Century Flicks Ltd\n19 Christmas Steps\nBristol\nBS1 5BS",
+        url: "https://goo.gl/maps/tDJJiF6kBiU7gPNK6",
+      },
+    ],
+  },
 };

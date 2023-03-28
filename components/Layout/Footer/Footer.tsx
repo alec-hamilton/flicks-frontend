@@ -2,8 +2,8 @@ import Link from "next/link";
 import { FiTwitter, FiInstagram } from "react-icons/fi";
 import { layoutConstants } from "../Navbar/layoutConstants";
 
-const { usefulLinks, aboutLinks } = layoutConstants;
-const footerLinks = [usefulLinks, aboutLinks];
+const { usefulLinks, aboutLinks, contactLinks } = layoutConstants;
+const footerLinks = [usefulLinks, aboutLinks, contactLinks];
 
 const Footer = () => {
   return (
@@ -17,7 +17,7 @@ const Footer = () => {
                 {links.map(({ title, url }, index) => {
                   return (
                     <Link href={url} key={index}>
-                      <li>{title}</li>
+                      <li className="whitespace-pre-wrap underline">{title}</li>
                     </Link>
                   );
                 })}

@@ -1,7 +1,7 @@
 import MobileMenuLink from "./components/MobileMenuLink";
 import { layoutConstants } from "./layoutConstants";
 
-const { regularLinks, rentalsLinks } = layoutConstants;
+const { regularLinks, rentalsLinks, aboutLinks } = layoutConstants;
 
 type MobileMenuProps = {
   open: boolean;
@@ -10,8 +10,8 @@ type MobileMenuProps = {
 
 const MobileMenu = ({ open, setOpen }: MobileMenuProps) => {
   return open ? (
-    <nav className="flex flex-col fixed bg-black0 inset-0 sm:left-2/4 sm:border-l sm:border-primary gap-4 lg:hidden">
-      <ul className="mt-16 xs:mt-20 m-2 xs:m-3 flex flex-col gap-4">
+    <nav className="flex flex-col fixed bg-black0 inset-0 sm:left-2/4 sm:border-l sm:border-primary gap-2 lg:hidden">
+      <ul className="mt-16 xs:mt-20 m-2 xs:mx-4 flex flex-col gap-2">
         {regularLinks.map(({ title, url }, index) => {
           return (
             <MobileMenuLink
@@ -24,8 +24,21 @@ const MobileMenu = ({ open, setOpen }: MobileMenuProps) => {
         })}
       </ul>
       <hr className="border-primary w-9/12 mx-auto" />
-      <ul className="flex m-2 xs:m-3 flex-col gap-4">
-        {rentalsLinks.map(({ title, url }, index) => {
+      <ul className="flex m-2 xs:mx-4 flex-col gap-2">
+        {rentalsLinks.links.map(({ title, url }, index) => {
+          return (
+            <MobileMenuLink
+              title={title}
+              url={url}
+              setOpen={setOpen}
+              key={index}
+            />
+          );
+        })}
+      </ul>
+      <hr className="border-primary w-9/12 mx-auto" />
+      <ul className="flex m-2 xs:mx-4 flex-col gap-2">
+        {aboutLinks.links.map(({ title, url }, index) => {
           return (
             <MobileMenuLink
               title={title}
@@ -37,9 +50,7 @@ const MobileMenu = ({ open, setOpen }: MobileMenuProps) => {
         })}
       </ul>
     </nav>
-  ) : (
-    <></>
-  );
+  ) : null;
 };
 
 export default MobileMenu;

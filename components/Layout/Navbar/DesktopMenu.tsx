@@ -26,8 +26,8 @@ const DesktopMenu = () => {
             </li>
           );
         })}
-        <NavDropDown buttonTitle="Rentals" dropdownLinks={rentalsLinks} />
-        <NavDropDown buttonTitle="About" dropdownLinks={aboutLinks} />
+        <NavDropDown dropdownLinks={rentalsLinks} />
+        <NavDropDown dropdownLinks={aboutLinks} />
       </ul>
       <NavSearchButton />
     </div>

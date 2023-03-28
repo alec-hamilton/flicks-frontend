@@ -4,11 +4,10 @@ import Link from "next/link";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 
 type NavDropDownProps = {
-  buttonTitle: string;
-  dropdownLinks: { title: string; url: string }[];
+  dropdownLinks: { groupName: string; links: { title: string; url: string }[] };
 };
 
-const NavDropDown = ({ buttonTitle, dropdownLinks }: NavDropDownProps) => {
+const NavDropDown = ({ dropdownLinks }: NavDropDownProps) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
@@ -23,7 +22,7 @@ const NavDropDown = ({ buttonTitle, dropdownLinks }: NavDropDownProps) => {
         className="border border-primary bg-black1 hover:bg-primary/20"
       >
         <span className="flex items-center h-full">
-          <span className="px-4 font-bold">{buttonTitle}</span>
+          <span className="px-4 font-bold">{dropdownLinks.groupName}</span>
           <span className="flex items-center border-l border-primary h-full px-1">
             <BiChevronDown size="1.5rem" />
           </span>
@@ -35,7 +34,7 @@ const NavDropDown = ({ buttonTitle, dropdownLinks }: NavDropDownProps) => {
           className="absolute left-0 top-16 w-60 border border-primary p-3 bg-black0"
         >
           <ul className="flex flex-col gap-2">
-            {dropdownLinks.map(({ title, url }, index) => {
+            {dropdownLinks.links.map(({ title, url }, index) => {
               return (
                 <li
                   key={index}
