@@ -1,4 +1,3 @@
-import Image from "next/image";
 import PageContentWrapper from "../../components/surfaces/PageContentWrapper";
 import PageContentHeader from "../../components/surfaces/PageContentHeader";
 import shopFront from "../../assets/images/bladerunner-style-movie-store.png";

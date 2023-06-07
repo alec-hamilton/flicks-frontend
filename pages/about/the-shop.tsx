@@ -1,8 +1,10 @@
-import Image from "next/image";
 import PageContentWrapper from "../../components/surfaces/PageContentWrapper";
 import PageContentHeader from "../../components/surfaces/PageContentHeader";
 import shopFront from "../../assets/images/bladerunner-style-movie-store.png";
 import { globalConstants } from "@/constants/globalConstants";
+import Link from "next/link";
+import StandardButton from "@/components/buttons/StandardButton";
+import ExternalLink from "@/components/links/ExternalLink";
 
 const {
   theShop: {
@@ -22,14 +24,15 @@ const TheShop = () => {
       <PageContentHeader
         title={pageTitle}
         text={headerText}
-        buttonOneText={buttonOneText}
-        buttonTwoText={buttonTwoText}
+        imageSrc={shopFront}
+        imageAlt="Movie rental store shop front in the style of bladerunner"
       >
-        <Image
-          src={shopFront}
-          alt="Movie rental store shop front in the style of bladerunner"
-          className="border border-primary sm:w-4/12"
-        />
+        <Link href="/browse">
+          <StandardButton>{buttonOneText}</StandardButton>
+        </Link>
+        <ExternalLink href="https://appvrstudio.com/viewer/20thcenturyflicks">
+          <StandardButton>{buttonTwoText}</StandardButton>
+        </ExternalLink>
       </PageContentHeader>
       <div className="flex flex-col gap-4 my-4 md:my-6 sm:flex-row sm:gap-6">
         <section className="p-4 md:p-6 border border-primary bg-black2 sm:w-6/12">
