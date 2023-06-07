@@ -1,5 +1,6 @@
 import Image from "next/image";
 import StandardButton from "../components/buttons/StandardButton";
+import ExternalLink from "@/components/links/ExternalLink";
 import twinPeaksCinema from "../assets/images/twin-peaks-style-cinema.png";
 import videodromeCinema from "../assets/images/bladerunner-style-cinema.png";
 import shopFront from "../assets/images/bladerunner-style-movie-store.png";
@@ -24,14 +25,15 @@ const Cinemas = () => {
       <PageContentHeader
         title={pageTitle}
         text={headerText}
-        buttonOneText={buttonOneText}
-        buttonTwoText={buttonTwoText}
+        imageSrc={shopFront}
+        imageAlt="Movie rental store shop front in the style of bladerunner"
       >
-        <Image
-          src={shopFront}
-          alt="Movie rental store shop front in the style of bladerunner"
-          className="border border-primary sm:w-4/12"
-        />
+        <ExternalLink href="https://cal.smoothbook.co/20thcflicks">
+          <StandardButton>{buttonOneText}</StandardButton>
+        </ExternalLink>
+        <ExternalLink href="https://appvrstudio.com/viewer/20thcenturyflicks">
+          <StandardButton>{buttonTwoText}</StandardButton>
+        </ExternalLink>
       </PageContentHeader>
       <section className="p-4 md:p-6 my-4 md:my-6 border border-primary bg-black2">
         <h2>{sectionOne.title}</h2>
@@ -39,7 +41,9 @@ const Cinemas = () => {
           <div>
             <p className="py-4 ">{sectionOne.content}</p>
             <div className="mb-4">
-              <StandardButton>{sectionOne.button}</StandardButton>
+              <ExternalLink href="https://cal.smoothbook.co/20thcflicks">
+                <StandardButton>{sectionOne.button}</StandardButton>
+              </ExternalLink>
             </div>
           </div>
           <Image
@@ -55,7 +59,9 @@ const Cinemas = () => {
           <div>
             <p className="py-4">{sectionTwo.content}</p>
             <div className="mb-4">
-              <StandardButton>{sectionTwo.button}</StandardButton>
+              <ExternalLink href="https://cal.smoothbook.co/20thcflicks">
+                <StandardButton>{sectionTwo.button}</StandardButton>
+              </ExternalLink>
             </div>
           </div>
           <Image
