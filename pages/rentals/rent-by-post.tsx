@@ -3,6 +3,7 @@ import PageContentWrapper from "../../components/surfaces/PageContentWrapper";
 import PageContentHeader from "../../components/surfaces/PageContentHeader";
 import shopFront from "../../assets/images/bladerunner-style-movie-store.png";
 import { globalConstants } from "@/constants/globalConstants";
+import StandardButton from "@/components/buttons/StandardButton";
 
 const {
   rentByPost: {
@@ -21,14 +22,11 @@ const RentByPost = () => {
       <PageContentHeader
         title={pageTitle}
         text={headerText}
-        buttonOneText={buttonOneText}
-        buttonTwoText={buttonTwoText}
+        imageSrc={shopFront}
+        imageAlt="Movie rental store shop front in the style of bladerunner"
       >
-        <Image
-          src={shopFront}
-          alt="Movie rental store shop front in the style of bladerunner"
-          className="border border-primary sm:w-4/12"
-        />
+        <StandardButton>{buttonOneText}</StandardButton>
+        <StandardButton>{buttonTwoText}</StandardButton>
       </PageContentHeader>
       <div className="flex flex-col gap-4 mt-4 md:mt-6 sm:flex-row sm:gap-6">
         <section className="p-4 md:p-6 border border-primary bg-black2 sm:w-6/12">
