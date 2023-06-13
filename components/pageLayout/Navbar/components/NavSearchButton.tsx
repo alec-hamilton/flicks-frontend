@@ -1,3 +1,5 @@
+"use client";
+
 import SearchModal from "@/components/modals/SearchModal";
 import { useState } from "react";
 import { BiSearch } from "react-icons/bi";

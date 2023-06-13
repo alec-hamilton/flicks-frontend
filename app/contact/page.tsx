@@ -1,6 +1,7 @@
+import React from "react";
 import HorizontalDivider from "@/components/dividers/HorizontalDivider";
 import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
-import { layoutConstants } from "@/components/Layout/Navbar/layoutConstants";
+import { layoutConstants } from "@/components/pageLayout/Navbar/layoutConstants";
 
 const { contactLinks } = layoutConstants;
 
@@ -11,8 +12,8 @@ const Contact = () => {
       <div className="flex flex-col gap-4 text-sm sm:text-base mt-6">
         {contactLinks.links.map(({ name, title, url }, index) => {
           return name === "address" ? (
-            <>
-              <div className="flex justify-between" key={index}>
+            <React.Fragment key={index}>
+              <div className="flex justify-between">
                 <p>{name}</p>
                 <a
                   href={url}
@@ -26,10 +27,10 @@ const Contact = () => {
                 </a>
               </div>
               <HorizontalDivider />
-            </>
+            </React.Fragment>
           ) : (
-            <>
-              <div className="flex justify-between" key={index}>
+            <React.Fragment key={index}>
+              <div className="flex justify-between">
                 <p>{name}</p>
                 <a
                   href={url}
@@ -41,7 +42,7 @@ const Contact = () => {
                 </a>
               </div>
               <HorizontalDivider />
-            </>
+            </React.Fragment>
           );
         })}
       </div>

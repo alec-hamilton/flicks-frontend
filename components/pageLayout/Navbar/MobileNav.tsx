@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { BiMenu, BiX } from "react-icons/bi";
 import NavSearchButton from "./components/NavSearchButton";

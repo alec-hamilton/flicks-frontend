@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 import Link from "next/link";

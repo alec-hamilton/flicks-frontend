@@ -1,11 +1,11 @@
 import Image from "next/image";
-import StandardButton from "../components/buttons/StandardButton";
+import StandardButton from "@/components/buttons/StandardButton";
 import ExternalLink from "@/components/links/ExternalLink";
-import twinPeaksCinema from "../assets/images/twin-peaks-style-cinema.png";
-import videodromeCinema from "../assets/images/bladerunner-style-cinema.png";
-import shopFront from "../assets/images/bladerunner-style-movie-store.png";
-import PageContentWrapper from "../components/surfaces/PageContentWrapper";
-import PageContentHeader from "../components/surfaces/PageContentHeader";
+import twinPeaksCinema from "@/assets/images/twin-peaks-style-cinema.png";
+import videodromeCinema from "@/assets/images/bladerunner-style-cinema.png";
+import shopFront from "@/assets/images/bladerunner-style-movie-store.png";
+import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
+import PageContentHeader from "@/components/surfaces/PageContentHeader";
 import { globalConstants } from "@/constants/globalConstants";
 
 const {

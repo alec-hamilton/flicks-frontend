@@ -1,6 +1,6 @@
-import PageContentWrapper from "../../components/surfaces/PageContentWrapper";
-import PageContentHeader from "../../components/surfaces/PageContentHeader";
-import shopFront from "../../assets/images/bladerunner-style-movie-store.png";
+import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
+import PageContentHeader from "@/components/surfaces/PageContentHeader";
+import shopFront from "@/assets/images/bladerunner-style-movie-store.png";
 import { globalConstants } from "@/constants/globalConstants";
 import Link from "next/link";
 import StandardButton from "@/components/buttons/StandardButton";
