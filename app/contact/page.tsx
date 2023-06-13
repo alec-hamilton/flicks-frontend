@@ -1,7 +1,7 @@
 import React from "react";
 import HorizontalDivider from "@/components/dividers/HorizontalDivider";
 import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
-import { layoutConstants } from "@/components/layout/Navbar/layoutConstants";
+import { layoutConstants } from "@/components/pageLayout/Navbar/layoutConstants";
 
 const { contactLinks } = layoutConstants;
 

@@ -1,6 +1,6 @@
 import "../styles/globals.css";
-import Navbar from "@/components/layout/Navbar/Navbar";
-import Footer from "@/components/layout/Footer/Footer";
+import Navbar from "@/components/pageLayout/Navbar/Navbar";
+import Footer from "@/components/pageLayout/Footer/Footer";
 import { Roboto_Mono } from "next/font/google";
 import localFont from "next/font/local";
 
