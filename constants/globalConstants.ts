@@ -1,4 +1,9 @@
 export const globalConstants = {
+  homePage: {
+    pageTitle: "Welcome to 20th Century Flicks",
+    headerText:
+      "We are the longest running video shop in this world. Serving Bristol and beyond with movies since 1982.",
+  },
   rentByPost: {
     pageTitle: "Rent by post",
     headerText:
