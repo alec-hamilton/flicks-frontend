@@ -12,31 +12,41 @@ export const globalConstants = {
   rentByPost: {
     pageTitle: "Rent by post",
     headerText:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisis mauris sit amet massa vitae tortor condimentum. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi. Purus non enim praesent elementum facilisis leo vel.",
+      "Can’t get your movies in person? No problem. We can post them out to you!",
     buttonOneText: "Buy credit",
     buttonTwoText: "Questions? Contact us",
     sectionOne: {
       title: "Triple bill postal service",
-      content: `At the bottom is a link to let you rent via post. It costs £12 for 3
-      movies including postage. Let us know which 3 you'd like via
-      info@20thcenturyflicks.co.uk or leave a message on 0117 9258432 and
-      we will post them to you. We'd like them back after a couple of
-      weeks.`,
+      content:
+        "For £12 we can send you 3 of our 20,000 movies, including postage both ways. Just pop them in the post 2 weeks after you get them. Buy credit using the link above and email us your choices.",
     },
     sectionTwo: {
-      title: "Flicks subscription",
-      content: `If you are are able to pop to the shop, we are operating a "Dropbox
-      Service". Films cost £3 per week or £4 for newer titles. You can add
-      credit here then email or call to let us know what films you'd like
-      and we will let you know when they are ready to collect. Orders made
-      before 5pm will usually be available that evening and the Box is
-      accessible 24/7.`,
+      title: "Looking for something specific?",
+      content:
+        "If you can't find what you're looking for on our site, we might be able to get it in for you. Give us a call or drop us an email!",
+    },
+  },
+  rentLocally: {
+    pageTitle: "Rent locally",
+    headerText:
+      "Come in and browse! The shop is usually staffed from 4pm til 9pm, but do phone or email to check before coming in case we’re not around.",
+    buttonOneText: "Buy credit",
+    buttonTwoText: "Questions? Contact us",
+    sectionOne: {
+      title: "Use our dropbox",
+      content:
+        "Though we don’t have regular opening hours you can request your movies and collect them from our dropbox. Orders received before 5pm will be ready to collect that evening. The box is accessible 24/7. Buy credit using the link above and get in touch!",
+    },
+    sectionTwo: {
+      title: "Prices",
+      content:
+        "Movies cost £3 per week and £4 for 3 nights for brand new titles. Buy credit using the link above if you want to use our dropbox.",
     },
   },
   theShop: {
     pageTitle: "The Shop",
     headerText:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisis mauris sit amet massa vitae tortor condimentum. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi. Purus non enim praesent elementum facilisis leo vel.",
+      "The shop is on Christmas Steps, a historic, cobbled pedestrian street in the centre of Bristol. If you'd like to see what it looks like inside, take a virtual tour by clicking the link below.",
     buttonOneText: "Browse our collection",
     buttonTwoText: "Take virtual tour",
     sectionOne: {
@@ -56,8 +66,7 @@ export const globalConstants = {
     },
     sectionThree: {
       title: "Accessibility",
-      content: `The shop is on Christmas Steps, a historic, cobbled pedestrian street
-          in the centre of Bristol. There are 22 steps up to the shop from
+      content: `There are 22 steps up to the shop from
           Colston Avenue and 25 steps down to the shop from Colston Street.
           There is a loading bay at the bottom of the Christmas Steps on Colston
           Avenue which can be used as a parking space to drop off or pick up
@@ -72,20 +81,19 @@ export const globalConstants = {
   cinemas: {
     pageTitle: "Our Cinemas",
     headerText:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisis mauris sit amet massa vitae tortor condimentum. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi. Purus non enim praesent elementum facilisis leo vel.",
+      "What started on beanbags in Clifton has evolved into Bristol’s finest (and tiniest) cinemas! The slots are for up to 2 hours and includes a movie of your choice (we screen from blu-ray whenever possible). It’s BYO food & drinks friendly, except popcorn, which we sell ourselves. Be seeing you!",
     buttonOneText: "Book a cinema",
     buttonTwoText: "Take virtual tour",
     sectionOne: {
       title: "The Kino",
       content:
-        "Our Twin Peaks-y Kino seats 8 people and The Videodrome seats up to 18. For more details or to check availability and book a screening",
+        "The Kino is our Twin Peaks themed cinema. It seats up to 8 people at 4pm daily (£80), and up to 3 people at 6.45pm every evening (£50). It's perfect for couples and small groups.",
       button: "Book the Kino",
     },
     sectionTwo: {
       title: "The Videodrome",
-      content: `Unfixed for the time being! Usually Dave is in 4ish til 7ish pm,
-            Monday to Thursday and PG is in Friday evenings and Saturday and
-            Sunday daytimes. Phone or email to check!`,
+      content:
+        "The Videodrome is available at 1pm and 7pm every day. It costs £100 for up to 10 people, though up to 8 extra can come along (so 18 max in total) and pay £10 per person on arrival.",
       button: "Book the videodrome",
     },
   },
