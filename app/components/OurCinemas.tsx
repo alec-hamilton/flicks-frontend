@@ -26,7 +26,7 @@ const OurCinemas = () => {
         <div className="flex flex-col gap-4 sm:gap-6">
           <p>{sectionText}</p>
           <div className="flex flex-col gap-3">
-            <Link href="/Cinemas">
+            <Link href="/cinemas">
               <StandardButton>Find out more</StandardButton>
             </Link>
           </div>

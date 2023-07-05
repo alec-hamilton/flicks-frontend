@@ -30,16 +30,17 @@ export const globalConstants = {
     pageTitle: "Rent locally",
     headerText:
       "Come in and browse! The shop is usually staffed from 4pm til 9pm, but do phone or email to check before coming in case we’re not around.",
-    buttonOneText: "Questions? Contact us",
+    buttonOneText: "Buy credit",
+    buttonTwoText: "Questions? Contact us",
     sectionOne: {
       title: "Use our dropbox",
       content:
-        "Though we don’t have regular opening hours you can request your movies and collect them from our dropbox. Orders received before 5pm will be ready to collect that evening. The box is accessible 24/7.",
+        "Though we don’t have regular opening hours you can request your movies and collect them from our dropbox. Orders received before 5pm will be ready to collect that evening. The box is accessible 24/7. Buy credit using the link above and get in touch!",
     },
     sectionTwo: {
       title: "Prices",
       content:
-        "Movies cost £3 per week and £4 for 3 nights for brand new titles.",
+        "Movies cost £3 per week and £4 for 3 nights for brand new titles. Buy credit using the link above if you want to use our dropbox.",
     },
   },
   theShop: {
