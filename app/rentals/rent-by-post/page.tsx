@@ -1,8 +1,10 @@
 import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 import PageContentHeader from "@/components/surfaces/PageContentHeader";
 import shopFront from "@/assets/images/bladerunner-style-movie-store.png";
-import { globalConstants } from "@/constants/globalConstants";
 import StandardButton from "@/components/buttons/StandardButton";
+import { globalConstants } from "@/constants/globalConstants";
+import Link from "next/link";
+import ExternalLink from "@/components/links/ExternalLink";
 
 const {
   rentByPost: {
@@ -24,8 +26,12 @@ const RentByPost = () => {
         imageSrc={shopFront}
         imageAlt="Movie rental store shop front in the style of bladerunner"
       >
-        <StandardButton>{buttonOneText}</StandardButton>
-        <StandardButton>{buttonTwoText}</StandardButton>
+        <ExternalLink href="https://paypal.me/20thcenturyflicks/12">
+          <StandardButton>{buttonOneText}</StandardButton>
+        </ExternalLink>
+        <Link href="/contact">
+          <StandardButton>{buttonTwoText}</StandardButton>
+        </Link>
       </PageContentHeader>
       <div className="flex flex-col gap-4 mt-4 md:mt-6 sm:flex-row sm:gap-6">
         <section className="p-4 md:p-6 border border-primary bg-black2 sm:w-6/12">

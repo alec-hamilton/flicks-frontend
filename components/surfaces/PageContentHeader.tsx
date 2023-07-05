@@ -28,7 +28,7 @@ const PageContentHeader = ({
         <Image
           src={imageSrc}
           alt={imageAlt}
-          className="border border-primary sm:w-4/12"
+          className="border border-primary sm:w-4/12 self-start"
         />
       </div>
     </header>
