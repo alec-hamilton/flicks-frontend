@@ -4,8 +4,9 @@ import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 import ExternalLink from "@/components/links/ExternalLink";
 import StandardButton from "@/components/buttons/StandardButton";
 import PageContentHeader from "@/components/surfaces/PageContentHeader";
-import NewToRent from "@/components/tables/NewToRent";
-import StaffFavorites from "@/components/sections/StaffFavorites";
+import NewToRent from "@/app/components/NewToRent";
+import StaffFavorites from "@/app/components/StaffFavorites";
+import OurCinemas from "@/app/components/OurCinemas";
 import { globalConstants } from "@/constants/globalConstants";
 
 const {
@@ -31,6 +32,7 @@ export default function Page() {
       </PageContentHeader>
       <NewToRent />
       <StaffFavorites />
+      <OurCinemas />
     </PageContentWrapper>
   );
 }
