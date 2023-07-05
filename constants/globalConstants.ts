@@ -1,4 +1,14 @@
 export const globalConstants = {
+  homePage: {
+    pageTitle: "Welcome to 20th Century Flicks",
+    headerText:
+      "We are the longest running video shop in this world. Serving Bristol and beyond with movies since 1982.",
+    ourCinemas: {
+      title: "Our cinemas",
+      sectionText:
+        "We have 2 small cinemas available for booking on a daily basis. The slots are for up to 2 hours and includes a movie of your choice.",
+    },
+  },
   rentByPost: {
     pageTitle: "Rent by post",
     headerText:
