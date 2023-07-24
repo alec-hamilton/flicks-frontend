@@ -1,7 +1,13 @@
 "use client";
 
 import algoliasearch from "algoliasearch/lite";
-import { InstantSearch, SearchBox, Hits } from "react-instantsearch-dom";
+import {
+  Configure,
+  InstantSearch,
+  SearchBox,
+  Hits,
+} from "react-instantsearch-hooks-web";
+import Hit from "./Hit";
 
 const searchClient = algoliasearch(
   "6B940ZV6CB",
@@ -11,8 +17,9 @@ const searchClient = algoliasearch(
 const Search = () => {
   return (
     <InstantSearch searchClient={searchClient} indexName="movies_100">
-      <SearchBox />
-      <Hits />
+      <Configure hitsPerPage={10} />
+      <SearchBox className="border border-violet-700" />
+      <Hits hitComponent={Hit} />
     </InstantSearch>
   );
 };
