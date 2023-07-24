@@ -60,9 +60,8 @@ export const globalConstants = {
     },
     sectionTwo: {
       title: "Opening times",
-      content: `Unfixed for the time being! Usually Dave is in 4ish til 7ish pm,
-            Monday to Thursday and PG is in Friday evenings and Saturday and
-            Sunday daytimes. Phone or email to check!`,
+      content:
+        "Unfixed for the time being! Someone will be in the shop everyday, usually between 4pm and 9pm. We suggest you phone or email to check before making the journey. Any movie requests made before 5pm will be in the dropbox to collect that evening and the dropbox is accessible 24/7.",
     },
     sectionThree: {
       title: "Accessibility",
@@ -77,6 +76,18 @@ export const globalConstants = {
           toilet. The shop can be very busy on Saturdays, the weekdays are much
           quieter.`,
     },
+  },
+  aboutUs: {
+    para1:
+      "In Bristol, amidst the labyrinthine streets halfway up the Christmas Steps, nestles a modest video shop, a haven for those seeking cinematic treasures of the 20th century and beyond. Wooden shelves lined with VHS tapes, laserdiscs and blu-rays, faded movie posters adorn the walls, beckoning the weary souls of film enthusiasts. The proprietor or a skilled and kindly clerk will greet you and help you find the stories you seek.",
+    para2:
+      "Within those hallowed aisles, memories flicker like celluloid frames. Film aficionados browse the racks, fingertips grazing titles that whisper promises of adventure, passion, and heartache. Each cassette and case holds a world waiting to unfold, their faded covers hinting at the magic within.",
+    para3:
+      "Hours slip away as customers meticulously choose their filmic companions, trading tales and recommendations with the staff in hushed tones, so as not to disturb the audience who maybe watching a movie in one of the tiny cinemas behind closed doors. Dust dances in the fading sunlight, casting an ethereal glow upon those who search for solace and inspiration.",
+    para4:
+      "In this humble video shop, the films of the last 100 or so years find sanctuary, their stories preserved and shared with reverence. And as the sun sets behind St Michaels Hill, Bristol's cinematic tapestry grows richer, one borrowed VHS tape at a time.",
+    para5:
+      "The longest running video shop in the world, the largest selection of films in the country, the teensiest cinemas. Established 1982, Flicks continues to serve the people of Bristol and beyond with the finest movies.",
   },
   cinemas: {
     pageTitle: "Our Cinemas",
