@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import ReactPortal from "./ReactPortal";
 import { BiX } from "react-icons/bi";
+import Search from "../search/Search";
 
 type SearchModalProps = {
   isOpen: boolean;
@@ -33,6 +34,7 @@ const SearchModal = ({ isOpen, handleClose }: SearchModalProps) => {
           </button>
           <div className="border border-primary p-4 mt-4 flex bg-black0">
             <h2>Search the collection</h2>
+            <Search />
           </div>
         </div>
       </div>
