@@ -67,6 +67,7 @@ const Footer = () => {
             href="https://twitter.com/20thCFlicks"
             target="_blank"
             rel="noreferrer"
+            aria-label="Link to twitter page"
           >
             <div className="border border-primary p-2 bg-black1 lg:hover:bg-primary/20">
               <FiTwitter size="1.5rem" />
@@ -76,6 +77,7 @@ const Footer = () => {
             href="https://www.instagram.com/20thcenturyflicks/"
             target="_blank"
             rel="noreferrer"
+            aria-label="Link to instagram page"
           >
             <div className="border border-primary p-2 bg-black1 lg:hover:bg-primary/20">
               <FiInstagram size="1.5rem" />
