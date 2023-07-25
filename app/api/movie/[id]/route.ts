@@ -6,7 +6,7 @@ export async function GET(request: Request) {
   const id = request.url.slice(request.url.lastIndexOf("/") + 1);
 
   const DATA_SOURCE_URL = `http://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`;
-  console.log(DATA_SOURCE_URL);
+
   const res = await fetch(DATA_SOURCE_URL);
 
   const movie = await res.json();
