@@ -8,6 +8,9 @@ import {
   Hits,
 } from "react-instantsearch-hooks-web";
 import Hit from "./Hit";
+import EmptyQueryBoundary from "./EmptyQueryBoundary";
+import NoResultsBoundary from "./NoResultsBoundary";
+import NoResults from "./NoResults";
 
 const searchClient = algoliasearch(
   "6B940ZV6CB",
@@ -17,7 +20,7 @@ const searchClient = algoliasearch(
 const Search = () => {
   return (
     <InstantSearch searchClient={searchClient} indexName="movies_100">
-      <Configure hitsPerPage={10} />
+      <Configure hitsPerPage={5} />
       <SearchBox
         classNames={{
           input:
@@ -26,8 +29,14 @@ const Search = () => {
           reset: "hidden",
           root: "pb-6",
         }}
+        autoFocus
+        placeholder="Search..."
       />
-      <Hits hitComponent={Hit} />
+      <EmptyQueryBoundary fallback={null}>
+        <NoResultsBoundary fallback={<NoResults />}>
+          <Hits hitComponent={Hit} />
+        </NoResultsBoundary>
+      </EmptyQueryBoundary>
     </InstantSearch>
   );
 };

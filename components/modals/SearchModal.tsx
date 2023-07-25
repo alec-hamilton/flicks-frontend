@@ -24,12 +24,12 @@ const SearchModal = ({ isOpen, handleClose }: SearchModalProps) => {
   return (
     <ReactPortal wrapperId="react-portal-modal">
       <div className="inset-0 fixed flex flex-col justify-center items-center bg-black0/90 z-50">
-        <div className="border border-primary p-6 max-w-3xl h-[75vh] w-11/12 flex flex-col bg-black0">
+        <div className="border border-primary p-6 sm:p-8 max-w-3xl h-[75vh] w-11/12 flex flex-col bg-black1">
           <div className="flex justify-between items-center mb-6">
             <h2>Search the catalogue</h2>
             <button
               type="button"
-              className="text-primary border border-primary bg-black0 place-self-end"
+              className="text-primary border border-primary bg-black1 lg:hover:bg-primary/20 place-self-end"
               onClick={handleClose}
             >
               <BiX size="2rem" />
