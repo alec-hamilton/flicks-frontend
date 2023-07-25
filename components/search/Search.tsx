@@ -18,7 +18,14 @@ const Search = () => {
   return (
     <InstantSearch searchClient={searchClient} indexName="movies_100">
       <Configure hitsPerPage={10} />
-      <SearchBox className="border border-violet-700" />
+      <SearchBox
+        classNames={{
+          input:
+            "w-full h-10 p-2 border border-body bg-black2 text-body focus-visible:shadow-none",
+          submit: "hidden",
+          reset: "hidden",
+        }}
+      />
       <Hits hitComponent={Hit} />
     </InstantSearch>
   );

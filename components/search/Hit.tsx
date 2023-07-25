@@ -5,7 +5,6 @@ type HitProps = {
 };
 
 const Hit = ({ hit }: HitProps) => {
-  console.log(hit.title);
   return (
     <div>
       <p className="text-body">{hit.title}</p>

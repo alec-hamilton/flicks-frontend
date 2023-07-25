@@ -22,10 +22,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="bg-black0">
-      <body>
-        <main
-          className={`${robotoMono.className} ${bladerunner.variable} text-primary min-h-screen flex flex-col`}
-        >
+      <body className={`${robotoMono.className} ${bladerunner.variable}`}>
+        <main className="text-primary min-h-screen flex flex-col">
           <Navbar />
           <div className="max-w-5xl mx-auto w-full">{children}</div>
           <Footer />
