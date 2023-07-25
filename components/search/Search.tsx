@@ -24,6 +24,7 @@ const Search = () => {
             "w-full h-10 p-2 border border-body bg-black2 text-body focus-visible:shadow-none",
           submit: "hidden",
           reset: "hidden",
+          root: "pb-6",
         }}
       />
       <Hits hitComponent={Hit} />
