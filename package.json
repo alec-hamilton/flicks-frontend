@@ -12,10 +12,12 @@
     "@types/node": "18.14.5",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "algoliasearch": "^4.19.1",
     "next": "^13.4.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.8.0"
+    "react-icons": "^4.8.0",
+    "react-instantsearch-hooks-web": "^6.47.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.55.0",
