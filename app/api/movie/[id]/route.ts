@@ -3,13 +3,12 @@ import { NextResponse } from "next/server";
 const API_KEY: string = process.env.OMDB_API_KEY as string;
 
 type RouteProps = {
-  request: Request;
   params: {
     id: string;
   };
 };
 
-export async function GET({ params: { id } }: RouteProps) {
+export async function GET(request: Request, { params: { id } }: RouteProps) {
   const DATA_SOURCE_URL = `http://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`;
 
   const res = await fetch(DATA_SOURCE_URL);
