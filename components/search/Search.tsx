@@ -20,7 +20,7 @@ const searchClient = algoliasearch(
 const Search = () => {
   return (
     <InstantSearch searchClient={searchClient} indexName="clz_movies">
-      <Configure hitsPerPage={10} />
+      <Configure hitsPerPage={8} />
       <SearchBox
         classNames={{
           input:
