@@ -15,8 +15,6 @@ export async function GET(request: Request, { params: { id } }: RouteProps) {
 
   const movie = await res.json();
 
-  console.log(movie);
-
   if (!movie.imdbID) return NextResponse.json({ message: "Movie not found" });
 
   return NextResponse.json(movie);
