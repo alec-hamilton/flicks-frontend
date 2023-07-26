@@ -10,7 +10,7 @@ type MoviePageProps = {
 
 const fetchMovie = async (id: string) => {
   const host = headers().get("host");
-  const protocol = process?.env.NODE_ENV === "development" ? "http" : "https";
+  const protocol = headers().get("x-forwarded-proto");
   const res = await fetch(`${protocol}://${host}/api/movie/${id}`);
   return res.json();
 };
