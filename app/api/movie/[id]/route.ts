@@ -14,6 +14,7 @@ export async function GET(request: Request, { params: { id } }: RouteProps) {
   const res = await fetch(DATA_SOURCE_URL);
 
   const movie = await res.json();
+  
   console.log(movie);
 
   if (!movie.imdbID) return NextResponse.json({ message: "Movie not found" });
