@@ -6,6 +6,9 @@ import { BiSearch } from "react-icons/bi";
 
 const NavSearchButton = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const handleClose = () => {
+    setIsOpen(false);
+  };
   return (
     <>
       <button
@@ -25,7 +28,7 @@ const NavSearchButton = () => {
           </span>
         </span>
       </button>
-      <SearchModal isOpen={isOpen} handleClose={() => setIsOpen(false)} />
+      <SearchModal isOpen={isOpen} handleClose={handleClose} />
     </>
   );
 };

@@ -1,23 +1,29 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter } from "next/navigation";
 import type { Hit as AlgoliaHit } from "instantsearch.js/es/types";
 
 type HitProps = {
-  hit: AlgoliaHit<{
-    title: string;
-    year: string;
-    imdbId: string;
-  }>;
+  hit: AlgoliaHit;
+  handleClose: () => void;
 };
 
-const Hit = ({ hit }: HitProps) => {
+const Hit = ({ hit, handleClose }: HitProps) => {
+  const router = useRouter();
+
+  const handleClick = (id: string) => {
+    handleClose();
+    router.push(`/movie/${id}`);
+  };
+
   return (
     <div className="flex justify-between pb-2">
-      <Link
-        href={`/movie/${hit.imdbId}`}
-        onClick={() => console.log("clicked")}
+      <button
+        className="text-body underline"
+        onClick={() => handleClick(hit.imdbId)}
       >
-        <p className="text-body">{hit.title}</p>
-      </Link>
+        {hit.title}
+      </button>
       <p className="text-body">{hit.year}</p>
     </div>
   );

@@ -35,7 +35,7 @@ const SearchModal = ({ isOpen, handleClose }: SearchModalProps) => {
               <BiX size="2rem" />
             </button>
           </div>
-          <Search />
+          <Search handleClose={handleClose} />
         </div>
       </div>
     </ReactPortal>
