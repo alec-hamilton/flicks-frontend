@@ -17,10 +17,14 @@ const searchClient = algoliasearch(
   "d5cfb49854f8f559bcd9eae76b6b44e1"
 );
 
-const Search = () => {
+type SearchProps = {
+  handleClose: () => void;
+};
+
+const Search = ({ handleClose }: SearchProps) => {
   return (
-    <InstantSearch searchClient={searchClient} indexName="movies_100">
-      <Configure hitsPerPage={5} />
+    <InstantSearch searchClient={searchClient} indexName="clz_movies">
+      <Configure hitsPerPage={8} />
       <SearchBox
         classNames={{
           input:
@@ -34,7 +38,11 @@ const Search = () => {
       />
       <EmptyQueryBoundary fallback={null}>
         <NoResultsBoundary fallback={<NoResults />}>
-          <Hits hitComponent={Hit} />
+          <Hits
+            hitComponent={({ hit }) => (
+              <Hit hit={hit} handleClose={handleClose} />
+            )}
+          />
         </NoResultsBoundary>
       </EmptyQueryBoundary>
     </InstantSearch>
