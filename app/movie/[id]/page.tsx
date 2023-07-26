@@ -10,7 +10,9 @@ type MoviePageProps = {
 
 const fetchMovie = async (id: string) => {
   const host = headers().get("host");
+  console.log("host: " + host);
   const protocol = headers().get("x-forwarded-proto");
+  console.log("protocol: " + protocol);
   const res = await fetch(`${protocol}://${host}/api/movie/${id}`);
   return res.json();
 };
