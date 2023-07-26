@@ -1,7 +1,7 @@
 import type { Hit as AlgoliaHit } from "instantsearch.js/es/types";
 
 type HitProps = {
-  hit: AlgoliaHit<{ title: string, year: string }>;
+  hit: AlgoliaHit<{ title: string; year: string }>;
 };
 
 const Hit = ({ hit }: HitProps) => {
