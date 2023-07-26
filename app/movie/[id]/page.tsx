@@ -14,6 +14,7 @@ const fetchMovie = async (id: string) => {
   const protocol = headers().get("x-forwarded-proto");
   console.log("protocol: " + protocol);
   const res = await fetch(`${protocol}://${host}/api/movie/${id}`);
+  console.log(res.json());
   return res.json();
 };
 
