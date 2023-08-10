@@ -44,8 +44,8 @@ export const layoutConstants = {
       },
       {
         name: "what3words",
-        title: "mops.window.modern",
-        url: "https://w3w.co/mops.window.modern",
+        title: "risk.actors.first",
+        url: "https://w3w.co/risk.actors.first",
       },
     ],
   },
