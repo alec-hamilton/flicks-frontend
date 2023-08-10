@@ -1,9 +1,19 @@
 import React from "react";
+import { Metadata } from "next";
 import HorizontalDivider from "@/components/dividers/HorizontalDivider";
 import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 import { layoutConstants } from "@/components/pageLayout/Navbar/layoutConstants";
+import { globalConstants } from "@/constants/globalConstants";
 
 const { contactLinks } = layoutConstants;
+const {
+  contactUs: { metaTitle, metaDescription },
+} = globalConstants;
+
+export const metadata: Metadata = {
+  title: metaTitle,
+  description: metaDescription,
+};
 
 const Contact = () => {
   return (

@@ -1,13 +1,16 @@
+import { Metadata } from "next";
 import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 import PageContentHeader from "@/components/surfaces/PageContentHeader";
 import shopFront from "@/assets/images/bladerunner-style-movie-store.png";
 import StandardButton from "@/components/buttons/StandardButton";
-import { globalConstants } from "@/constants/globalConstants";
 import Link from "next/link";
 import ExternalLink from "@/components/links/ExternalLink";
+import { globalConstants } from "@/constants/globalConstants";
 
 const {
   rentByPost: {
+    metaTitle,
+    metaDescription,
     pageTitle,
     headerText,
     buttonOneText,
@@ -16,6 +19,11 @@ const {
     sectionTwo,
   },
 } = globalConstants;
+
+export const metadata: Metadata = {
+  title: metaTitle,
+  description: metaDescription,
+};
 
 const RentByPost = () => {
   return (

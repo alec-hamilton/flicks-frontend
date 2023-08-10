@@ -10,11 +10,12 @@ import OurCinemas from "@/app/components/OurCinemas";
 import { globalConstants } from "@/constants/globalConstants";
 
 const {
-  homePage: { pageTitle, headerText },
+  homePage: { metaTitle, metaDescription, pageTitle, headerText },
 } = globalConstants;
 
 export const metadata: Metadata = {
-  title: "My Page Title",
+  title: metaTitle,
+  description: metaDescription,
 };
 
 export default function Page() {

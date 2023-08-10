@@ -1,5 +1,8 @@
 export const globalConstants = {
   homePage: {
+    metaTitle: "20th Century Flicks - Tiny Cinemas & Movie Rentals",
+    metaDescription:
+      "Book our tiny cinemas and explore movie rentals at 20th Century Flicks, the world's longest running movie store. Serving Bristol since 1982.",
     pageTitle: "Welcome to 20th Century Flicks",
     headerText:
       "We are the longest running video shop in this world. Serving Bristol and beyond with movies since 1982.",
@@ -10,6 +13,9 @@ export const globalConstants = {
     },
   },
   rentByPost: {
+    metaTitle: "20th Century Flicks - Tiny Cinemas & Movie Rentals",
+    metaDescription:
+      "Book our tiny cinemas and explore movie rentals at 20th Century Flicks, the world's longest running movie store. Serving Bristol since 1982.",
     pageTitle: "Rent by post",
     headerText:
       "Can’t get your movies in person? No problem. We can post them out to you!",
@@ -27,6 +33,9 @@ export const globalConstants = {
     },
   },
   rentLocally: {
+    metaTitle: "20th Century Flicks - Tiny Cinemas & Movie Rentals",
+    metaDescription:
+      "Book our tiny cinemas and explore movie rentals at 20th Century Flicks, the world's longest running movie store. Serving Bristol since 1982.",
     pageTitle: "Rent locally",
     headerText:
       "Come in and browse! The shop is usually staffed from 4pm til 9pm, but do phone or email to check before coming in case we’re not around.",
@@ -44,6 +53,9 @@ export const globalConstants = {
     },
   },
   theShop: {
+    metaTitle: "20th Century Flicks - Tiny Cinemas & Movie Rentals",
+    metaDescription:
+      "Book our tiny cinemas and explore movie rentals at 20th Century Flicks, the world's longest running movie store. Serving Bristol since 1982.",
     pageTitle: "The Shop",
     headerText:
       "The shop is on Christmas Steps, a historic, cobbled pedestrian street in the centre of Bristol. If you'd like to see what it looks like inside, take a virtual tour by clicking the link below.",
@@ -78,6 +90,9 @@ export const globalConstants = {
     },
   },
   aboutUs: {
+    metaTitle: "20th Century Flicks - Tiny Cinemas & Movie Rentals",
+    metaDescription:
+      "Book our tiny cinemas and explore movie rentals at 20th Century Flicks, the world's longest running movie store. Serving Bristol since 1982.",
     para1:
       "In Bristol, amidst the labyrinthine streets halfway up the Christmas Steps, nestles a modest video shop, a haven for those seeking cinematic treasures of the 20th century and beyond. Wooden shelves lined with VHS tapes, laserdiscs and blu-rays, faded movie posters adorn the walls, beckoning the weary souls of film enthusiasts. The proprietor or a skilled and kindly clerk will greet you and help you find the stories you seek.",
     para2:
@@ -89,7 +104,14 @@ export const globalConstants = {
     para5:
       "The longest running video shop in the world, the largest selection of films in the country, the teensiest cinemas. Established 1982, Flicks continues to serve the people of Bristol and beyond with the finest movies.",
   },
+  contactUs: {
+    metaTitle: "",
+    metaDescription: "",
+  },
   cinemas: {
+    metaTitle: "20th Century Flicks - Tiny Cinemas & Movie Rentals",
+    metaDescription:
+      "Book our tiny cinemas and explore movie rentals at 20th Century Flicks, the world's longest running movie store. Serving Bristol since 1982.",
     pageTitle: "Our Cinemas",
     headerText:
       "What started on beanbags in Clifton has evolved into Bristol’s finest (and tiniest) cinemas! The slots are for up to 2 hours and includes a movie of your choice (we screen from blu-ray whenever possible). It’s BYO food & drinks friendly, except popcorn, which we sell ourselves. Be seeing you!",

@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import StandardButton from "@/components/buttons/StandardButton";
 import ExternalLink from "@/components/links/ExternalLink";
@@ -10,6 +11,8 @@ import { globalConstants } from "@/constants/globalConstants";
 
 const {
   cinemas: {
+    metaTitle,
+    metaDescription,
     pageTitle,
     headerText,
     buttonOneText,
@@ -18,6 +21,11 @@ const {
     sectionTwo,
   },
 } = globalConstants;
+
+export const metadata: Metadata = {
+  title: metaTitle,
+  description: metaDescription,
+};
 
 const Cinemas = () => {
   return (

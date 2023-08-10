@@ -1,13 +1,16 @@
+import { Metadata } from "next";
 import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 import PageContentHeader from "@/components/surfaces/PageContentHeader";
 import shopFront from "@/assets/images/bladerunner-style-movie-store.png";
-import { globalConstants } from "@/constants/globalConstants";
 import Link from "next/link";
 import StandardButton from "@/components/buttons/StandardButton";
 import ExternalLink from "@/components/links/ExternalLink";
+import { globalConstants } from "@/constants/globalConstants";
 
 const {
   theShop: {
+    metaTitle,
+    metaDescription,
     pageTitle,
     headerText,
     buttonOneText,
@@ -17,6 +20,11 @@ const {
     sectionThree,
   },
 } = globalConstants;
+
+export const metadata: Metadata = {
+  title: metaTitle,
+  description: metaDescription,
+};
 
 const TheShop = () => {
   return (
