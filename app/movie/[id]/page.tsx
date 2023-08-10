@@ -1,6 +1,6 @@
-import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 import { headers } from "next/headers";
 import Image from "next/image";
+import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 
 type MoviePageProps = {
   params: {
@@ -15,6 +15,15 @@ const fetchMovie = async (id: string) => {
   return res.json();
 };
 
+export const generateMetadata = async ({ params }: MoviePageProps) => {
+  const movieData = await fetchMovie(params.id);
+
+  return {
+    title: `${movieData.Title} - 20th Century Flicks`,
+    description: `Rent ${movieData.Title} from 20th Century Flicks, the longest running movie store in the world. Rent locally or by post.`,
+  };
+};
+
 const MoviePage = async ({ params: { id } }: MoviePageProps) => {
   const movieData = await fetchMovie(id);
 
@@ -27,6 +36,7 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
             width="430"
             height="290"
             alt={`movie poster for ${movieData.Title}`}
+            priority
           />
           <div className="flex flex-col gap-y-4 p-4 xs:max-md:border-l md:border-t border-primary">
             <div className="flex justify-between gap-x-2">
