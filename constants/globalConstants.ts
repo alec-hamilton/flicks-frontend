@@ -13,9 +13,9 @@ export const globalConstants = {
     },
   },
   rentByPost: {
-    metaTitle: "20th Century Flicks - Tiny Cinemas & Movie Rentals",
+    metaTitle: "Movie Rentals by Post - 20th Century Flicks",
     metaDescription:
-      "Book our tiny cinemas and explore movie rentals at 20th Century Flicks, the world's longest running movie store. Serving Bristol since 1982.",
+      "Rent movies by post from 20th Century Flicks. Enjoy our extensive collection delivered to your doorstep. Choose, watch, and return at your convenience.",
     pageTitle: "Rent by post",
     headerText:
       "Can’t get your movies in person? No problem. We can post them out to you!",
@@ -33,9 +33,9 @@ export const globalConstants = {
     },
   },
   rentLocally: {
-    metaTitle: "20th Century Flicks - Tiny Cinemas & Movie Rentals",
+    metaTitle: "Movie Rentals in Bristol at 20th Century Flicks",
     metaDescription:
-      "Book our tiny cinemas and explore movie rentals at 20th Century Flicks, the world's longest running movie store. Serving Bristol since 1982.",
+      "Rent the latest movies locally in Bristol from 20th Century Flicks. Convenient, diverse selection, and personalised recommendations. Experience the joy of movie nights.",
     pageTitle: "Rent locally",
     headerText:
       "Come in and browse! The shop is usually staffed from 4pm til 9pm, but do phone or email to check before coming in case we’re not around.",
@@ -53,9 +53,9 @@ export const globalConstants = {
     },
   },
   theShop: {
-    metaTitle: "20th Century Flicks - Tiny Cinemas & Movie Rentals",
+    metaTitle: "Visit Our Movie Store - 20th Century Flicks in Bristol",
     metaDescription:
-      "Book our tiny cinemas and explore movie rentals at 20th Century Flicks, the world's longest running movie store. Serving Bristol since 1982.",
+      "Experience movie magic at 20th Century Flicks' iconic shop on the Christmas Steps in Bristol. Browse our unique collection and take a virtual tour inside.",
     pageTitle: "The Shop",
     headerText:
       "The shop is on Christmas Steps, a historic, cobbled pedestrian street in the centre of Bristol. If you'd like to see what it looks like inside, take a virtual tour by clicking the link below.",
@@ -90,9 +90,9 @@ export const globalConstants = {
     },
   },
   aboutUs: {
-    metaTitle: "20th Century Flicks - Tiny Cinemas & Movie Rentals",
+    metaTitle: "Discover 20th Century Flicks - Bristol's Movie Haven",
     metaDescription:
-      "Book our tiny cinemas and explore movie rentals at 20th Century Flicks, the world's longest running movie store. Serving Bristol since 1982.",
+      "Learn about our rich history since 1982. Discover our passion for movies, our unique shop, and our commitment to serving Bristol. Join the 20th Century Flicks community.",
     para1:
       "In Bristol, amidst the labyrinthine streets halfway up the Christmas Steps, nestles a modest video shop, a haven for those seeking cinematic treasures of the 20th century and beyond. Wooden shelves lined with VHS tapes, laserdiscs and blu-rays, faded movie posters adorn the walls, beckoning the weary souls of film enthusiasts. The proprietor or a skilled and kindly clerk will greet you and help you find the stories you seek.",
     para2:
@@ -105,13 +105,14 @@ export const globalConstants = {
       "The longest running video shop in the world, the largest selection of films in the country, the teensiest cinemas. Established 1982, Flicks continues to serve the people of Bristol and beyond with the finest movies.",
   },
   contactUs: {
-    metaTitle: "",
-    metaDescription: "",
+    metaTitle: "Contact 20th Century Flicks",
+    metaDescription:
+      "Contact 20th Century Flicks for any inquiries, bookings, or assistance. Reach out to us via phone, email, or visit our shop. We're happy to hear from you!",
   },
   cinemas: {
-    metaTitle: "20th Century Flicks - Tiny Cinemas & Movie Rentals",
+    metaTitle: "Cinemas at 20th Century Flicks - Book Your Film Experience",
     metaDescription:
-      "Book our tiny cinemas and explore movie rentals at 20th Century Flicks, the world's longest running movie store. Serving Bristol since 1982.",
+      "Immerse yourself in our intimate cinemas. Enjoy the magic of the big screen at 20th Century Flicks. Reserve your cinema spot now.",
     pageTitle: "Our Cinemas",
     headerText:
       "What started on beanbags in Clifton has evolved into Bristol’s finest (and tiniest) cinemas! The slots are for up to 2 hours and includes a movie of your choice (we screen from blu-ray whenever possible). It’s BYO food & drinks friendly, except popcorn, which we sell ourselves. Be seeing you!",
@@ -130,50 +131,55 @@ export const globalConstants = {
       button: "Book the videodrome",
     },
   },
-  faqs: [
-    {
-      question: "Are you a Video Shop?",
-      answer:
-        "Yes, we have over 20,000 movies available to hire, like a library. We also have two screening rooms which you can watch movies in. It’s free to become a member, just pop into the shop. New movies cost £4 for 3 nights rental. All others are available to rent for £3 for 7 nights. We can leave films for you to collect 24/7 from our dropbox the same day if you let us know what you'd like before 5pm.",
-    },
-    {
-      question: "How much are your cinemas?",
-      answer:
-        "The Videodrome (1pm and 7pm daily) seats 10 and costs £100, though up to 8 extra people are allowed at £10 per person payable on arrival. The Kino (4pm) seats 8 and costs £80. The Kino is available for couples (up to 3) at 7pm for £50.",
-    },
-    {
-      question: "What is the capacity for each screening room?",
-      answer:
-        "The Kino has a total capacity of 8 people and The Videodrome has a total capacity of 18 people. This does include any adults accompanying under 18s groups. We require a minimum of 1 adult per 8 children.",
-    },
-    {
-      question: "Do you do kids parties?",
-      answer:
-        "Our screening rooms can be hired for under 18s, but please see our Guidelines below. They must be accompanied by at least one responsible adult. Normal age restrictions for movies apply. We encourage the use of the Videodrome. It has enough space for buggies, party bags and gifts. Unfortunately, we do not allow candles, confetti or party poppers in the shop. Please see our guidelines at the bottom of the page.",
-    },
-    {
-      question: "Can we bring food and drink?",
-      answer:
-        "We sell popcorn, crisps, chocolate, fizzy drinks, tea and coffee. You are welcome to bring in other refreshments.",
-    },
-    {
-      question: "What’s the Cancellation Policy?",
-      answer:
-        "We can reschedule your screening free of charge for up to 1 year from time of booking, so long as we receive a minimum of 48 hours notice. If you wish to cancel later than 48 hours before your scheduled booking we keep 50% of the fee paid. The remaining 50% can be put towards future bookings. A no-show will result in the full loss of your booking fee. All cancellations and re-bookings must be processed in person or by phone.",
-    },
-    {
-      question: "Do you do a newsletter?",
-      answer: "We're working on it!",
-    },
-    {
-      question: "Do you offer a postal service?",
-      answer:
-        "Yes, it costs £12 for 3 movies. You can set it up by visiting the shop, over the phone or from the website.",
-    },
-    {
-      question: "Do you buy and sell VHS?",
-      answer:
-        "No, but we do have 3000 VHS. They are available to hire at the same rates as the DVDs and Blurays.",
-    },
-  ],
+  faqs: {
+    metaTitle: "Answers to Your Questions - 20th Century Flicks FAQs",
+    metaDescription:
+      "Find answers to common questions about 20th Century Flicks, our services, movie rentals, and more. Get the information you need for a seamless movie experience.",
+    faqs: [
+      {
+        question: "Are you a Video Shop?",
+        answer:
+          "Yes, we have over 20,000 movies available to hire, like a library. We also have two screening rooms which you can watch movies in. It’s free to become a member, just pop into the shop. New movies cost £4 for 3 nights rental. All others are available to rent for £3 for 7 nights. We can leave films for you to collect 24/7 from our dropbox the same day if you let us know what you'd like before 5pm.",
+      },
+      {
+        question: "How much are your cinemas?",
+        answer:
+          "The Videodrome (1pm and 7pm daily) seats 10 and costs £100, though up to 8 extra people are allowed at £10 per person payable on arrival. The Kino (4pm) seats 8 and costs £80. The Kino is available for couples (up to 3) at 7pm for £50.",
+      },
+      {
+        question: "What is the capacity for each screening room?",
+        answer:
+          "The Kino has a total capacity of 8 people and The Videodrome has a total capacity of 18 people. This does include any adults accompanying under 18s groups. We require a minimum of 1 adult per 8 children.",
+      },
+      {
+        question: "Do you do kids parties?",
+        answer:
+          "Our screening rooms can be hired for under 18s, but please see our Guidelines below. They must be accompanied by at least one responsible adult. Normal age restrictions for movies apply. We encourage the use of the Videodrome. It has enough space for buggies, party bags and gifts. Unfortunately, we do not allow candles, confetti or party poppers in the shop. Please see our guidelines at the bottom of the page.",
+      },
+      {
+        question: "Can we bring food and drink?",
+        answer:
+          "We sell popcorn, crisps, chocolate, fizzy drinks, tea and coffee. You are welcome to bring in other refreshments.",
+      },
+      {
+        question: "What’s the Cancellation Policy?",
+        answer:
+          "We can reschedule your screening free of charge for up to 1 year from time of booking, so long as we receive a minimum of 48 hours notice. If you wish to cancel later than 48 hours before your scheduled booking we keep 50% of the fee paid. The remaining 50% can be put towards future bookings. A no-show will result in the full loss of your booking fee. All cancellations and re-bookings must be processed in person or by phone.",
+      },
+      {
+        question: "Do you do a newsletter?",
+        answer: "We're working on it!",
+      },
+      {
+        question: "Do you offer a postal service?",
+        answer:
+          "Yes, it costs £12 for 3 movies. You can set it up by visiting the shop, over the phone or from the website.",
+      },
+      {
+        question: "Do you buy and sell VHS?",
+        answer:
+          "No, but we do have 3000 VHS. They are available to hire at the same rates as the DVDs and Blurays.",
+      },
+    ],
+  },
 };
