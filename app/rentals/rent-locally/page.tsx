@@ -1,10 +1,11 @@
 import { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
 import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 import PageContentHeader from "@/components/surfaces/PageContentHeader";
 import shopFront from "@/assets/images/bladerunner-style-movie-store.png";
 import StandardButton from "@/components/buttons/StandardButton";
 import ExternalLink from "@/components/links/ExternalLink";
-import Link from "next/link";
 import { globalConstants } from "@/constants/globalConstants";
 
 const {
@@ -26,14 +27,18 @@ export const metadata: Metadata = {
 };
 
 const RentLocally = () => {
+  const image = (
+    <Image
+      src={shopFront}
+      alt="Movie rental store shop front in the style of bladerunner"
+      className="border border-primary sm:w-4/12 self-start"
+      priority
+    />
+  );
+
   return (
     <PageContentWrapper>
-      <PageContentHeader
-        title={pageTitle}
-        text={headerText}
-        imageSrc={shopFront}
-        imageAlt="Movie rental store shop front in the style of bladerunner"
-      >
+      <PageContentHeader title={pageTitle} text={headerText} image={image}>
         <ExternalLink href="https://paypal.me/20thcenturyflicks">
           <StandardButton>{buttonOneText}</StandardButton>
         </ExternalLink>

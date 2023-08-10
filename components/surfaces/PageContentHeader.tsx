@@ -1,18 +1,14 @@
-import Image, { StaticImageData } from "next/image";
-
 type PageContentHeaderProps = {
   title: string;
   text: string;
-  imageSrc: StaticImageData;
-  imageAlt: string;
+  image: React.ReactNode;
   children: React.ReactNode;
 };
 
 const PageContentHeader = ({
   title,
   text,
-  imageSrc,
-  imageAlt,
+  image,
   children,
 }: PageContentHeaderProps) => {
   return (
@@ -25,11 +21,7 @@ const PageContentHeader = ({
             {children}
           </div>
         </div>
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          className="border border-primary sm:w-4/12 self-start"
-        />
+        {image}
       </div>
     </header>
   );
