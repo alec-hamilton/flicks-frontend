@@ -1,13 +1,17 @@
+import { Metadata } from "next";
+import Image from "next/image";
 import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 import PageContentHeader from "@/components/surfaces/PageContentHeader";
 import shopFront from "@/assets/images/bladerunner-style-movie-store.png";
-import { globalConstants } from "@/constants/globalConstants";
 import Link from "next/link";
 import StandardButton from "@/components/buttons/StandardButton";
 import ExternalLink from "@/components/links/ExternalLink";
+import { globalConstants } from "@/constants/globalConstants";
 
 const {
   theShop: {
+    metaTitle,
+    metaDescription,
     pageTitle,
     headerText,
     buttonOneText,
@@ -18,15 +22,24 @@ const {
   },
 } = globalConstants;
 
+export const metadata: Metadata = {
+  title: metaTitle,
+  description: metaDescription,
+};
+
 const TheShop = () => {
+  const image = (
+    <Image
+      src={shopFront}
+      alt="Movie rental store shop front in the style of bladerunner"
+      className="border border-primary sm:w-4/12 self-start"
+      priority
+    />
+  );
+
   return (
     <PageContentWrapper>
-      <PageContentHeader
-        title={pageTitle}
-        text={headerText}
-        imageSrc={shopFront}
-        imageAlt="Movie rental store shop front in the style of bladerunner"
-      >
+      <PageContentHeader title={pageTitle} text={headerText} image={image}>
         <Link href="/browse">
           <StandardButton>{buttonOneText}</StandardButton>
         </Link>

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import betty from "@/assets/images/betty-blue.jpg";
 import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 import ExternalLink from "@/components/links/ExternalLink";
@@ -10,22 +11,27 @@ import OurCinemas from "@/app/components/OurCinemas";
 import { globalConstants } from "@/constants/globalConstants";
 
 const {
-  homePage: { pageTitle, headerText },
+  homePage: { metaTitle, metaDescription, pageTitle, headerText },
 } = globalConstants;
 
 export const metadata: Metadata = {
-  title: "My Page Title",
+  title: metaTitle,
+  description: metaDescription,
 };
 
 export default function Page() {
+  const image = (
+    <Image
+      src={betty}
+      alt="Movie poster image of betty from betty blue"
+      className="border border-primary sm:w-4/12 self-start"
+      priority
+    />
+  );
+
   return (
     <PageContentWrapper>
-      <PageContentHeader
-        title={pageTitle}
-        text={headerText}
-        imageSrc={betty}
-        imageAlt="Movie poster image of betty from betty blue"
-      >
+      <PageContentHeader title={pageTitle} text={headerText} image={image}>
         <ExternalLink href="https://cal.smoothbook.co/20thcflicks">
           <StandardButton>Book a cinema</StandardButton>
         </ExternalLink>

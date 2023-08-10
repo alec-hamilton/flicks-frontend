@@ -15,6 +15,7 @@ const NavSearchButton = () => {
         onClick={() => setIsOpen(true)}
         type="button"
         className="border border-primary lg:border-fuchsia-400 lg:hover:bg-fuchsia-400/20 px-4 bg-black1 w-[42px] xs:w-[62px] lg:w-auto"
+        aria-label="Search"
       >
         <span className="flex gap-4 items-center justify-center">
           <span>

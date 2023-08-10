@@ -1,7 +1,13 @@
+import { Metadata } from "next";
 import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 import { globalConstants } from "@/constants/globalConstants";
 
 const { aboutUs } = globalConstants;
+
+export const metadata: Metadata = {
+  title: aboutUs.metaTitle,
+  description: aboutUs.metaDescription,
+};
 
 const AboutUs = () => {
   return (

@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import StandardButton from "@/components/buttons/StandardButton";
 import ExternalLink from "@/components/links/ExternalLink";
@@ -10,6 +11,8 @@ import { globalConstants } from "@/constants/globalConstants";
 
 const {
   cinemas: {
+    metaTitle,
+    metaDescription,
     pageTitle,
     headerText,
     buttonOneText,
@@ -19,15 +22,24 @@ const {
   },
 } = globalConstants;
 
+export const metadata: Metadata = {
+  title: metaTitle,
+  description: metaDescription,
+};
+
 const Cinemas = () => {
+  const image = (
+    <Image
+      src={shopFront}
+      alt="Movie rental store shop front in the style of bladerunner"
+      className="border border-primary sm:w-4/12 self-start"
+      priority
+    />
+  );
+
   return (
     <PageContentWrapper>
-      <PageContentHeader
-        title={pageTitle}
-        text={headerText}
-        imageSrc={shopFront}
-        imageAlt="Movie rental store shop front in the style of bladerunner"
-      >
+      <PageContentHeader title={pageTitle} text={headerText} image={image}>
         <ExternalLink href="https://cal.smoothbook.co/20thcflicks">
           <StandardButton>{buttonOneText}</StandardButton>
         </ExternalLink>
