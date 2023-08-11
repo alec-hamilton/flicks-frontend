@@ -1,5 +1,5 @@
-const Browse = () => {
-  return <p>Browse</p>;
-};
+// const Browse = () => {
+//   return <p>Browse</p>;
+// };
 
-export default Browse;
+// export default Browse;

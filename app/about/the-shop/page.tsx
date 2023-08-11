@@ -40,9 +40,9 @@ const TheShop = () => {
   return (
     <PageContentWrapper>
       <PageContentHeader title={pageTitle} text={headerText} image={image}>
-        <Link href="/browse">
+        {/* <Link href="/browse">
           <StandardButton>{buttonOneText}</StandardButton>
-        </Link>
+        </Link> */}
         <ExternalLink href="https://appvrstudio.com/viewer/20thcenturyflicks">
           <StandardButton>{buttonTwoText}</StandardButton>
         </ExternalLink>
