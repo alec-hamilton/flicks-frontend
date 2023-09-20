@@ -18,7 +18,9 @@ const StaffFavorites = () => {
         </div>
         <div className="flex flex-col gap-2 sm:gap-4">
           <Link href="/movie/tt0083658">
-            <h3 className="underline">Blade runner</h3>
+            <h3 className="underline lg:hover:text-fuchsia-400">
+              Blade runner
+            </h3>
           </Link>
           <p>
             A blade runner must pursue and terminate four replicants who stole a
