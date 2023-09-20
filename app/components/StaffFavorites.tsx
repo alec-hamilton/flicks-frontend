@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const StaffFavorites = () => {
   return (
@@ -6,15 +7,19 @@ const StaffFavorites = () => {
       <h2 className="pb-4 md:pb-6">Staff favorites</h2>
       <div className="flex flex-col gap-4 sm:gap-6 sm:flex-row">
         <div className="relative w-full min-w-[15rem] aspect-[100/149] self-start">
-          <Image
-            src="https://m.media-amazon.com/images/M/MV5BNzQzMzJhZTEtOWM4NS00MTdhLTg0YjgtMjM4MDRkZjUwZDBlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
-            alt="blade runner movie poster"
-            fill
-            className="border border-primary"
-          />
+          <Link href="/movie/tt0083658">
+            <Image
+              src="https://m.media-amazon.com/images/M/MV5BNzQzMzJhZTEtOWM4NS00MTdhLTg0YjgtMjM4MDRkZjUwZDBlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
+              alt="blade runner movie poster"
+              fill
+              className="border border-primary"
+            />
+          </Link>
         </div>
         <div className="flex flex-col gap-2 sm:gap-4">
-          <h3>Blade runner</h3>
+          <Link href="/movie/tt0083658">
+            <h3 className="underline">Blade runner</h3>
+          </Link>
           <p>
             A blade runner must pursue and terminate four replicants who stole a
             ship in space and have returned to Earth to find their creator. A
