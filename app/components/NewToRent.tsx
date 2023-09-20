@@ -44,7 +44,10 @@ const NewToRent = () => {
             return (
               <tr key={id} className="border-b border-primary">
                 <td className="p-2 border-r border-primary">
-                  <Link href={`/movie/${id}`} className="underline">
+                  <Link
+                    href={`/movie/${id}`}
+                    className="underline lg:hover:text-fuchsia-400"
+                  >
                     {title}
                   </Link>
                 </td>
