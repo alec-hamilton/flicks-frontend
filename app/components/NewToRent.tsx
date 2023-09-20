@@ -1,3 +1,33 @@
+import Link from "next/link";
+
+const newMovies = [
+  {
+    id: "tt14208870",
+    title: "The Fabelmans",
+    year: "2022",
+  },
+  {
+    id: "tt10293406",
+    title: "The Power of the Dog",
+    year: "2021",
+  },
+  {
+    id: "tt14444726",
+    title: "Tár",
+    year: "2022",
+  },
+  {
+    id: "tt7405458",
+    title: "A Man Called Otto",
+    year: "2022",
+  },
+  {
+    id: "tt10640346",
+    title: "Babylon",
+    year: "2022",
+  },
+];
+
 const NewToRent = () => {
   return (
     <section className="p-4 md:p-6 my-4 md:my-6 border border-primary bg-black2">
@@ -10,24 +40,18 @@ const NewToRent = () => {
           </tr>
         </thead>
         <tbody>
-          <tr className="border-b border-primary">
-            <td className="p-2 border-r border-primary">
-              Indiana Jones and the Kingdom of the mega crystal
-            </td>
-            <td className="p-2 text-center">1984</td>
-          </tr>
-          <tr className="border-b border-primary">
-            <td className="p-2 border-r border-primary">
-              Indiana Jones and the Kingdom of the mega crystal
-            </td>
-            <td className="p-2 text-center">1984</td>
-          </tr>
-          <tr className="border-b border-primary">
-            <td className="p-2 border-r border-primary">
-              Indiana Jones and the Kingdom of the mega crystal
-            </td>
-            <td className="p-2 text-center">1984</td>
-          </tr>
+          {newMovies.map(({ id, title, year }) => {
+            return (
+              <tr key={id} className="border-b border-primary">
+                <td className="p-2 border-r border-primary">
+                  <Link href={`/movie/${id}`} className="underline">
+                    {title}
+                  </Link>
+                </td>
+                <td className="p-2 text-center">{year}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </section>
