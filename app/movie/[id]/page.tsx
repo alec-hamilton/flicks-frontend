@@ -39,8 +39,8 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
         <div className="flex flex-col xs:grid xs:grid-cols-2 md:flex-col md:flex md:col-span-2 border border-primary">
           <Image
             src={movieData.Poster}
-            width="430"
-            height="290"
+            width="290"
+            height="430"
             alt={`movie poster for ${movieData.Title}`}
             priority
           />
