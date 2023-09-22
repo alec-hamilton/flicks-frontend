@@ -1,6 +1,6 @@
 import Link from "next/link";
 import NavDropDown from "./components/NavDropdown";
-import NavSearchButton from "./components/NavSearchButton";
+import NavSearchButton from "./components/NavSearchButton/NavSearchButton";
 import { layoutConstants } from "./layoutConstants";
 
 const { regularLinks } = layoutConstants;

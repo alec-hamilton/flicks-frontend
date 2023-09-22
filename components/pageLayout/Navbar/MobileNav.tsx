@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { BiMenu, BiX } from "react-icons/bi";
-import NavSearchButton from "./components/NavSearchButton";
+import NavSearchButton from "./components/NavSearchButton/NavSearchButton";
 import MobileMenu from "./MobileMenu";
 
 const MobileNav = () => {
