@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description: metaDescription,
 };
 
-export default function Page() {
+export default function Home() {
   const image = (
     <Image
       src={betty}
