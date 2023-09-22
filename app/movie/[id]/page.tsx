@@ -1,4 +1,3 @@
-import { headers } from "next/headers";
 import Image from "next/image";
 import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 
@@ -8,10 +7,17 @@ type MoviePageProps = {
   };
 };
 
+const API_KEY: string = process.env.OMDB_API_KEY as string;
+
 const fetchMovie = async (id: string) => {
-  const host = headers().get("host");
-  const protocol = headers().get("x-forwarded-proto");
-  const res = await fetch(`${protocol}://${host}/api/movie/${id}`);
+  const DATA_SOURCE_URL = `http://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`;
+
+  const res = await fetch(DATA_SOURCE_URL);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch movie data");
+  }
+
   return res.json();
 };
 
