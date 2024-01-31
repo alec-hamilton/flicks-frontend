@@ -7,16 +7,29 @@ type MoviePageProps = {
   };
 };
 
-const API_KEY: string = process.env.OMDB_API_KEY as string;
+const OMDB_API_KEY: string = process.env.OMDB_API_KEY as string;
+const FLICKS_API_KEY: string = process.env.FLICKS_API_KEY as string;
 
 const fetchMovie = async (id: string) => {
-  const DATA_SOURCE_URL = `http://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`;
+  const DATA_SOURCE_URL = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${id}`;
 
   const res = await fetch(DATA_SOURCE_URL);
 
   if (!res.ok) {
+    console.log(res)
     throw new Error("Failed to fetch movie data");
   }
+
+  return res.json();
+};
+
+const fetchGenres = async () => {
+  const res = await fetch("https://api.20thcenturyflicks.co.uk/api/genres", {
+    headers: {
+      "Content-Type": "application/json",
+      "Flicks-API-Key": FLICKS_API_KEY,
+    },
+  });
 
   return res.json();
 };
@@ -32,9 +45,14 @@ export const generateMetadata = async ({ params }: MoviePageProps) => {
 
 const MoviePage = async ({ params: { id } }: MoviePageProps) => {
   const movieData = await fetchMovie(id);
+  const ree = await fetchGenres();
+  console.log(ree);
 
   return (
     <PageContentWrapper>
+      <div>{ree.map((genre) => {
+        return <div>{genre.description}</div>
+      })}</div>
       <div className="flex flex-col-reverse md:grid md:grid-cols-6 gap-x-8">
         <div className="flex flex-col xs:grid xs:grid-cols-2 md:flex-col md:flex md:col-span-2 border border-primary">
           <Image
