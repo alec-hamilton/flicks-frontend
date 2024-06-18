@@ -1,6 +1,6 @@
 export const layoutConstants = {
   regularLinks: [
-    // { title: "Browse", url: "/browse" },
+    { title: "Browse", url: "/browse" },
     { title: "Cinemas", url: "/cinemas" },
     { title: "Contact", url: "/contact" },
   ],
@@ -22,7 +22,7 @@ export const layoutConstants = {
   usefulLinks: {
     groupName: "Useful links",
     links: [
-      // { title: "Browse", url: "/browse" },
+      { title: "Browse", url: "/browse" },
       { title: "Cinemas", url: "/cinemas" },
       { title: "Rent locally", url: "/rentals/rent-locally" },
       { title: "Rent by post", url: "/rentals/rent-by-post" },
