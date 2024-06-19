@@ -24,7 +24,7 @@ export default function Home() {
     <Image
       src={betty}
       alt="Movie poster image of betty from betty blue"
-      className="border border-primary sm:w-4/12 self-start"
+      className="border border-foreground sm:w-4/12 self-start"
       priority
     />
   );

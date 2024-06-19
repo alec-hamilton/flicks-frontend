@@ -32,7 +32,7 @@ const Cinemas = () => {
     <Image
       src={shopFront}
       alt="Movie rental store shop front in the style of bladerunner"
-      className="border border-primary sm:w-4/12 self-start"
+      className="border border-foreground sm:w-4/12 self-start"
       priority
     />
   );
@@ -47,7 +47,7 @@ const Cinemas = () => {
           <StandardButton>{buttonTwoText}</StandardButton>
         </ExternalLink>
       </PageContentHeader>
-      <section className="p-4 md:p-6 my-4 md:my-6 border border-primary bg-black2">
+      <section className="p-4 md:p-6 my-4 md:my-6 border border-foreground bg-layer2">
         <h2>{sectionOne.title}</h2>
         <div className="flex flex-col sm:flex-row sm:gap-6">
           <div>
@@ -61,11 +61,11 @@ const Cinemas = () => {
           <Image
             src={twinPeaksCinema}
             alt="Cinema auditorium in the style of twin peaks"
-            className="border border-primary sm:w-5/12 sm:mt-4"
+            className="border border-foreground sm:w-5/12 sm:mt-4"
           />
         </div>
       </section>
-      <section className="p-4 md:p-6 border border-primary bg-black2">
+      <section className="p-4 md:p-6 border border-foreground bg-layer2">
         <h2>{sectionTwo.title}</h2>
         <div className="flex flex-col sm:flex-row sm:gap-6">
           <div>
@@ -79,7 +79,7 @@ const Cinemas = () => {
           <Image
             src={videodromeCinema}
             alt="Cinema auditorium in the style of twin peaks"
-            className="border border-primary sm:w-5/12 sm:mt-4"
+            className="border border-foreground sm:w-5/12 sm:mt-4"
           />
         </div>
       </section>
