@@ -20,7 +20,7 @@ const Faqs = () => {
           return (
             <section
               key={index}
-              className="border border-primary p-4 md:p-6 bg-black2"
+              className="border border-foreground p-4 md:p-6 bg-layer2"
             >
               <h2>{faq.question}</h2>
               <p className="mt-4">{faq.answer}</p>

@@ -8,15 +8,15 @@ const contactMinusWhat3 = contactLinks.links.slice(0, -1);
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col mt-auto border-t-2 border-primary pt-2 xs:pt-4">
+    <footer className="flex flex-col mt-auto border-t-2 border-foreground pt-2 xs:pt-4">
       <div className="flex flex-col mx-2 xs:mx-4 gap-2 xs:gap-4 md:flex-row">
         {footerLinks.map(({ groupName, links }, index) => {
           return (
             <section
-              className="border border-primary md:flex-1 bg-black1"
+              className="border border-foreground md:flex-1 bg-layer1"
               key={index}
             >
-              <h3 className="border-b border-primary p-4">{groupName}</h3>
+              <h3 className="border-b border-foreground p-4">{groupName}</h3>
               <ul className="p-4 flex flex-col gap-2 text-sm">
                 {links.map(({ title, url }, index) => {
                   return (
@@ -32,8 +32,8 @@ const Footer = () => {
             </section>
           );
         })}
-        <section className="border border-primary md:flex-1 bg-black1">
-          <h3 className="border-b border-primary p-4">
+        <section className="border border-foreground md:flex-1 bg-layer1">
+          <h3 className="border-b border-foreground p-4">
             {contactLinks.groupName}
           </h3>
           <ul className="p-4 flex flex-col gap-2 text-sm">
@@ -58,7 +58,7 @@ const Footer = () => {
           </ul>
         </section>
       </div>
-      <div className="flex border-t border-primary items-center justify-between mt-2 xs:mt-4 p-2 xs:p-4">
+      <div className="flex border-t border-foreground items-center justify-between mt-2 xs:mt-4 p-2 xs:p-4">
         <h3 className="font-logo whitespace-nowrap p-2 text-xs">
           20th Century Flicks
         </h3>
@@ -69,7 +69,7 @@ const Footer = () => {
             rel="noreferrer"
             aria-label="Link to twitter page"
           >
-            <div className="border border-primary p-2 bg-black1 lg:hover:bg-primary/20">
+            <div className="border border-foreground p-2 bg-layer1 lg:hover:bg-foreground-hover">
               <FiTwitter size="1.5rem" />
             </div>
           </a>
@@ -79,7 +79,7 @@ const Footer = () => {
             rel="noreferrer"
             aria-label="Link to instagram page"
           >
-            <div className="border border-primary p-2 bg-black1 lg:hover:bg-primary/20">
+            <div className="border border-foreground p-2 bg-layer1 lg:hover:bg-foreground-hover">
               <FiInstagram size="1.5rem" />
             </div>
           </a>

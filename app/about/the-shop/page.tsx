@@ -32,7 +32,7 @@ const TheShop = () => {
     <Image
       src={shopFront}
       alt="Movie rental store shop front in the style of bladerunner"
-      className="border border-primary sm:w-4/12 self-start"
+      className="border border-foreground sm:w-4/12 self-start"
       priority
     />
   );
@@ -48,7 +48,7 @@ const TheShop = () => {
         </ExternalLink>
       </PageContentHeader>
       <div className="flex flex-col gap-4 my-4 md:my-6 sm:flex-row sm:gap-6">
-        <section className="p-4 md:p-6 border border-primary bg-black2 sm:w-6/12">
+        <section className="p-4 md:p-6 border border-foreground bg-layer2 sm:w-6/12">
           <h2 className="pb-4">{sectionOne.title}</h2>
           <address className="not-italic">
             <p>{sectionOne.content.line1}</p>
@@ -57,12 +57,12 @@ const TheShop = () => {
             <p>{sectionOne.content.line4}</p>
           </address>
         </section>
-        <section className="p-4 md:p-6 border border-primary bg-black2 sm:w-6/12">
+        <section className="p-4 md:p-6 border border-foreground bg-layer2 sm:w-6/12">
           <h2 className="pb-4">{sectionTwo.title}</h2>
           <p>{sectionTwo.content}</p>
         </section>
       </div>
-      <section className="p-4 md:p-6 border border-primary bg-black2">
+      <section className="p-4 md:p-6 border border-foreground bg-layer2">
         <h2 className="pb-4">{sectionThree.title}</h2>
         <p>{sectionThree.content}</p>
       </section>

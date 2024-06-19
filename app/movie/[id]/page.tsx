@@ -36,7 +36,7 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
   return (
     <PageContentWrapper>
       <div className="flex flex-col-reverse md:grid md:grid-cols-6 gap-x-8">
-        <div className="flex flex-col xs:grid xs:grid-cols-2 md:flex-col md:flex md:col-span-2 border border-primary">
+        <div className="flex flex-col xs:grid xs:grid-cols-2 md:flex-col md:flex md:col-span-2 border border-foreground">
           <Image
             src={movieData.Poster}
             width="290"
@@ -44,7 +44,7 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
             alt={`movie poster for ${movieData.Title}`}
             priority
           />
-          <div className="flex flex-col gap-y-4 p-4 xs:max-md:border-l md:border-t border-primary">
+          <div className="flex flex-col gap-y-4 p-4 xs:max-md:border-l md:border-t border-foreground">
             <div className="flex justify-between gap-x-2">
               <h4>Cert</h4>
               <p className="text-sm text-end">{movieData.Rated}</p>
@@ -69,7 +69,7 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
           <div className="flex gap-x-2 my-4">
             {movieData.Genre.split(",").map((genre: string) => {
               return (
-                <div className="border border-primary p-2" key={genre}>
+                <div className="border border-foreground p-2" key={genre}>
                   {genre}
                 </div>
               );

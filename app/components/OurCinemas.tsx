@@ -12,14 +12,14 @@ const {
 
 const OurCinemas = () => {
   return (
-    <section className="p-4 md:p-6 mt-4 md:mt-6 border border-primary bg-black2">
+    <section className="p-4 md:p-6 mt-4 md:mt-6 border border-foreground bg-layer2">
       <h2 className="pb-4 md:pb-6">{title}</h2>
       <div className="flex flex-col gap-4 sm:gap-6 sm:flex-row">
         <div className="relative w-full min-w-[15rem] aspect-square self-start">
           <Image
             src={twinPeaksCinema}
             alt="Cinema auditorium in the style of twin peaks"
-            className="border border-primary"
+            className="border border-foreground"
             fill
           />
         </div>
