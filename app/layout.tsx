@@ -17,9 +17,9 @@ const bladerunner = localFont({
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en" className="bg-black0">
       <body className={`${robotoMono.className} ${bladerunner.variable}`}>
