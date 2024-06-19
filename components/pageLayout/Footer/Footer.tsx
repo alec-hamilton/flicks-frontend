@@ -69,7 +69,7 @@ const Footer = () => {
             rel="noreferrer"
             aria-label="Link to twitter page"
           >
-            <div className="border border-foreground p-2 bg-layer1 lg:hover:bg-foreground/20">
+            <div className="border border-foreground p-2 bg-layer1 lg:hover:bg-foreground-hover">
               <FiTwitter size="1.5rem" />
             </div>
           </a>
@@ -79,7 +79,7 @@ const Footer = () => {
             rel="noreferrer"
             aria-label="Link to instagram page"
           >
-            <div className="border border-foreground p-2 bg-layer1 lg:hover:bg-foreground/20">
+            <div className="border border-foreground p-2 bg-layer1 lg:hover:bg-foreground-hover">
               <FiInstagram size="1.5rem" />
             </div>
           </a>
