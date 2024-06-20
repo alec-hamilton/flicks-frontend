@@ -5,22 +5,35 @@ import type { Tables } from "@/types/database.types";
 import { useState } from "react";
 
 type FilterBarProps = {
-  category: Tables<"category">[];
+  categories: Tables<"categories">[];
+  languages: Tables<"languages">[];
 };
 
-const FilterBar = ({ category }: FilterBarProps) => {
-  const options = category.map((cat) => {
-    return { label: cat.description, value: cat.id.toString() };
+const FilterBar = ({ categories, languages }: FilterBarProps) => {
+  const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
+  const [selectedLanguage, setSelectedLanguage] = useState<string[]>([]);
+
+  const categoriesList = categories.map((category) => {
+    return { label: category.description, value: category.id.toString() };
   });
-  
-  const [selected, setSelected] = useState<string[]>([]);
+
+  const languagesList = languages.map((language) => {
+    return { label: language.language, value: language.id.toString() };
+  })
 
   return (
-    <MultiSelect
-      options={options}
-      onValueChange={setSelected}
-      defaultValue={selected}
-    />
+    <>
+      <MultiSelect
+        options={categoriesList}
+        onValueChange={setSelectedCategory}
+        defaultValue={selectedCategory}
+      />
+      <MultiSelect
+        options={languagesList}
+        onValueChange={setSelectedLanguage}
+        defaultValue={selectedLanguage}
+      />
+    </>
   );
 };
 
