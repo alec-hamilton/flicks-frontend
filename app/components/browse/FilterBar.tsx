@@ -47,8 +47,6 @@ const FilterBar = ({
       })
       .range(0, 10);
 
-      
-
     setResults(data || []);
   };
 

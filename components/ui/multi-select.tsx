@@ -52,7 +52,7 @@ interface MultiSelectProps
     VariantProps<typeof multiSelectVariants> {
   options: {
     label: string;
-    value: string;
+    value: string | number;
     icon?: React.ComponentType<{ className?: string }>;
   }[];
   onValueChange: (value: string[]) => void;
