@@ -41,13 +41,15 @@ const FilterBar = ({
   const applyFilters = async () => {
     const { data, error } = await supabase
       .rpc("get_titles_by_nationality_language_or_cat_ids", {
-        cat_ids: selectedCategory,
-        language_ids: selectedLanguage,
-        nationality_ids: selectedNationality,
+        cat_ids: selectedCategory.map((id) => parseInt(id)),
+        language_ids: selectedLanguage.map((id) => parseInt(id)),
+        nationality_ids: selectedNationality.map((id) => parseInt(id)),
       })
       .range(0, 10);
 
-    setResults(data);
+      
+
+    setResults(data || []);
   };
 
   return (

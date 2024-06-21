@@ -10,22 +10,23 @@ type MoviePageProps = {
   };
 };
 
-// const API_KEY: string = process.env.OMDB_API_KEY as string;
+const API_KEY: string = process.env.OMDB_API_KEY as string;
 
-// const fetchMovie = async (id: string) => {
-//   const DATA_SOURCE_URL = `http://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`;
+const fetchMovieImage = async (title: string, year: string) => {
+  const DATA_SOURCE_URL = `http://www.omdbapi.com/?apikey=${API_KEY}&t=${title}&y=${year}`;
 
-//   const res = await fetch(DATA_SOURCE_URL);
+  const res = await fetch(DATA_SOURCE_URL);
 
-//   if (!res.ok) {
-//     throw new Error("Failed to fetch movie data");
-//   }
+  if (!res.ok) {
+    throw new Error("Failed to fetch movie data");
+  }
 
-//   return res.json();
-// };
+  return res.json();
+};
 
 const fetchMovie = async (id: string) => {
   const supabase = createClient();
+  let poster;
   const { data: movieData, error } = await supabase
     .from("titles")
     .select(
@@ -34,7 +35,12 @@ const fetchMovie = async (id: string) => {
     .eq("id", id)
     .single();
 
-  return { movieData, error };
+    if (movieData) {
+      const result = await fetchMovieImage(movieData.title, movieData.date_1);
+      poster = result.Poster;
+    }
+
+  return { movieData, error, poster };
 };
 
 export const generateMetadata = async ({ params }: MoviePageProps) => {
@@ -50,7 +56,7 @@ export const generateMetadata = async ({ params }: MoviePageProps) => {
 };
 
 const MoviePage = async ({ params: { id } }: MoviePageProps) => {
-  const { movieData, error } = await fetchMovie(id);
+  const { movieData, error, poster } = await fetchMovie(id);
 
   if (error) return <p>{error.message}</p>;
 
@@ -59,13 +65,13 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
       <PageContentWrapper>
         <div className="flex flex-col-reverse md:grid md:grid-cols-6 gap-x-8">
           <div className="flex flex-col xs:grid xs:grid-cols-2 md:flex-col md:flex md:col-span-2 border border-foreground">
-            {/* <Image
-            src={movieData.Poster}
+            <Image
+            src={poster}
             width="290"
             height="430"
-            alt={`movie poster for ${movieData.Title}`}
+            alt={`movie poster for ${movieData.title}`}
             priority
-          /> */}
+          />
             <div className="flex flex-col gap-y-4 p-4 xs:max-md:border-l md:border-t border-foreground">
               <div className="flex justify-between gap-x-2">
                 <h4>Flicks ID</h4>

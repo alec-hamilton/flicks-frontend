@@ -93,6 +93,27 @@ export type Database = {
         };
         Relationships: [];
       };
+      title2languageOLD: {
+        Row: {
+          id: number;
+          is_primary: boolean | null;
+          language_id: string | null;
+          release_id: number | null;
+        };
+        Insert: {
+          id: number;
+          is_primary?: boolean | null;
+          language_id?: string | null;
+          release_id?: number | null;
+        };
+        Update: {
+          id?: number;
+          is_primary?: boolean | null;
+          language_id?: string | null;
+          release_id?: number | null;
+        };
+        Relationships: [];
+      };
       titles: {
         Row: {
           certification: string;
@@ -138,17 +159,14 @@ export type Database = {
       titles2categories: {
         Row: {
           cat_id: number;
-          id: number;
           title_id: number;
         };
         Insert: {
           cat_id: number;
-          id: number;
           title_id: number;
         };
         Update: {
           cat_id?: number;
-          id?: number;
           title_id?: number;
         };
         Relationships: [
@@ -171,16 +189,19 @@ export type Database = {
       titles2languages: {
         Row: {
           id: number;
+          is_primary: boolean | null;
           language_id: number | null;
           title_id: number | null;
         };
         Insert: {
           id: number;
+          is_primary?: boolean | null;
           language_id?: number | null;
           title_id?: number | null;
         };
         Update: {
           id?: number;
+          is_primary?: boolean | null;
           language_id?: number | null;
           title_id?: number | null;
         };
@@ -282,7 +303,26 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      get_titles_by_nationality_language_or_cat_ids: {
+        Args: {
+          nationality_ids: number[];
+          language_ids: number[];
+          cat_ids: number[];
+        };
+        Returns: {
+          certification: string;
+          date_1: string;
+          fast_title: string;
+          format: string | null;
+          id: number;
+          keyword: string;
+          rating: number;
+          review: string;
+          runningtime: number | null;
+          second_title: string;
+          title: string;
+        }[];
+      };
     };
     Enums: {
       [_ in never]: never;
