@@ -1,5 +1,6 @@
 import Image from "next/image";
 import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
+import Rating from "@/components/ratings/Rating";
 import { createClient } from "@/lib/supabase/server";
 import { getDirectors, getNonDirectors } from "@/lib/helpers/moviePage";
 
@@ -67,55 +68,60 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
           /> */}
             <div className="flex flex-col gap-y-4 p-4 xs:max-md:border-l md:border-t border-foreground">
               <div className="flex justify-between gap-x-2">
+                <h4>Flicks ID</h4>
+                <p className="text-sm text-end">{movieData.id}</p>
+              </div>
+              <div className="flex justify-between gap-x-2">
                 <h4>Cert</h4>
                 <p className="text-sm text-end">{movieData.certification}</p>
               </div>
               <div className="flex justify-between gap-x-2">
                 <h4>Running time</h4>
-                <p className="text-sm text-end">{movieData.runningtime}</p>
+                <p className="text-sm text-end">{movieData.runningtime} mins</p>
               </div>
               <div className="flex justify-between gap-x-2">
                 <h4>Country</h4>
-                <p className="text-sm text-end">
+                <div className="gap-2 text-sm text-end">
                   {movieData.nationalities.map(
                     ({ nationalities }) =>
                       nationalities && (
-                        <span key={nationalities.id}>
+                        <p key={nationalities.id}>
                           {nationalities.country}
-                        </span>
+                        </p>
                       )
                   )}
-                </p>
+                </div>
               </div>
               <div className="flex justify-between gap-x-2">
                 <h4>Language</h4>
-                <p className="text-sm text-end">
+                <div className="gap-2 text-sm text-end">
                   {movieData.languages.map(
                     ({ languages }) =>
                       languages && (
-                        <span key={languages.id}>{languages.language}</span>
+                        <p key={languages.id}>{languages.language}</p>
                       )
                   )}
-                </p>
+                </div>
               </div>
             </div>
           </div>
           <div className="flex flex-col col-span-4">
             <h1 className="pb-3">{`${movieData.title} (${movieData.date_1})`}</h1>
+            <Rating rating={movieData.rating} />
             <h2>
               {getDirectors(movieData.people).map(({ name, id }) => (
                 <span key={id}>{name}</span>
               ))}
             </h2>
-            <div className="flex gap-x-2 my-4">
+            <div className="flex gap-2 my-4 flex-wrap">
               {movieData.categories.map(({ categories }) => {
                 return (
-                  <div
+                  <span
                     className="border border-foreground p-2"
                     key={categories?.id}
                   >
                     {categories?.description}
-                  </div>
+                  </span>
                 );
               })}
             </div>
@@ -123,7 +129,7 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
               <h3>Cast</h3>
               <p>
                 {getNonDirectors(movieData.people).map(({ name, id }) => (
-                  <span key={id}>{name}</span>
+                  <span key={id} className="mr-4">{name}</span>
                 ))}
               </p>
             </div>
