@@ -52,26 +52,29 @@ const FilterBar = ({
 
   return (
     <div>
-      <div className="flex">
+      <div className="flex gap-x-2">
         <MultiSelect
           options={categoriesList}
           onValueChange={setSelectedCategory}
           defaultValue={selectedCategory}
           placeholder="Category"
+          maxCount={1}
         />
         <MultiSelect
           options={languagesList}
           onValueChange={setSelectedLanguage}
           defaultValue={selectedLanguage}
           placeholder="Language"
+          maxCount={1}
         />
         <MultiSelect
           options={nationalitiesList}
           onValueChange={setSelectedNationality}
           defaultValue={selectedNationality}
           placeholder="Nationality"
+          maxCount={1}
         />
-        <Button onClick={applyFilters}>Apply</Button>
+        <Button onClick={applyFilters} variant="secondary">Apply</Button>
       </div>
       <div>
         {results.map((result) => (

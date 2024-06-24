@@ -41,7 +41,7 @@ const SearchModal = ({ isOpen, handleClose }: SearchModalProps) => {
             <h2>Search the catalogue</h2>
             <button
               type="button"
-              className="text-heading border border-foreground bg-layer1 lg:hover:bg-foreground-hover place-self-end"
+              className="text-heading border border-foreground bg-layer1 lg:hover:bg-foreground/20 place-self-end"
               onClick={handleClose}
             >
               <BiX size="2rem" />

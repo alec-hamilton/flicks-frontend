@@ -29,16 +29,16 @@ const config = {
         button: "3px 3px #e879f999",
       },
       colors: {
-        layer1: "var(--layer1)",
-        layer2: "var(--layer2)",
-        heading: "var(--heading)",
+        layer1: "hsl(var(--layer1))",
+        layer2: "hsl(var(--layer2))",
+        layer3: "hsl(var(--layer3))",
+        heading: "hsl(var(--heading))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "var(--background)",
+        background: "hsl(var(--background))",
         foreground: {
-          DEFAULT: "var(--foreground)",
-          hover: "var(--foreground-hover)",
+          DEFAULT: "hsl(var(--foreground))",
         },
         primary: {
           DEFAULT: "hsl(var(--primary))",

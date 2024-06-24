@@ -35,6 +35,7 @@ const fetchMovie = async (id: string) => {
     .eq("id", id)
     .single();
 
+    //TODO: seed the db 
     if (movieData) {
       const result = await fetchMovieImage(movieData.title, movieData.date_1);
       poster = result.Poster;

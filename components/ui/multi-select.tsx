@@ -27,32 +27,28 @@ import {
   CommandSeparator,
 } from "@/components/ui/command";
 
-const multiSelectVariants = cva(
-  "m-1 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300",
-  {
-    variants: {
-      variant: {
-        default:
-          "border-foreground/10 text-foreground bg-card hover:bg-card/80",
-        secondary:
-          "border-foreground/10 bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        destructive:
-          "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
-        inverted: "inverted",
-      },
+const multiSelectVariants = cva("m-1", {
+  variants: {
+    variant: {
+      default: "text-foreground bg-layer3 hover:bg-layer2",
+      secondary:
+        "border-foreground/10 bg-secondary text-secondary-foreground hover:bg-secondary/80",
+      destructive:
+        "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
+      inverted: "inverted",
     },
-    defaultVariants: {
-      variant: "default",
-    },
-  }
-);
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
 
 interface MultiSelectProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof multiSelectVariants> {
   options: {
     label: string;
-    value: string | number;
+    value: string;
     icon?: React.ComponentType<{ className?: string }>;
   }[];
   onValueChange: (value: string[]) => void;
@@ -148,7 +144,7 @@ export const MultiSelect = React.forwardRef<
             {...props}
             onClick={handleTogglePopover}
             className={cn(
-              "flex w-full p-1 rounded-md border min-h-10 h-auto items-center justify-between bg-inherit hover:bg-inherit",
+              "flex w-full p-1 rounded-none border border-foreground min-h-10 h-auto items-center justify-between bg-layer2",
               className
             )}
           >
@@ -184,7 +180,7 @@ export const MultiSelect = React.forwardRef<
                   {selectedValues.length > maxCount && (
                     <Badge
                       className={cn(
-                        "bg-transparent text-foreground border-foreground/1 hover:bg-transparent",
+                        "bg-transparent text-foreground border-foreground hover:bg-transparent",
                         isAnimating ? "animate-bounce" : "",
                         multiSelectVariants({ variant, className })
                       )}
@@ -203,7 +199,7 @@ export const MultiSelect = React.forwardRef<
                 </div>
                 <div className="flex items-center justify-between">
                   <XIcon
-                    className="h-4 mx-2 cursor-pointer text-muted-foreground"
+                    className="h-4 mx-2 cursor-pointer text-foreground"
                     onClick={(event) => {
                       event.stopPropagation();
                       handleClear();
@@ -213,15 +209,15 @@ export const MultiSelect = React.forwardRef<
                     orientation="vertical"
                     className="flex min-h-6 h-full"
                   />
-                  <ChevronDown className="h-4 mx-2 cursor-pointer text-muted-foreground" />
+                  <ChevronDown className="h-4 mx-2 cursor-pointer text-foreground" />
                 </div>
               </div>
             ) : (
               <div className="flex items-center justify-between w-full mx-auto">
-                <span className="text-sm text-muted-foreground mx-3">
+                <span className="text-sm text-foreground/90 mx-3">
                   {placeholder}
                 </span>
-                <ChevronDown className="h-4 cursor-pointer text-muted-foreground mx-2" />
+                <ChevronDown className="h-4 cursor-pointer text-foreground mx-2" />
               </div>
             )}
           </Button>
@@ -247,9 +243,9 @@ export const MultiSelect = React.forwardRef<
                 >
                   <div
                     className={cn(
-                      "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
+                      "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-foreground",
                       selectedValues.length === options.length
-                        ? "bg-primary text-primary-foreground"
+                        ? "bg-foreground text-white"
                         : "opacity-50 [&_svg]:invisible"
                     )}
                   >
@@ -268,9 +264,9 @@ export const MultiSelect = React.forwardRef<
                     >
                       <div
                         className={cn(
-                          "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
+                          "mr-2 flex h-4 w-4 items-center justify-center rounded-none border border-foreground",
                           isSelected
-                            ? "bg-primary text-primary-foreground"
+                            ? "bg-foreground text-white"
                             : "opacity-50 [&_svg]:invisible"
                         )}
                       >
