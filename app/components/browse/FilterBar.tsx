@@ -25,6 +25,7 @@ const FilterBar = ({
   const [selectedNationality, setSelectedNationality] = useState<string[]>([]);
 
   const [results, setResults] = useState<Tables<"titles">[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const categoriesList = categories.map((category) => {
     return { label: category.description, value: category.id.toString() };
@@ -39,6 +40,7 @@ const FilterBar = ({
   });
 
   const applyFilters = async () => {
+    setLoading(true);
     const { data, error } = await supabase
       .rpc("get_titles_by_nationality_language_or_cat_ids", {
         cat_ids: selectedCategory.map((id) => parseInt(id)),
@@ -48,11 +50,12 @@ const FilterBar = ({
       .range(0, 10);
 
     setResults(data || []);
+    setLoading(false);
   };
 
   return (
-    <div>
-      <div className="flex gap-x-2">
+    <>
+      <div className="flex flex-wrap sm:flex-nowrap gap-2">
         <MultiSelect
           options={categoriesList}
           onValueChange={setSelectedCategory}
@@ -74,16 +77,29 @@ const FilterBar = ({
           placeholder="Nationality"
           maxCount={1}
         />
-        <Button onClick={applyFilters} variant="secondary">Apply</Button>
+        <Button
+          onClick={applyFilters}
+          variant="secondary"
+          className="w-full sm:w-auto"
+        >
+          Apply
+        </Button>
       </div>
-      <div>
-        {results.map((result) => (
-          <div>
-            <Link href={`/movie/${result.id}`}>{result.title}</Link>
-          </div>
-        ))}
+      <div className="mt-4 flex flex-col divide-y divide-foreground/20">
+        {loading ? (
+          <p>Loading</p>
+        ) : (
+          results.map((result) => (
+            <Link href={`/movie/${result.id}`} key={result.id}>
+              <div className="my-2">
+                <p>{result.title}</p>
+                <p>{result.date_1}</p>
+              </div>
+            </Link>
+          ))
+        )}
       </div>
-    </div>
+    </>
   );
 };
 

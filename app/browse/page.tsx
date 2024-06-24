@@ -23,7 +23,7 @@ const Browse = async () => {
   
   return (
     <PageContentWrapper>
-      <h1>Browse!</h1>
+      <h1 className="mb-4">Browse</h1>
       <FilterBar
         categories={categories}
         languages={languages}
