@@ -17,13 +17,13 @@ const bladerunner = localFont({
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en" className="bg-black0">
+    <html lang="en">
       <body className={`${robotoMono.className} ${bladerunner.variable}`}>
-        <main className="text-primary min-h-screen flex flex-col">
+        <main className="text-foreground min-h-screen flex flex-col">
           <Navbar />
           <div className="max-w-5xl mx-auto w-full">{children}</div>
           <Footer />

@@ -5,7 +5,7 @@ function NoResults() {
 
   return (
     <div>
-      <p className="text-body">
+      <p className="text-heading">
         No results for <q>{indexUiState.query}</q>.
       </p>
     </div>

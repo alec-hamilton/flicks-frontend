@@ -30,20 +30,20 @@ const newMovies = [
 
 const NewToRent = () => {
   return (
-    <section className="p-4 md:p-6 my-4 md:my-6 border border-primary bg-black2">
+    <section className="p-4 md:p-6 my-4 md:my-6 border border-foreground bg-layer2">
       <h2 className="pb-4 md:pb-6">New to rent...</h2>
-      <table className="w-full border border-primary">
-        <thead className="border-b border-primary">
+      <table className="w-full border border-foreground">
+        <thead className="border-b border-foreground">
           <tr>
-            <th className="p-2 text-start border-r border-primary">Title</th>
+            <th className="p-2 text-start border-r border-foreground">Title</th>
             <th className="p-2 text-center">Year</th>
           </tr>
         </thead>
         <tbody>
           {newMovies.map(({ id, title, year }) => {
             return (
-              <tr key={id} className="border-b border-primary">
-                <td className="p-2 border-r border-primary">
+              <tr key={id} className="border-b border-foreground">
+                <td className="p-2 border-r border-foreground">
                   <Link
                     href={`/movie/${id}`}
                     className="underline lg:hover:text-fuchsia-400"

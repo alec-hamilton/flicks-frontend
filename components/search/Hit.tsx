@@ -12,11 +12,11 @@ const Hit = ({ hit, handleClose }: HitProps) => {
       <Link
         href={`/movie/${hit.imdbId}`}
         onClick={() => handleClose()}
-        className="text-primary underline lg:hover:text-fuchsia-400"
+        className="text-foreground underline lg:hover:text-fuchsia-400"
       >
         {hit.title}
       </Link>
-      <p className="text-body">{hit.year}</p>
+      <p className="text-heading">{hit.year}</p>
     </div>
   );
 };

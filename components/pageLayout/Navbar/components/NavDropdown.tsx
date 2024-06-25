@@ -21,11 +21,11 @@ const NavDropDown = ({ dropdownLinks }: NavDropDownProps) => {
         type="button"
         ref={buttonRef}
         onClick={() => setDropdownOpen(!dropdownOpen)}
-        className="border border-primary bg-black1 hover:bg-primary/20"
+        className="border border-foreground bg-layer1 hover:bg-foreground/20"
       >
         <span className="flex items-center h-full">
           <span className="px-4 font-bold">{dropdownLinks.groupName}</span>
-          <span className="flex items-center border-l border-primary h-full px-1">
+          <span className="flex items-center border-l border-foreground h-full px-1">
             <BiChevronDown size="1.5rem" />
           </span>
         </span>
@@ -33,14 +33,14 @@ const NavDropDown = ({ dropdownLinks }: NavDropDownProps) => {
       {dropdownOpen && (
         <div
           ref={dropdownRef}
-          className="absolute left-0 top-16 w-60 border border-primary p-3 bg-black0"
+          className="absolute left-0 top-16 w-60 border border-foreground p-3 bg-background"
         >
           <ul className="flex flex-col gap-2">
             {dropdownLinks.links.map(({ title, url }, index) => {
               return (
                 <li
                   key={index}
-                  className="flex border border-primary items-center justify-center bg-black1 hover:bg-primary/20"
+                  className="flex border border-foreground items-center justify-center bg-layer1 hover:bg-foreground/20"
                 >
                   <Link
                     href={url}

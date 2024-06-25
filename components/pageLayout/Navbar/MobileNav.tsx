@@ -23,7 +23,7 @@ const MobileNav = () => {
         <button
           onClick={toggleOpen}
           type="button"
-          className="border border-primary z-50 bg-black1 w-[42px] xs:w-[62px]"
+          className="border border-foreground z-50 bg-layer1 w-[42px] xs:w-[62px]"
           aria-label="navigation menu"
         >
           <span className="flex items-center justify-center">
