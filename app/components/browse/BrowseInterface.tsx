@@ -67,12 +67,13 @@ const BrowseInterface = ({
         },
         { count: "exact" }
       )
-      .range(start, end).order("id", { ascending: true });
+      .range(start, end)
+      .order("id", { ascending: true });
 
-      if (error) {
-        setLoading(false);
-        throw new Error(error.message)
-      };
+    if (error) {
+      setLoading(false);
+      throw new Error(error.message);
+    }
 
     setResults(data ?? []);
     setCount(count ?? 0);

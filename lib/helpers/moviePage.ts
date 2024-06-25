@@ -29,7 +29,7 @@ export const getDirectors = (entries: Entry[]): PersonWithId[] =>
 
 export const getNonDirectors = (entries: Entry[]): PersonWithId[] =>
   entries
-    .filter((entry) => entry.roles && entry.roles.id > 1 && entry.people) 
+    .filter((entry) => entry.roles && entry.roles.id > 1 && entry.people)
     .map((entry) => ({
       id: entry.people!.id,
       name: `${entry.people!.forename.trim()} ${entry.people!.surname.trim()}`,

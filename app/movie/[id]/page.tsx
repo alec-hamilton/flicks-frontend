@@ -35,11 +35,11 @@ const fetchMovie = async (id: string) => {
     .eq("id", id)
     .single();
 
-    //TODO: seed the db 
-    if (movieData) {
-      const result = await fetchMovieImage(movieData.title, movieData.date_1);
-      poster = result.Poster;
-    }
+  //TODO: seed the db
+  if (movieData) {
+    const result = await fetchMovieImage(movieData.title, movieData.date_1);
+    poster = result.Poster;
+  }
 
   return { movieData, error, poster };
 };
@@ -67,12 +67,12 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
         <div className="flex flex-col-reverse md:grid md:grid-cols-6 gap-x-8">
           <div className="flex flex-col xs:grid xs:grid-cols-2 md:flex-col md:flex md:col-span-2 border border-foreground">
             <Image
-            src={poster}
-            width="290"
-            height="430"
-            alt={`movie poster for ${movieData.title}`}
-            priority
-          />
+              src={poster}
+              width="290"
+              height="430"
+              alt={`movie poster for ${movieData.title}`}
+              priority
+            />
             <div className="flex flex-col gap-y-4 p-4 xs:max-md:border-l md:border-t border-foreground">
               <div className="flex justify-between gap-x-2">
                 <h4>Flicks ID</h4>
@@ -92,9 +92,7 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
                   {movieData.nationalities.map(
                     ({ nationalities }) =>
                       nationalities && (
-                        <p key={nationalities.id}>
-                          {nationalities.country}
-                        </p>
+                        <p key={nationalities.id}>{nationalities.country}</p>
                       )
                   )}
                 </div>
@@ -136,7 +134,9 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
               <h3>Cast</h3>
               <p>
                 {getNonDirectors(movieData.people).map(({ name, id }) => (
-                  <span key={id} className="mr-4">{name}</span>
+                  <span key={id} className="mr-4">
+                    {name}
+                  </span>
                 ))}
               </p>
             </div>
