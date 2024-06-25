@@ -97,6 +97,11 @@
   }
 }
 
+body {
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
 :focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px #6fc9e5;
