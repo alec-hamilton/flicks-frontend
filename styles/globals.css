@@ -4,15 +4,14 @@
 
 @layer base {
   :root {
-    --background: #0F0F0F;
-    --foreground: #3898B7;
+    --background: 0 0% 6%;
+    --foreground: 195 53% 47%;
 
-    --foreground-hover: #3898B740;
+    --layer1: 0 0% 10%;
+    --layer2: 0 0% 16%;
+    --layer3: 0 0% 20%;
 
-    --layer1: #1A1A1A;
-    --layer2: #242424;
-
-    --heading: #6FC9E5;
+    --heading: 194 69% 67%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -75,7 +74,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-foreground;
   }
   body {
     @apply bg-background text-foreground;
@@ -96,6 +95,11 @@
   h4 {
     @apply text-sm font-bold text-heading;
   }
+}
+
+body {
+  overflow-y: auto;
+  scrollbar-gutter: stable;
 }
 
 :focus-visible {

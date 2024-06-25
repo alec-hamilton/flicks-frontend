@@ -11,4 +11,3 @@ Welcome to the GitHub repository for the 20th Century Flicks website rebuild! Th
 - **Algolia and InstantSearch**
 
 - **OMDb API Integration**
-

@@ -21,7 +21,7 @@ const NavDropDown = ({ dropdownLinks }: NavDropDownProps) => {
         type="button"
         ref={buttonRef}
         onClick={() => setDropdownOpen(!dropdownOpen)}
-        className="border border-foreground bg-layer1 hover:bg-foreground-hover"
+        className="border border-foreground bg-layer1 hover:bg-foreground/20"
       >
         <span className="flex items-center h-full">
           <span className="px-4 font-bold">{dropdownLinks.groupName}</span>
@@ -40,7 +40,7 @@ const NavDropDown = ({ dropdownLinks }: NavDropDownProps) => {
               return (
                 <li
                   key={index}
-                  className="flex border border-foreground items-center justify-center bg-layer1 hover:bg-foreground-hover"
+                  className="flex border border-foreground items-center justify-center bg-layer1 hover:bg-foreground/20"
                 >
                   <Link
                     href={url}
