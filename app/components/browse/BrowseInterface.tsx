@@ -1,11 +1,20 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationPrevious,
+  PaginationLink,
+  PaginationNext,
+  PaginationEllipsis,
+} from "@/components/ui/pagination";
 import { MultiSelect } from "@/components/ui/multi-select";
 import type { Tables } from "@/types/database.types";
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
-import Link from "next/link";
+import Results from "./Results";
 
 type FilterBarProps = {
   categories: Tables<"categories">[];
@@ -13,7 +22,7 @@ type FilterBarProps = {
   nationalities: Tables<"nationalities">[];
 };
 
-const FilterBar = ({
+const BrowseInterface = ({
   categories,
   languages,
   nationalities,
@@ -80,7 +89,7 @@ const FilterBar = ({
         <Button
           onClick={applyFilters}
           variant="secondary"
-          className="w-full sm:w-auto"
+          className="w-full sm:w-auto h-auto"
         >
           Apply
         </Button>
@@ -89,18 +98,35 @@ const FilterBar = ({
         {loading ? (
           <p>Loading</p>
         ) : (
-          results.map((result) => (
-            <Link href={`/movie/${result.id}`} key={result.id}>
-              <div className="my-2">
-                <p>{result.title}</p>
-                <p>{result.date_1}</p>
-              </div>
-            </Link>
-          ))
+          <Results results={results} />
         )}
       </div>
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious href="#" />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#">1</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#" isActive>
+              2
+            </PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#">3</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationNext href="#" />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
     </>
   );
 };
 
-export default FilterBar;
+export default BrowseInterface;

@@ -1,5 +1,5 @@
 import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
-import FilterBar from "../components/browse/FilterBar";
+import BrowseInterface from "../components/browse/BrowseInterface";
 import { createClient } from "@/lib/supabase/server";
 
 const Browse = async () => {
@@ -20,11 +20,11 @@ const Browse = async () => {
   if (categoriesError) return <p>{categoriesError.message}</p>;
   if (languagesError) return <p>{languagesError.message}</p>;
   if (nationalitiesError) return <p>{nationalitiesError.message}</p>;
-  
+  // SEO title etc.
   return (
     <PageContentWrapper>
       <h1 className="mb-4">Browse</h1>
-      <FilterBar
+      <BrowseInterface
         categories={categories}
         languages={languages}
         nationalities={nationalities}
