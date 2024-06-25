@@ -6,9 +6,7 @@ import {
   PaginationContent,
   PaginationItem,
   PaginationPrevious,
-  PaginationLink,
   PaginationNext,
-  PaginationEllipsis,
 } from "@/components/ui/pagination";
 import { MultiSelect } from "@/components/ui/multi-select";
 import type { Tables } from "@/types/database.types";
@@ -70,6 +68,11 @@ const BrowseInterface = ({
         { count: "exact" }
       )
       .range(start, end).order("id", { ascending: true });
+
+      if (error) {
+        setLoading(false);
+        throw new Error(error.message)
+      };
 
     setResults(data ?? []);
     setCount(count ?? 0);
