@@ -10,10 +10,21 @@ import {
 } from "@/components/ui/pagination";
 import { MultiSelect } from "@/components/ui/multi-select";
 import type { Tables } from "@/types/database.types";
+import { Metadata } from "next";
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import Results from "./Results";
 import { useSearchParams, useRouter } from "next/navigation";
+import { globalConstants } from "@/constants/globalConstants";
+
+const {
+  browse: { metaTitle, metaDescription },
+} = globalConstants;
+
+export const metadata: Metadata = {
+  title: metaTitle,
+  description: metaDescription,
+};
 
 type FilterBarProps = {
   categories: Tables<"categories">[];
