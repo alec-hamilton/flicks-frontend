@@ -3,6 +3,7 @@ import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 import Rating from "@/components/ratings/Rating";
 import { createClient } from "@/lib/supabase/server";
 import { getDirectors, getNonDirectors } from "@/lib/helpers/moviePage";
+import movieNotFound from "@/assets/images/movie-not-found.svg";
 
 type MoviePageProps = {
   params: {
@@ -47,7 +48,7 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
         <div className="flex flex-col-reverse md:grid md:grid-cols-6 gap-x-8">
           <div className="flex flex-col xs:grid xs:grid-cols-2 md:flex-col md:flex md:col-span-2 border border-foreground">
             <Image
-              src={movieData.image_url ?? ""}
+              src={movieData.image_url ?? movieNotFound}
               width="290"
               height="430"
               alt={`movie poster for ${movieData.title}`}
