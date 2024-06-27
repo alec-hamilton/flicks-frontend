@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   description: metaDescription,
 };
 
-type FilterBarProps = {
+type BrowseInterfaceProps = {
   categories: Tables<"categories">[];
   languages: Tables<"languages">[];
   nationalities: Tables<"nationalities">[];
@@ -36,7 +36,7 @@ const BrowseInterface = ({
   categories,
   languages,
   nationalities,
-}: FilterBarProps) => {
+}: BrowseInterfaceProps) => {
   const supabase = createClient();
   const searchParams = useSearchParams();
   const router = useRouter();

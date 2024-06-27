@@ -12,7 +12,7 @@ const Rating = ({ rating }: RatingProps) => {
   const empty = Array.from({ length: 5 - rating }, (_, i) => i);
 
   return (
-    <div className="flex mb-4 text-fuchsia-400">
+    <div className="flex text-fuchsia-400">
       {filled.map((_, index) => (
         <Filled key={index} size="1.5rem" />
       ))}

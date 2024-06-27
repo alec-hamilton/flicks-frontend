@@ -1,62 +1,62 @@
 import Link from "next/link";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Image from "next/image";
+import Rating from "@/components/ratings/Rating";
+import { createClient } from "@/lib/supabase/server";
+import movieNotFound from "@/assets/images/movie-not-found.svg";
 
-const newMovies = [
-  {
-    id: "tt14208870",
-    title: "The Fabelmans",
-    year: "2022",
-  },
-  {
-    id: "tt10293406",
-    title: "The Power of the Dog",
-    year: "2021",
-  },
-  {
-    id: "tt14444726",
-    title: "Tár",
-    year: "2022",
-  },
-  {
-    id: "tt7405458",
-    title: "A Man Called Otto",
-    year: "2022",
-  },
-  {
-    id: "tt10640346",
-    title: "Babylon",
-    year: "2022",
-  },
-];
+const NewToRent = async () => {
+  const supabase = createClient();
 
-const NewToRent = () => {
+  const { data: latestMovies, error } = await supabase
+    .from("titles")
+    .select("*")
+    .order("id", { ascending: false })
+    .limit(5);
+
+  if (error) return <p>{error.message}</p>;
+
   return (
     <section className="p-4 md:p-6 my-4 md:my-6 border border-foreground bg-layer2">
       <h2 className="pb-4 md:pb-6">New to rent...</h2>
-      <table className="w-full border border-foreground">
-        <thead className="border-b border-foreground">
-          <tr>
-            <th className="p-2 text-start border-r border-foreground">Title</th>
-            <th className="p-2 text-center">Year</th>
-          </tr>
-        </thead>
-        <tbody>
-          {newMovies.map(({ id, title, year }) => {
+      <Carousel opts={{ loop: true }}>
+        <CarouselContent>
+          {latestMovies.map((movie) => {
             return (
-              <tr key={id} className="border-b border-foreground">
-                <td className="p-2 border-r border-foreground">
-                  <Link
-                    href={`/movie/${id}`}
-                    className="underline lg:hover:text-fuchsia-400"
-                  >
-                    {title}
+              <CarouselItem key={movie.id} className=" flex flex-col md:grid grid-cols-4 gap-x-4">
+                <Image
+                  src={movie.image_url ?? movieNotFound}
+                  width="290"
+                  height="430"
+                  alt={`movie poster for ${movie.title}`}
+                  className="border h-auto"
+                />
+
+                <div className="col-span-3 flex flex-col gap-y-2">
+                  <Link href={`/movie/${movie.id}`}>
+                    <h3 className="text-xl">{movie.title}</h3>
                   </Link>
-                </td>
-                <td className="p-2 text-center">{year}</td>
-              </tr>
+                  <Rating rating={movie.rating} />
+                  <div className="flex divide-x divide-dotted">
+                    <p className="pr-4">{movie.date_1}</p>
+                    <p className="px-4">{movie.certification}</p>
+                    <p className="px-4">{movie.runningtime} mins</p>
+                  </div>
+                  <p>{movie.review}</p>
+                </div>
+              </CarouselItem>
             );
           })}
-        </tbody>
-      </table>
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
     </section>
   );
 };
