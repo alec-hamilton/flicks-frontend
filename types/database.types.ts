@@ -93,27 +93,6 @@ export type Database = {
         };
         Relationships: [];
       };
-      title2languageOLD: {
-        Row: {
-          id: number;
-          is_primary: boolean | null;
-          language_id: string | null;
-          release_id: number | null;
-        };
-        Insert: {
-          id: number;
-          is_primary?: boolean | null;
-          language_id?: string | null;
-          release_id?: number | null;
-        };
-        Update: {
-          id?: number;
-          is_primary?: boolean | null;
-          language_id?: string | null;
-          release_id?: number | null;
-        };
-        Relationships: [];
-      };
       titles: {
         Row: {
           certification: string;
@@ -121,6 +100,7 @@ export type Database = {
           fast_title: string;
           format: string | null;
           id: number;
+          image_url: string | null;
           keyword: string;
           rating: number;
           review: string;
@@ -134,6 +114,7 @@ export type Database = {
           fast_title: string;
           format?: string | null;
           id: number;
+          image_url?: string | null;
           keyword: string;
           rating: number;
           review: string;
@@ -147,6 +128,7 @@ export type Database = {
           fast_title?: string;
           format?: string | null;
           id?: number;
+          image_url?: string | null;
           keyword?: string;
           rating?: number;
           review?: string;
@@ -315,6 +297,7 @@ export type Database = {
           fast_title: string;
           format: string | null;
           id: number;
+          image_url: string | null;
           keyword: string;
           rating: number;
           review: string;

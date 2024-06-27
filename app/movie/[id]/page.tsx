@@ -3,6 +3,7 @@ import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 import Rating from "@/components/ratings/Rating";
 import { createClient } from "@/lib/supabase/server";
 import { getDirectors, getNonDirectors } from "@/lib/helpers/moviePage";
+import movieNotFound from "@/assets/images/movie-not-found.svg";
 
 type MoviePageProps = {
   params: {
@@ -10,23 +11,9 @@ type MoviePageProps = {
   };
 };
 
-const API_KEY: string = process.env.OMDB_API_KEY as string;
-
-const fetchMovieImage = async (title: string, year: string) => {
-  const DATA_SOURCE_URL = `http://www.omdbapi.com/?apikey=${API_KEY}&t=${title}&y=${year}`;
-
-  const res = await fetch(DATA_SOURCE_URL);
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch movie data");
-  }
-
-  return res.json();
-};
-
+// TODO: handle placeholder image for movies without a poster.
 const fetchMovie = async (id: string) => {
   const supabase = createClient();
-  let poster;
   const { data: movieData, error } = await supabase
     .from("titles")
     .select(
@@ -35,13 +22,7 @@ const fetchMovie = async (id: string) => {
     .eq("id", id)
     .single();
 
-  //TODO: seed the db
-  if (movieData) {
-    const result = await fetchMovieImage(movieData.title, movieData.date_1);
-    poster = result.Poster;
-  }
-
-  return { movieData, error, poster };
+  return { movieData, error };
 };
 
 export const generateMetadata = async ({ params }: MoviePageProps) => {
@@ -57,7 +38,7 @@ export const generateMetadata = async ({ params }: MoviePageProps) => {
 };
 
 const MoviePage = async ({ params: { id } }: MoviePageProps) => {
-  const { movieData, error, poster } = await fetchMovie(id);
+  const { movieData, error } = await fetchMovie(id);
 
   if (error) return <p>{error.message}</p>;
 
@@ -67,7 +48,7 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
         <div className="flex flex-col-reverse md:grid md:grid-cols-6 gap-x-8">
           <div className="flex flex-col xs:grid xs:grid-cols-2 md:flex-col md:flex md:col-span-2 border border-foreground">
             <Image
-              src={poster}
+              src={movieData.image_url ?? movieNotFound}
               width="290"
               height="430"
               alt={`movie poster for ${movieData.title}`}
