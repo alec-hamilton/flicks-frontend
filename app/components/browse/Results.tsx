@@ -21,7 +21,7 @@ const Results = ({ results }: ResultsProps) => {
             alt={`movie poster for ${result.title}`}
             width={50}
             height={80}
-            className="border"
+            className="border h-auto"
           />
           <div className="my-2">
             <p>{result.title}</p>
