@@ -22,10 +22,6 @@ const NewToRent = async () => {
 
   if (error) return <p>{error.message}</p>;
 
-  const truncateReview = (review: string, length: number) => {
-    return review.length > length ? `${review.substring(0, length)}...` : review;
-  }
-
   return (
     <section className="p-4 md:p-6 my-4 md:my-6 border border-foreground bg-layer2">
       <h2 className="pb-4 md:pb-6">New to rent...</h2>
@@ -50,8 +46,8 @@ const NewToRent = async () => {
                 />
 
                 <div className="col-span-3 flex flex-col gap-y-2">
-                  <Link href={`/movie/${movie.id}`}>
-                    <h3 className="text-xl mt-4 xs:m-0">{movie.title}</h3>
+                  <Link href={`/movie/${movie.id}`} className="underline text-heading font-bold text-xl mt-4 xs:m-0 md:hover:text-fuchsia-400">
+                    {movie.title}
                   </Link>
                   <Rating rating={movie.rating} />
                   <div className="flex divide-x divide-dotted">
