@@ -1,8 +1,7 @@
 import Link from "next/link";
-import type { Hit as AlgoliaHit } from "instantsearch.js/es/types";
 
 type HitProps = {
-  hit: AlgoliaHit;
+  hit: any;
   handleClose: () => void;
 };
 
