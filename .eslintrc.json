@@ -8,8 +8,7 @@
     "plugin:@typescript-eslint/recommended",
     "prettier",
     "next/core-web-vitals",
-    "plugin:testing-library/react",
-    "plugin:jest-dom-recommended"
+    "plugin:testing-library/react"
   ],
   "parser": "@typescript-eslint/parser",
   "overrides": [],
