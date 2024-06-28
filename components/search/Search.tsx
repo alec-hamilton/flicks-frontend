@@ -1,12 +1,7 @@
 "use client";
 
 import algoliasearch from "algoliasearch/lite";
-import {
-  Configure,
-  InstantSearch,
-  SearchBox,
-  Hits,
-} from "react-instantsearch-hooks-web";
+import { Configure, InstantSearch, SearchBox, Hits } from "react-instantsearch";
 import Hit from "./Hit";
 import EmptyQueryBoundary from "./EmptyQueryBoundary";
 import NoResultsBoundary from "./NoResultsBoundary";
