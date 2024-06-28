@@ -22,17 +22,28 @@ const NewToRent = async () => {
 
   if (error) return <p>{error.message}</p>;
 
+  const truncateReview = (review: string, length: number) => {
+    return review.length > length ? `${review.substring(0, length)}...` : review;
+  }
+
   return (
     <section className="p-4 md:p-6 my-4 md:my-6 border border-foreground bg-layer2">
       <h2 className="pb-4 md:pb-6">New to rent...</h2>
-      <Carousel opts={{ loop: true }}>
+      <Carousel>
+      <div className="absolute right-0 -top-7 md:-top-9 flex gap-x-2">
+          <CarouselPrevious />
+          <CarouselNext />
+        </div>
         <CarouselContent>
           {latestMovies.map((movie) => {
             return (
-              <CarouselItem key={movie.id} className=" flex flex-col md:grid grid-cols-4 gap-x-4">
+              <CarouselItem
+                key={movie.id}
+                className="flex flex-col xs:grid grid-cols-4 gap-x-4"
+              >
                 <Image
                   src={movie.image_url ?? movieNotFound}
-                  width="290"
+                  width="370"
                   height="430"
                   alt={`movie poster for ${movie.title}`}
                   className="border h-auto"
@@ -40,7 +51,7 @@ const NewToRent = async () => {
 
                 <div className="col-span-3 flex flex-col gap-y-2">
                   <Link href={`/movie/${movie.id}`}>
-                    <h3 className="text-xl">{movie.title}</h3>
+                    <h3 className="text-xl mt-4 xs:m-0">{movie.title}</h3>
                   </Link>
                   <Rating rating={movie.rating} />
                   <div className="flex divide-x divide-dotted">
@@ -48,14 +59,13 @@ const NewToRent = async () => {
                     <p className="px-4">{movie.certification}</p>
                     <p className="px-4">{movie.runningtime} mins</p>
                   </div>
-                  <p>{movie.review}</p>
+                  <p className="cutoff-text xs:max-sm:hidden">{movie.review}</p>
                 </div>
               </CarouselItem>
             );
           })}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        
       </Carousel>
     </section>
   );
