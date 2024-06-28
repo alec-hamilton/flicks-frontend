@@ -26,7 +26,7 @@ const NewToRent = async () => {
     <section className="p-4 md:p-6 my-4 md:my-6 border border-foreground bg-layer2">
       <h2 className="pb-4 md:pb-6">New to rent...</h2>
       <Carousel>
-      <div className="absolute right-0 -top-7 md:-top-9 flex gap-x-2">
+        <div className="absolute right-0 -top-7 md:-top-9 flex gap-x-2">
           <CarouselPrevious />
           <CarouselNext />
         </div>
@@ -46,7 +46,10 @@ const NewToRent = async () => {
                 />
 
                 <div className="col-span-3 flex flex-col gap-y-2">
-                  <Link href={`/movie/${movie.id}`} className="underline text-heading font-bold text-xl mt-4 xs:m-0 md:hover:text-fuchsia-400">
+                  <Link
+                    href={`/movie/${movie.id}`}
+                    className="underline text-heading font-bold text-xl mt-4 xs:m-0 md:hover:text-fuchsia-400"
+                  >
                     {movie.title}
                   </Link>
                   <Rating rating={movie.rating} />
@@ -61,7 +64,6 @@ const NewToRent = async () => {
             );
           })}
         </CarouselContent>
-        
       </Carousel>
     </section>
   );

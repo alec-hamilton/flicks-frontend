@@ -131,9 +131,10 @@ export const globalConstants = {
       button: "Book the videodrome",
     },
   },
-  browse : {
+  browse: {
     metaTitle: "Browse our Movie Collection - 20th Century Flicks",
-    metaDescription: "Explore our extensive movie collection at 20th Century Flicks. Discover new releases, classics, and hidden gems. Rent movies locally or by post.",
+    metaDescription:
+      "Explore our extensive movie collection at 20th Century Flicks. Discover new releases, classics, and hidden gems. Rent movies locally or by post.",
   },
   faqs: {
     metaTitle: "Answers to Your Questions - 20th Century Flicks FAQs",

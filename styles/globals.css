@@ -120,7 +120,7 @@ body {
   @media (min-width: 768px) {
     -webkit-line-clamp: 5;
   }
-  
+
   @media (min-width: 1024px) {
     -webkit-line-clamp: 8;
   }
