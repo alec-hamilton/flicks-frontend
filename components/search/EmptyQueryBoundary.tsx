@@ -1,4 +1,4 @@
-import { useInstantSearch } from "react-instantsearch-hooks-web";
+import { useInstantSearch } from "react-instantsearch";
 
 function EmptyQueryBoundary({
   children,

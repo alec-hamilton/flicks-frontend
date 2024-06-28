@@ -106,3 +106,22 @@ body {
   outline: none;
   box-shadow: 0 0 0 3px #6fc9e5;
 }
+
+.cutoff-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  @media (min-width: 640px) {
+    -webkit-line-clamp: 4;
+  }
+
+  @media (min-width: 768px) {
+    -webkit-line-clamp: 5;
+  }
+
+  @media (min-width: 1024px) {
+    -webkit-line-clamp: 8;
+  }
+}

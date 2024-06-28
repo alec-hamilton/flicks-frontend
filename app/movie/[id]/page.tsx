@@ -94,7 +94,7 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
           <div className="flex flex-col col-span-4">
             <h1 className="pb-3">{`${movieData.title} (${movieData.date_1})`}</h1>
             <Rating rating={movieData.rating} />
-            <h2>
+            <h2 className="mt-4">
               {getDirectors(movieData.people).map(({ name, id }) => (
                 <span key={id}>{name}</span>
               ))}
