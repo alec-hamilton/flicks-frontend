@@ -9,7 +9,7 @@ const Hit = ({ hit, handleClose }: HitProps) => {
   return (
     <div className="flex justify-between pb-2">
       <Link
-        href={`/movie/${hit.imdbId}`}
+        href={`/movie/${hit.id}`}
         onClick={() => handleClose()}
         className="text-foreground underline lg:hover:text-fuchsia-400"
       >
