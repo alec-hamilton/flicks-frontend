@@ -18,7 +18,7 @@ type SearchProps = {
 
 const Search = ({ handleClose }: SearchProps) => {
   return (
-    <InstantSearch searchClient={searchClient} indexName="clz_movies">
+    <InstantSearch searchClient={searchClient} indexName="titles_csv">
       <Configure hitsPerPage={8} />
       <SearchBox
         classNames={{

@@ -36,7 +36,7 @@ const SearchModal = ({ isOpen, handleClose }: SearchModalProps) => {
         onClick={handleBackgroundClick}
         ref={modalBackgroundRef}
       >
-        {/* <div className="border border-foreground p-6 sm:p-8 max-w-3xl h-[75vh] w-11/12 flex flex-col bg-layer1">
+        <div className="border border-foreground p-6 sm:p-8 max-w-3xl h-[75vh] w-11/12 flex flex-col bg-layer1">
           <div className="flex justify-between items-center mb-6">
             <h2>Search the catalogue</h2>
             <button
@@ -48,8 +48,7 @@ const SearchModal = ({ isOpen, handleClose }: SearchModalProps) => {
             </button>
           </div>
           <Search handleClose={handleClose} />
-        </div> */}
-        <p>This feature is currently under construction, check back soon!</p>
+        </div>
       </div>
     </ReactPortal>
   );
