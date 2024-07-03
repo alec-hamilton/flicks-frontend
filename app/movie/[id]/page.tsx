@@ -46,7 +46,7 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
     return (
       <PageContentWrapper>
         <div className="flex flex-col-reverse md:grid md:grid-cols-6 gap-x-8">
-          <div className="flex flex-col xs:grid xs:grid-cols-2 md:flex-col md:flex md:col-span-2 border border-foreground">
+          <div className="grid grid-cols-2 md:flex-col md:flex md:col-span-2 border">
             <Image
               src={movieData.image_url ?? movieNotFound}
               width="290"
@@ -54,7 +54,7 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
               alt={`movie poster for ${movieData.title}`}
               priority
             />
-            <div className="flex flex-col gap-y-4 p-4 xs:max-md:border-l md:border-t border-foreground">
+            <div className="flex flex-col gap-y-4 p-4 max-md:border-l md:border-t">
               <div className="flex justify-between gap-x-2">
                 <h4>Flicks ID</h4>
                 <p className="text-sm text-end">{movieData.id}</p>
