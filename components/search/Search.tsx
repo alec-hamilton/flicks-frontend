@@ -30,6 +30,7 @@ const Search = ({ handleClose }: SearchProps) => {
         }}
         autoFocus
         placeholder="Search..."
+        loadingIconComponent={() => <div></div>}
       />
       <EmptyQueryBoundary fallback={null}>
         <NoResultsBoundary fallback={<NoResults />}>
