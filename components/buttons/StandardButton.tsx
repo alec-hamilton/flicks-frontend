@@ -1,3 +1,5 @@
+import type { ChildrenProps } from "@/types/children.types";
+
 const StandardButton = ({ children }: ChildrenProps) => {
   return (
     <button
