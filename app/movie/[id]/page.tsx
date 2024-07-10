@@ -76,7 +76,7 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
                         <Link
                           key={nationalities.id}
                           href={`/browse?nationality=${nationalities.id}`}
-                          className="block hover:underline"
+                          className="block md:hover:underline"
                         >
                           {nationalities.country}
                         </Link>
@@ -93,13 +93,17 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
                         <Link
                           key={languages.id}
                           href={`/browse?language=${languages.id}`}
-                          className="block hover:underline"
+                          className="block md:hover:underline"
                         >
                           {languages.language}
                         </Link>
                       )
                   )}
                 </div>
+              </div>
+              <div className="flex justify-between gap-x-2">
+                <h4>Format</h4>
+                <p className="text-sm text-end">{movieData.format}</p>
               </div>
             </div>
           </div>
@@ -108,7 +112,13 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
             <Rating rating={movieData.rating} />
             <h2 className="mt-4">
               {getDirectors(movieData.people).map(({ name, id }) => (
-                <span key={id}>{name}</span>
+                <Link
+                  key={id}
+                  href={`/person/${id}`}
+                  className="md:hover:underline mr-4"
+                >
+                  {name}
+                </Link>
               ))}
             </h2>
             <div className="flex gap-2 my-4 flex-wrap">
@@ -117,7 +127,7 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
                   <Link
                     key={categories?.id}
                     href={`/browse?category=${categories?.id}`}
-                    className="border p-2 hover:underline"
+                    className="border p-2 md:hover:underline"
                   >
                     {categories?.description}
                   </Link>
@@ -126,13 +136,17 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
             </div>
             <div className="mb-4">
               <h3>Cast</h3>
-              <p>
+              <div>
                 {getNonDirectors(movieData.people).map(({ name, id }) => (
-                  <Link key={id} className="mr-4" href={`/person/${id}`}>
+                  <Link
+                    key={id}
+                    className="mr-4 md:hover:underline"
+                    href={`/person/${id}`}
+                  >
                     {name}
                   </Link>
                 ))}
-              </p>
+              </div>
             </div>
             <div className="mb-4">
               <h3>Plot</h3>
