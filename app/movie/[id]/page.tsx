@@ -4,6 +4,7 @@ import Rating from "@/components/ratings/Rating";
 import { createClient } from "@/lib/supabase/server";
 import { getDirectors, getNonDirectors } from "@/lib/helpers/moviePage";
 import movieNotFound from "@/assets/images/movie-not-found.svg";
+import Link from "next/link";
 
 type MoviePageProps = {
   params: {
@@ -11,7 +12,6 @@ type MoviePageProps = {
   };
 };
 
-// TODO: handle placeholder image for movies without a poster.
 const fetchMovie = async (id: string) => {
   const supabase = createClient();
   const { data: movieData, error } = await supabase
@@ -73,7 +73,13 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
                   {movieData.nationalities.map(
                     ({ nationalities }) =>
                       nationalities && (
-                        <p key={nationalities.id}>{nationalities.country}</p>
+                        <Link
+                          key={nationalities.id}
+                          href={`/browse?nationality=${nationalities.id}`}
+                          className="block hover:underline"
+                        >
+                          {nationalities.country}
+                        </Link>
                       )
                   )}
                 </div>
@@ -84,7 +90,13 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
                   {movieData.languages.map(
                     ({ languages }) =>
                       languages && (
-                        <p key={languages.id}>{languages.language}</p>
+                        <Link
+                          key={languages.id}
+                          href={`/browse?language=${languages.id}`}
+                          className="block hover:underline"
+                        >
+                          {languages.language}
+                        </Link>
                       )
                   )}
                 </div>
@@ -102,12 +114,13 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
             <div className="flex gap-2 my-4 flex-wrap">
               {movieData.categories.map(({ categories }) => {
                 return (
-                  <span
-                    className="border border-foreground p-2"
+                  <Link
                     key={categories?.id}
+                    href={`/browse?category=${categories?.id}`}
+                    className="border p-2 hover:underline"
                   >
                     {categories?.description}
-                  </span>
+                  </Link>
                 );
               })}
             </div>

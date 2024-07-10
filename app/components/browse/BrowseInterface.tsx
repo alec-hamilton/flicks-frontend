@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
   Pagination,
   PaginationContent,
@@ -17,11 +16,13 @@ import {
 } from "@/components/ui/select";
 import type { Tables } from "@/types/database.types";
 import { Metadata } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import Results from "./Results";
 import { useSearchParams, useRouter } from "next/navigation";
 import { globalConstants } from "@/constants/globalConstants";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const {
   browse: { metaTitle, metaDescription },
@@ -70,7 +71,7 @@ const BrowseInterface = ({
         { count: "exact" }
       )
       .range(start, end)
-      .order("id", { ascending: true });
+      .order("id", { ascending: false });
 
     if (selectedCategory) {
       query = query.eq("categories.id", selectedCategory);
@@ -99,7 +100,9 @@ const BrowseInterface = ({
   const handleNextPage = () => {
     if (Number(page) < Math.ceil(count / Number(perPage))) {
       router.push(
-        `/browse?page=${Number(page) + 1}&perPage=${Number(perPage)}`
+        `/browse?category=${selectedCategory}&language=${selectedLanguage}&nationality=${selectedNationality}&page=${
+          Number(page) + 1
+        }&perPage=${Number(perPage)}`
       );
     }
   };
@@ -107,10 +110,16 @@ const BrowseInterface = ({
   const handlePreviousPage = () => {
     if (Number(page) > 1) {
       router.push(
-        `/browse?page=${Number(page) - 1}&perPage=${Number(perPage)}`
+        `/browse?category=${selectedCategory}&language=${selectedLanguage}&nationality=${selectedNationality}&page=${
+          Number(page) - 1
+        }&perPage=${Number(perPage)}`
       );
     }
   };
+
+  useEffect(() => {
+    applyFilters();
+  }, [page, selectedCategory, selectedLanguage, selectedNationality]);
 
   return (
     <>
@@ -118,7 +127,7 @@ const BrowseInterface = ({
         <Select
           onValueChange={(value: number) =>
             router.push(
-              `?category=${value}&language=${selectedLanguage}&nationality=${selectedNationality}`
+              `?category=${value}&language=${selectedLanguage}&nationality=${selectedNationality}&page=1&perPage=${perPage}`
             )
           }
           value={selectedCategory === "" ? "" : parseInt(selectedCategory)}
@@ -137,7 +146,7 @@ const BrowseInterface = ({
         <Select
           onValueChange={(value: number) =>
             router.push(
-              `?category=${selectedCategory}&language=${value}&nationality=${selectedNationality}`
+              `?category=${selectedCategory}&language=${value}&nationality=${selectedNationality}&page=1&perPage=${perPage}`
             )
           }
           value={selectedLanguage === "" ? "" : parseInt(selectedLanguage)}
@@ -156,7 +165,7 @@ const BrowseInterface = ({
         <Select
           onValueChange={(value: number) =>
             router.push(
-              `?category=${selectedCategory}&language=${selectedLanguage}&nationality=${value}`
+              `?category=${selectedCategory}&language=${selectedLanguage}&nationality=${value}&page=1&perPage=${perPage}`
             )
           }
           value={
@@ -174,15 +183,11 @@ const BrowseInterface = ({
             ))}
           </SelectContent>
         </Select>
-        <Button
-          onClick={() => applyFilters()}
-          variant="secondary"
-          className="w-full sm:w-auto h-auto"
-        >
-          Apply
-        </Button>
+        <Link href="/browse">
+          <Button variant="secondary">Clear</Button>
+        </Link>
       </div>
-      <div className="mt-4 flex flex-col divide-y divide-foreground/20">
+      <div className="mt-4 flex flex-col divide-y divide-foreground/20 min-h-[900px]">
         <p className="mb-4">{count} movies found</p>
         {loading ? <p>Loading</p> : <Results results={results} />}
       </div>
