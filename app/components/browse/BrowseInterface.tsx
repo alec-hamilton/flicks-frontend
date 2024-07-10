@@ -8,10 +8,16 @@ import {
   PaginationPrevious,
   PaginationNext,
 } from "@/components/ui/pagination";
-import { MultiSelect } from "@/components/ui/multi-select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import type { Tables } from "@/types/database.types";
 import { Metadata } from "next";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import Results from "./Results";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -41,9 +47,9 @@ const BrowseInterface = ({
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
-  const [selectedLanguage, setSelectedLanguage] = useState<string[]>([]);
-  const [selectedNationality, setSelectedNationality] = useState<string[]>([]);
+  const selectedCategory = searchParams.get("category") ?? "";
+  const selectedLanguage = searchParams.get("language") ?? "";
+  const selectedNationality = searchParams.get("nationality") ?? "";
 
   const [results, setResults] = useState<Tables<"titles">[]>([]);
   const [loading, setLoading] = useState(false);
@@ -54,32 +60,31 @@ const BrowseInterface = ({
   const start = (Number(page) - 1) * Number(perPage);
   const end = start + Number(perPage) - 1;
 
-  const categoriesList = categories.map((category) => {
-    return { label: category.description, value: category.id.toString() };
-  });
-
-  const languagesList = languages.map((language) => {
-    return { label: language.language, value: language.id.toString() };
-  });
-
-  const nationalitiesList = nationalities.map((nationality) => {
-    return { label: nationality.country, value: nationality.id.toString() };
-  });
-
   const applyFilters = async () => {
     setLoading(true);
-    const { data, error, count } = await supabase
-      .rpc(
-        "get_titles_by_nationality_language_or_cat_ids",
-        {
-          cat_ids: selectedCategory.map((id) => parseInt(id)),
-          language_ids: selectedLanguage.map((id) => parseInt(id)),
-          nationality_ids: selectedNationality.map((id) => parseInt(id)),
-        },
+
+    let query = supabase
+      .from("titles")
+      .select(
+        "*, categories!inner(id), languages!inner(id), nationalities!inner(id)",
         { count: "exact" }
       )
       .range(start, end)
       .order("id", { ascending: true });
+
+    if (selectedCategory) {
+      query = query.eq("categories.id", selectedCategory);
+    }
+
+    if (selectedLanguage) {
+      query = query.eq("languages.id", selectedLanguage);
+    }
+
+    if (selectedNationality) {
+      query = query.eq("nationalities.id", selectedNationality);
+    }
+
+    const { data, error, count } = await query;
 
     if (error) {
       setLoading(false);
@@ -107,34 +112,68 @@ const BrowseInterface = ({
     }
   };
 
-  useEffect(() => {
-    applyFilters();
-  }, [page]);
-
   return (
     <>
       <div className="flex flex-wrap sm:flex-nowrap gap-2">
-        <MultiSelect
-          options={categoriesList}
-          onValueChange={setSelectedCategory}
-          defaultValue={selectedCategory}
-          placeholder="Category"
-          maxCount={1}
-        />
-        <MultiSelect
-          options={languagesList}
-          onValueChange={setSelectedLanguage}
-          defaultValue={selectedLanguage}
-          placeholder="Language"
-          maxCount={1}
-        />
-        <MultiSelect
-          options={nationalitiesList}
-          onValueChange={setSelectedNationality}
-          defaultValue={selectedNationality}
-          placeholder="Nationality"
-          maxCount={1}
-        />
+        <Select
+          onValueChange={(value: number) =>
+            router.push(
+              `?category=${value}&language=${selectedLanguage}&nationality=${selectedNationality}`
+            )
+          }
+          value={selectedCategory === "" ? "" : parseInt(selectedCategory)}
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Category" />
+          </SelectTrigger>
+          <SelectContent>
+            {categories.map(({ description, id }) => (
+              <SelectItem value={id} key={id}>
+                {description}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <Select
+          onValueChange={(value: number) =>
+            router.push(
+              `?category=${selectedCategory}&language=${value}&nationality=${selectedNationality}`
+            )
+          }
+          value={selectedLanguage === "" ? "" : parseInt(selectedLanguage)}
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Language" />
+          </SelectTrigger>
+          <SelectContent>
+            {languages.map(({ language, id }) => (
+              <SelectItem value={id} key={id}>
+                {language}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <Select
+          onValueChange={(value: number) =>
+            router.push(
+              `?category=${selectedCategory}&language=${selectedLanguage}&nationality=${value}`
+            )
+          }
+          value={
+            selectedNationality === "" ? "" : parseInt(selectedNationality)
+          }
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Nationality" />
+          </SelectTrigger>
+          <SelectContent>
+            {nationalities.map(({ country, id }) => (
+              <SelectItem value={id} key={id}>
+                {country}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
         <Button
           onClick={() => applyFilters()}
           variant="secondary"
