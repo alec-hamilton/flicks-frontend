@@ -128,9 +128,9 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
               <h3>Cast</h3>
               <p>
                 {getNonDirectors(movieData.people).map(({ name, id }) => (
-                  <span key={id} className="mr-4">
+                  <Link key={id} className="mr-4" href={`/person/${id}`}>
                     {name}
-                  </span>
+                  </Link>
                 ))}
               </p>
             </div>
