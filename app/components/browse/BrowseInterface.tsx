@@ -6,6 +6,8 @@ import {
   PaginationItem,
   PaginationPrevious,
   PaginationNext,
+  PaginationLink,
+  PaginationEllipsis,
 } from "@/components/ui/pagination";
 import {
   Select,
@@ -23,6 +25,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { globalConstants } from "@/constants/globalConstants";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import CustomPagination from "@/components/pagination/CustomPagination";
 
 const {
   browse: { metaTitle, metaDescription },
@@ -60,26 +63,6 @@ const BrowseInterface = ({
 
   const start = (Number(page) - 1) * Number(perPage);
   const end = start + Number(perPage) - 1;
-
-  const handleNextPage = () => {
-    if (Number(page) < Math.ceil(count / Number(perPage))) {
-      router.push(
-        `/browse?category=${selectedCategory}&language=${selectedLanguage}&nationality=${selectedNationality}&page=${
-          Number(page) + 1
-        }&perPage=${Number(perPage)}`
-      );
-    }
-  };
-
-  const handlePreviousPage = () => {
-    if (Number(page) > 1) {
-      router.push(
-        `/browse?category=${selectedCategory}&language=${selectedLanguage}&nationality=${selectedNationality}&page=${
-          Number(page) - 1
-        }&perPage=${Number(perPage)}`
-      );
-    }
-  };
 
   useEffect(() => {
     const applyFilters = async () => {
@@ -128,6 +111,10 @@ const BrowseInterface = ({
     start,
     supabase,
   ]);
+
+  const getPageHref = (pageNum: number) => {
+    return `/browse?category=${selectedCategory}&language=${selectedLanguage}&nationality=${selectedNationality}&page=${pageNum}&perPage=${perPage}`;
+  };
 
   return (
     <>
@@ -199,16 +186,12 @@ const BrowseInterface = ({
         <p className="mb-4">{count} movies found</p>
         {loading ? <p>Loading</p> : <Results results={results} />}
       </div>
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious onClick={() => handlePreviousPage()} />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationNext onClick={() => handleNextPage()} />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+      <CustomPagination
+        currentPage={Number(page)}
+        count={count}
+        perPage={Number(perPage)}
+        getPageHref={getPageHref}
+      />
     </>
   );
 };
