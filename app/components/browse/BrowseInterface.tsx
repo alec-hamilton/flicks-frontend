@@ -51,13 +51,13 @@ const BrowseInterface = ({
   const selectedCategory = searchParams.get("category") ?? "";
   const selectedLanguage = searchParams.get("language") ?? "";
   const selectedNationality = searchParams.get("nationality") ?? "";
+  const page = searchParams.get("page") ?? "1";
+  const perPage = searchParams.get("perPage") ?? "10";
 
   const [results, setResults] = useState<Tables<"titles">[]>([]);
   const [loading, setLoading] = useState(false);
   const [count, setCount] = useState(0);
 
-  const page = searchParams.get("page") ?? "1";
-  const perPage = searchParams.get("perPage") ?? "10";
   const start = (Number(page) - 1) * Number(perPage);
   const end = start + Number(perPage) - 1;
 
