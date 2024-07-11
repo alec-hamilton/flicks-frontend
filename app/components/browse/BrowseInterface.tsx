@@ -26,6 +26,7 @@ import { globalConstants } from "@/constants/globalConstants";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import CustomPagination from "@/components/pagination/CustomPagination";
+import LoadingSpinner from "@/components/spinners/LoadingSpinner";
 
 const {
   browse: { metaTitle, metaDescription },
@@ -184,7 +185,7 @@ const BrowseInterface = ({
       </div>
       <div className="mt-4 flex flex-col divide-y divide-foreground/20 min-h-[900px]">
         <p className="mb-4">{count} movies found</p>
-        {loading ? <p>Loading</p> : <Results results={results} />}
+        {loading ? <LoadingSpinner /> : <Results results={results} />}
       </div>
       <CustomPagination
         currentPage={Number(page)}

@@ -39,7 +39,7 @@ const CustomPagination = ({
 
   const generatePaginationItems = () => {
     const items = [];
-    const maxVisiblePages = 4;
+    const maxVisiblePages = 5;
     const halfMaxVisible = Math.floor(maxVisiblePages / 2);
 
     let startPage = Math.max(1, Number(currentPage) - halfMaxVisible);
@@ -96,17 +96,26 @@ const CustomPagination = ({
   };
 
   return (
-    <Pagination>
+    <Pagination className="mt-4">
       <PaginationContent>
         <PaginationItem>
-          {/* handle disabled states for prev / next buttons */}
-          <PaginationPrevious href={handlePreviousPage()}>
+          <PaginationPrevious
+            href={handlePreviousPage()}
+            disabled={currentPage === 1}
+          >
             Previous
           </PaginationPrevious>
         </PaginationItem>
-        {generatePaginationItems()}
+        <div className="hidden sm:flex gap-x-1">
+          {generatePaginationItems()}
+        </div>
         <PaginationItem>
-          <PaginationNext href={handleNextPage()}>Next</PaginationNext>
+          <PaginationNext
+            href={handleNextPage()}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </PaginationNext>
         </PaginationItem>
       </PaginationContent>
     </Pagination>
