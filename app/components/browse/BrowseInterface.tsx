@@ -61,42 +61,6 @@ const BrowseInterface = ({
   const start = (Number(page) - 1) * Number(perPage);
   const end = start + Number(perPage) - 1;
 
-  const applyFilters = async () => {
-    setLoading(true);
-
-    let query = supabase
-      .from("titles")
-      .select(
-        "*, categories!inner(id), languages!inner(id), nationalities!inner(id)",
-        { count: "exact" }
-      )
-      .range(start, end)
-      .order("id", { ascending: false });
-
-    if (selectedCategory) {
-      query = query.eq("categories.id", selectedCategory);
-    }
-
-    if (selectedLanguage) {
-      query = query.eq("languages.id", selectedLanguage);
-    }
-
-    if (selectedNationality) {
-      query = query.eq("nationalities.id", selectedNationality);
-    }
-
-    const { data, error, count } = await query;
-
-    if (error) {
-      setLoading(false);
-      throw new Error(error.message);
-    }
-
-    setResults(data ?? []);
-    setCount(count ?? 0);
-    setLoading(false);
-  };
-
   const handleNextPage = () => {
     if (Number(page) < Math.ceil(count / Number(perPage))) {
       router.push(
@@ -118,8 +82,52 @@ const BrowseInterface = ({
   };
 
   useEffect(() => {
+    const applyFilters = async () => {
+      setLoading(true);
+
+      let query = supabase
+        .from("titles")
+        .select(
+          "*, categories!inner(id), languages!inner(id), nationalities!inner(id)",
+          { count: "exact" }
+        )
+        .range(start, end)
+        .order("id", { ascending: false });
+
+      if (selectedCategory) {
+        query = query.eq("categories.id", selectedCategory);
+      }
+
+      if (selectedLanguage) {
+        query = query.eq("languages.id", selectedLanguage);
+      }
+
+      if (selectedNationality) {
+        query = query.eq("nationalities.id", selectedNationality);
+      }
+
+      const { data, error, count } = await query;
+
+      if (error) {
+        setLoading(false);
+        throw new Error(error.message);
+      }
+
+      setResults(data ?? []);
+      setCount(count ?? 0);
+      setLoading(false);
+    };
+
     applyFilters();
-  }, [page, selectedCategory, selectedLanguage, selectedNationality]);
+  }, [
+    page,
+    selectedCategory,
+    selectedLanguage,
+    selectedNationality,
+    end,
+    start,
+    supabase,
+  ]);
 
   return (
     <>
