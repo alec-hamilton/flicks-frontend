@@ -121,7 +121,7 @@ const BrowseInterface = ({
     <>
       <div className="flex flex-wrap sm:flex-nowrap gap-2">
         <Select
-          onValueChange={(value: number) =>
+          onValueChange={(value: string) =>
             router.push(
               `?category=${value}&language=${selectedLanguage}&nationality=${selectedNationality}&page=1&perPage=${perPage}`
             )
@@ -140,7 +140,7 @@ const BrowseInterface = ({
           </SelectContent>
         </Select>
         <Select
-          onValueChange={(value: number) =>
+          onValueChange={(value: string) =>
             router.push(
               `?category=${selectedCategory}&language=${value}&nationality=${selectedNationality}&page=1&perPage=${perPage}`
             )
@@ -159,7 +159,7 @@ const BrowseInterface = ({
           </SelectContent>
         </Select>
         <Select
-          onValueChange={(value: number) =>
+          onValueChange={(value: string) =>
             router.push(
               `?category=${selectedCategory}&language=${selectedLanguage}&nationality=${value}&page=1&perPage=${perPage}`
             )
