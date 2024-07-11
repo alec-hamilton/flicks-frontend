@@ -1,5 +1,4 @@
 import Results from "@/app/components/browse/Results";
-import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 import { createClient } from "@/lib/supabase/server";
 
 type PersonPageProps = {
@@ -51,7 +50,7 @@ const Person = async ({ params: { id } }: PersonPageProps) => {
 
   if (personData && titlesData)
     return (
-      <PageContentWrapper>
+      <>
         <h1>
           {personData.forename} {personData.surname}
         </h1>
@@ -59,7 +58,7 @@ const Person = async ({ params: { id } }: PersonPageProps) => {
         <div className="mt-4 flex flex-col divide-y divide-foreground/20">
           <Results results={titlesData}></Results>
         </div>
-      </PageContentWrapper>
+      </>
     );
 };
 

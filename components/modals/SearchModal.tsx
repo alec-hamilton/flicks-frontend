@@ -35,6 +35,7 @@ const SearchModal = ({ isOpen, handleClose }: SearchModalProps) => {
         className="inset-0 fixed flex flex-col justify-center items-center bg-background/90 z-50"
         onClick={handleBackgroundClick}
         ref={modalBackgroundRef}
+        role="modal"
       >
         <div className="border border-foreground p-6 sm:p-8 max-w-3xl h-[75vh] w-11/12 flex flex-col bg-layer1">
           <div className="flex justify-between items-center mb-6">
