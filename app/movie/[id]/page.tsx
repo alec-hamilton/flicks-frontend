@@ -4,6 +4,7 @@ import Rating from "@/components/ratings/Rating";
 import { createClient } from "@/lib/supabase/server";
 import { getDirectors, getNonDirectors } from "@/lib/helpers/moviePage";
 import movieNotFound from "@/assets/images/movie-not-found.svg";
+import Link from "next/link";
 
 type MoviePageProps = {
   params: {
@@ -11,7 +12,6 @@ type MoviePageProps = {
   };
 };
 
-// TODO: handle placeholder image for movies without a poster.
 const fetchMovie = async (id: string) => {
   const supabase = createClient();
   const { data: movieData, error } = await supabase
@@ -73,7 +73,13 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
                   {movieData.nationalities.map(
                     ({ nationalities }) =>
                       nationalities && (
-                        <p key={nationalities.id}>{nationalities.country}</p>
+                        <Link
+                          key={nationalities.id}
+                          href={`/browse?nationality=${nationalities.id}`}
+                          className="block md:hover:underline"
+                        >
+                          {nationalities.country}
+                        </Link>
                       )
                   )}
                 </div>
@@ -84,10 +90,20 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
                   {movieData.languages.map(
                     ({ languages }) =>
                       languages && (
-                        <p key={languages.id}>{languages.language}</p>
+                        <Link
+                          key={languages.id}
+                          href={`/browse?language=${languages.id}`}
+                          className="block md:hover:underline"
+                        >
+                          {languages.language}
+                        </Link>
                       )
                   )}
                 </div>
+              </div>
+              <div className="flex justify-between gap-x-2">
+                <h4>Format</h4>
+                <p className="text-sm text-end">{movieData.format}</p>
               </div>
             </div>
           </div>
@@ -96,30 +112,41 @@ const MoviePage = async ({ params: { id } }: MoviePageProps) => {
             <Rating rating={movieData.rating} />
             <h2 className="mt-4">
               {getDirectors(movieData.people).map(({ name, id }) => (
-                <span key={id}>{name}</span>
+                <Link
+                  key={id}
+                  href={`/person/${id}`}
+                  className="md:hover:underline mr-4"
+                >
+                  {name}
+                </Link>
               ))}
             </h2>
             <div className="flex gap-2 my-4 flex-wrap">
               {movieData.categories.map(({ categories }) => {
                 return (
-                  <span
-                    className="border border-foreground p-2"
+                  <Link
                     key={categories?.id}
+                    href={`/browse?category=${categories?.id}`}
+                    className="border p-2 md:hover:underline"
                   >
                     {categories?.description}
-                  </span>
+                  </Link>
                 );
               })}
             </div>
             <div className="mb-4">
               <h3>Cast</h3>
-              <p>
+              <div>
                 {getNonDirectors(movieData.people).map(({ name, id }) => (
-                  <span key={id} className="mr-4">
+                  <Link
+                    key={id}
+                    className="mr-4 md:hover:underline"
+                    href={`/person/${id}`}
+                  >
                     {name}
-                  </span>
+                  </Link>
                 ))}
-              </p>
+              </div>
             </div>
             <div className="mb-4">
               <h3>Plot</h3>
