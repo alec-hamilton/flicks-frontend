@@ -20,7 +20,7 @@ const Results = ({ results }: ResultsProps) => {
             src={result.image_url ?? movieNotFound}
             alt={`movie poster for ${result.title}`}
             width={50}
-            height={80}
+            height={75}
             className="border h-auto"
           />
           <div className="my-2">
