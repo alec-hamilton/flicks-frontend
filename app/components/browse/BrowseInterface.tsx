@@ -126,7 +126,7 @@ const BrowseInterface = ({
               `?category=${value}&language=${selectedLanguage}&nationality=${selectedNationality}&page=1&perPage=${perPage}`
             )
           }
-          value={selectedCategory === "" ? "" : Number(selectedCategory)}
+          value={selectedCategory === "" ? "" : selectedCategory}
         >
           <SelectTrigger>
             <SelectValue placeholder="Category" />
@@ -145,7 +145,7 @@ const BrowseInterface = ({
               `?category=${selectedCategory}&language=${value}&nationality=${selectedNationality}&page=1&perPage=${perPage}`
             )
           }
-          value={selectedLanguage === "" ? "" : Number(selectedLanguage)}
+          value={selectedLanguage === "" ? "" : selectedLanguage}
         >
           <SelectTrigger>
             <SelectValue placeholder="Language" />
@@ -164,7 +164,7 @@ const BrowseInterface = ({
               `?category=${selectedCategory}&language=${selectedLanguage}&nationality=${value}&page=1&perPage=${perPage}`
             )
           }
-          value={selectedNationality === "" ? "" : Number(selectedNationality)}
+          value={selectedNationality === "" ? "" : selectedNationality}
         >
           <SelectTrigger>
             <SelectValue placeholder="Nationality" />
