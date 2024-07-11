@@ -3,6 +3,7 @@ import Navbar from "@/components/pageLayout/Navbar/Navbar";
 import Footer from "@/components/pageLayout/Footer/Footer";
 import { Roboto_Mono } from "next/font/google";
 import localFont from "next/font/local";
+import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 
 const robotoMono = Roboto_Mono({
   subsets: ["latin"],
@@ -25,7 +26,9 @@ export default function RootLayout({
       <body className={`${robotoMono.className} ${bladerunner.variable}`}>
         <main className="text-foreground min-h-screen flex flex-col">
           <Navbar />
-          <div className="max-w-5xl mx-auto w-full">{children}</div>
+          <div className="max-w-5xl mx-auto w-full">
+            <PageContentWrapper>{children}</PageContentWrapper>
+          </div>
           <Footer />
         </main>
       </body>
