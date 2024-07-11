@@ -133,7 +133,7 @@ const BrowseInterface = ({
           </SelectTrigger>
           <SelectContent>
             {categories.map(({ description, id }) => (
-              <SelectItem value={id} key={id}>
+              <SelectItem value={id.toString()} key={id}>
                 {description}
               </SelectItem>
             ))}
@@ -152,7 +152,7 @@ const BrowseInterface = ({
           </SelectTrigger>
           <SelectContent>
             {languages.map(({ language, id }) => (
-              <SelectItem value={id} key={id}>
+              <SelectItem value={id.toString()} key={id}>
                 {language}
               </SelectItem>
             ))}
@@ -171,7 +171,7 @@ const BrowseInterface = ({
           </SelectTrigger>
           <SelectContent>
             {nationalities.map(({ country, id }) => (
-              <SelectItem value={id} key={id}>
+              <SelectItem value={id.toString()} key={id}>
                 {country}
               </SelectItem>
             ))}
