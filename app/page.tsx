@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import betty from "@/assets/images/betty-blue.jpg";
-import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 import ExternalLink from "@/components/links/ExternalLink";
 import StandardButton from "@/components/buttons/StandardButton";
 import PageContentHeader from "@/components/surfaces/PageContentHeader";
@@ -30,7 +29,7 @@ export default function Home() {
   );
 
   return (
-    <PageContentWrapper>
+    <>
       <PageContentHeader title={pageTitle} text={headerText} image={image}>
         <ExternalLink href="https://cal.smoothbook.co/20thcflicks">
           <StandardButton>Book a cinema</StandardButton>
@@ -39,6 +38,6 @@ export default function Home() {
       <NewToRent />
       <StaffFavorites />
       <OurCinemas />
-    </PageContentWrapper>
+    </>
   );
 }

@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 import { globalConstants } from "@/constants/globalConstants";
 
 const { aboutUs } = globalConstants;
@@ -11,7 +10,7 @@ export const metadata: Metadata = {
 
 const AboutUs = () => {
   return (
-    <PageContentWrapper>
+    <>
       <h1>About us</h1>
       <section className="flex flex-col gap-6 mt-6">
         <p>{aboutUs.para1}</p>
@@ -20,7 +19,7 @@ const AboutUs = () => {
         <p>{aboutUs.para4}</p>
         <p>{aboutUs.para5}</p>
       </section>
-    </PageContentWrapper>
+    </>
   );
 };
 
