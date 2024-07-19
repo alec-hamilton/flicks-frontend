@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 import PageContentHeader from "@/components/surfaces/PageContentHeader";
 import shopFront from "@/assets/images/bladerunner-style-movie-store.png";
 import Link from "next/link";
@@ -38,11 +37,11 @@ const TheShop = () => {
   );
 
   return (
-    <PageContentWrapper>
+    <>
       <PageContentHeader title={pageTitle} text={headerText} image={image}>
-        {/* <Link href="/browse">
+        <Link href="/browse">
           <StandardButton>{buttonOneText}</StandardButton>
-        </Link> */}
+        </Link>
         <ExternalLink href="https://appvrstudio.com/viewer/20thcenturyflicks">
           <StandardButton>{buttonTwoText}</StandardButton>
         </ExternalLink>
@@ -66,7 +65,7 @@ const TheShop = () => {
         <h2 className="pb-4">{sectionThree.title}</h2>
         <p>{sectionThree.content}</p>
       </section>
-    </PageContentWrapper>
+    </>
   );
 };
 

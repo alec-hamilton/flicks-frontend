@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 import PageContentHeader from "@/components/surfaces/PageContentHeader";
 import shopFront from "@/assets/images/bladerunner-style-movie-store.png";
 import StandardButton from "@/components/buttons/StandardButton";
@@ -37,7 +36,7 @@ const RentLocally = () => {
   );
 
   return (
-    <PageContentWrapper>
+    <>
       <PageContentHeader title={pageTitle} text={headerText} image={image}>
         <ExternalLink href="https://paypal.me/20thcenturyflicks">
           <StandardButton>{buttonOneText}</StandardButton>
@@ -56,7 +55,7 @@ const RentLocally = () => {
           <p>{sectionTwo.content}</p>
         </section>
       </div>
-    </PageContentWrapper>
+    </>
   );
 };
 

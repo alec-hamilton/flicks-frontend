@@ -13,17 +13,32 @@ export type Database = {
         Row: {
           description: string;
           id: number;
-          is_main: boolean | null;
+          is_main: boolean;
         };
         Insert: {
           description: string;
           id: number;
-          is_main?: boolean | null;
+          is_main: boolean;
         };
         Update: {
           description?: string;
           id?: number;
-          is_main?: boolean | null;
+          is_main?: boolean;
+        };
+        Relationships: [];
+      };
+      featured: {
+        Row: {
+          description: string | null;
+          id: number;
+        };
+        Insert: {
+          description?: string | null;
+          id?: number;
+        };
+        Update: {
+          description?: string | null;
+          id?: number;
         };
         Relationships: [];
       };
@@ -60,20 +75,23 @@ export type Database = {
       people: {
         Row: {
           forename: string;
+          fts: unknown | null;
           id: number;
-          pseudonyms: string;
+          pseudonyms: string | null;
           surname: string;
         };
         Insert: {
           forename: string;
+          fts?: unknown | null;
           id: number;
-          pseudonyms: string;
+          pseudonyms?: string | null;
           surname: string;
         };
         Update: {
           forename?: string;
+          fts?: unknown | null;
           id?: number;
-          pseudonyms?: string;
+          pseudonyms?: string | null;
           surname?: string;
         };
         Relationships: [];
@@ -101,6 +119,7 @@ export type Database = {
           format: string | null;
           id: number;
           image_url: string | null;
+          is_fave: boolean;
           keyword: string;
           rating: number;
           review: string;
@@ -115,6 +134,7 @@ export type Database = {
           format?: string | null;
           id: number;
           image_url?: string | null;
+          is_fave?: boolean;
           keyword: string;
           rating: number;
           review: string;
@@ -129,6 +149,7 @@ export type Database = {
           format?: string | null;
           id?: number;
           image_url?: string | null;
+          is_fave?: boolean;
           keyword?: string;
           rating?: number;
           review?: string;
@@ -141,14 +162,17 @@ export type Database = {
       titles2categories: {
         Row: {
           cat_id: number;
+          id: number;
           title_id: number;
         };
         Insert: {
           cat_id: number;
+          id?: number;
           title_id: number;
         };
         Update: {
           cat_id?: number;
+          id?: number;
           title_id?: number;
         };
         Relationships: [
@@ -171,21 +195,21 @@ export type Database = {
       titles2languages: {
         Row: {
           id: number;
-          is_primary: boolean | null;
-          language_id: number | null;
-          title_id: number | null;
+          is_primary: boolean;
+          language_id: number;
+          title_id: number;
         };
         Insert: {
           id: number;
-          is_primary?: boolean | null;
-          language_id?: number | null;
-          title_id?: number | null;
+          is_primary: boolean;
+          language_id: number;
+          title_id: number;
         };
         Update: {
           id?: number;
-          is_primary?: boolean | null;
-          language_id?: number | null;
-          title_id?: number | null;
+          is_primary?: boolean;
+          language_id?: number;
+          title_id?: number;
         };
         Relationships: [
           {
@@ -207,17 +231,17 @@ export type Database = {
       titles2nationalities: {
         Row: {
           id: number;
-          nationality_id: number | null;
+          nationality_id: number;
           title_id: number;
         };
         Insert: {
           id: number;
-          nationality_id?: number | null;
+          nationality_id: number;
           title_id: number;
         };
         Update: {
           id?: number;
-          nationality_id?: number | null;
+          nationality_id?: number;
           title_id?: number;
         };
         Relationships: [
@@ -258,13 +282,6 @@ export type Database = {
         };
         Relationships: [
           {
-            foreignKeyName: "fk_titles2people_people_id";
-            columns: ["person_id"];
-            isOneToOne: false;
-            referencedRelation: "people";
-            referencedColumns: ["id"];
-          },
-          {
             foreignKeyName: "fk_titles2people_roles_id";
             columns: ["role_id"];
             isOneToOne: false;
@@ -272,7 +289,14 @@ export type Database = {
             referencedColumns: ["id"];
           },
           {
-            foreignKeyName: "fk_titles2people_titles_id";
+            foreignKeyName: "titles2people_person_id_fkey";
+            columns: ["person_id"];
+            isOneToOne: false;
+            referencedRelation: "people";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "titles2people_title_id_fkey";
             columns: ["title_id"];
             isOneToOne: false;
             referencedRelation: "titles";
@@ -285,6 +309,28 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
+      get_titles_by_filters: {
+        Args: {
+          in_category_id: number;
+          in_nationality_id: number;
+          in_language_id: number;
+        };
+        Returns: {
+          certification: string;
+          date_1: string;
+          fast_title: string;
+          format: string | null;
+          id: number;
+          image_url: string | null;
+          is_fave: boolean;
+          keyword: string;
+          rating: number;
+          review: string;
+          runningtime: number | null;
+          second_title: string;
+          title: string;
+        }[];
+      };
       get_titles_by_nationality_language_or_cat_ids: {
         Args: {
           nationality_ids: number[];
@@ -298,12 +344,35 @@ export type Database = {
           format: string | null;
           id: number;
           image_url: string | null;
+          is_fave: boolean;
           keyword: string;
           rating: number;
           review: string;
           runningtime: number | null;
           second_title: string;
           title: string;
+        }[];
+      };
+      get_unique_titles_by_filter: {
+        Args: {
+          in_category_id: number;
+          in_nationality_id: number;
+          in_language_id: number;
+        };
+        Returns: {
+          id: number;
+          title: string;
+          second_title: string;
+          fast_title: string;
+          review: string;
+          keyword: string;
+          certification: string;
+          date_1: string;
+          rating: number;
+          format: string;
+          runningtime: number;
+          image_url: string;
+          is_fave: boolean;
         }[];
       };
     };

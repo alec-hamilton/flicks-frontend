@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 import { globalConstants } from "@/constants/globalConstants";
 
 const {
@@ -13,7 +12,7 @@ export const metadata: Metadata = {
 
 const Faqs = () => {
   return (
-    <PageContentWrapper>
+    <>
       <h1>FAQs</h1>
       <div className="flex flex-col mt-6 gap-4 md:gap-6">
         {faqs.map((faq, index) => {
@@ -28,7 +27,7 @@ const Faqs = () => {
           );
         })}
       </div>
-    </PageContentWrapper>
+    </>
   );
 };
 

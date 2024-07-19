@@ -14,13 +14,13 @@ const Results = ({ results }: ResultsProps) => {
         <Link
           href={`/movie/${result.id}`}
           key={result.id}
-          className="flex gap-x-4 py-2 items-center"
+          className="flex gap-x-4 py-2 items-center md:hover:underline"
         >
           <Image
             src={result.image_url ?? movieNotFound}
             alt={`movie poster for ${result.title}`}
             width={50}
-            height={80}
+            height={75}
             className="border h-auto"
           />
           <div className="my-2">

@@ -1,7 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
 import HorizontalDivider from "@/components/dividers/HorizontalDivider";
-import PageContentWrapper from "@/components/surfaces/PageContentWrapper";
 import { layoutConstants } from "@/components/pageLayout/Navbar/layoutConstants";
 import { globalConstants } from "@/constants/globalConstants";
 
@@ -17,7 +16,7 @@ export const metadata: Metadata = {
 
 const Contact = () => {
   return (
-    <PageContentWrapper>
+    <>
       <h1>Contact us</h1>
       <div className="flex flex-col gap-4 text-sm sm:text-base mt-6">
         {contactLinks.links.map(({ name, title, url }, index) => {
@@ -56,7 +55,7 @@ const Contact = () => {
           );
         })}
       </div>
-    </PageContentWrapper>
+    </>
   );
 };
 
