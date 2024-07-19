@@ -26,19 +26,19 @@ const Search = () => {
       <SearchBox
         classNames={{
           input:
-            "w-full h-10 p-2 border border-foreground bg-layer2 text-heading focus-visible:shadow-none",
+            "w-full h-10 p-2 border border-foreground bg-layer2 text-heading focus-visible:shadow-none mt-6",
           submit: "hidden",
           reset: "hidden",
-          root: "pb-6",
+          root: "pb-4",
+          resetIcon: "hidden",
         }}
         autoFocus
-        placeholder="Search..."
         loadingIconComponent={() => <div></div>}
       />
       <EmptyQueryBoundary fallback={null}>
         <NoResultsBoundary fallback={<NoResults />}>
           <Index indexName="titles_csv">
-            <h3 className="pb-4">Movies</h3>
+            <h3 className="pb-2">Movies</h3>
             <Hits hitComponent={({ hit }) => <MovieHit hit={hit} />} />
           </Index>
         </NoResultsBoundary>
@@ -46,7 +46,7 @@ const Search = () => {
       <EmptyQueryBoundary fallback={null}>
         <NoResultsBoundary fallback={<NoResults />}>
           <Index indexName="people_csv">
-            <h3 className="py-4">People</h3>
+            <h3 className="py-2">People</h3>
             <Hits hitComponent={({ hit }) => <PersonHit hit={hit} />} />
           </Index>
         </NoResultsBoundary>

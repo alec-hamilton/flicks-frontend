@@ -34,7 +34,7 @@ const NavSearchButton = () => {
             </span>
           </button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent>
           <DialogHeader>
             <DialogTitle>Search the catalogue</DialogTitle>
             <Search />

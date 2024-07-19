@@ -7,7 +7,7 @@ type HitProps = {
 
 const PersonHit = ({ hit }: HitProps) => {
   return (
-    <div className="flex justify-between pb-2">
+    <div className="flex pb-1 sm:pb-2">
       <DialogTrigger asChild>
         <Link
           href={`/person/${hit.id}`}

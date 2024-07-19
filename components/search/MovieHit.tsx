@@ -7,7 +7,7 @@ type MovieHitProps = {
 
 const MovieHit = ({ hit }: MovieHitProps) => {
   return (
-    <div className="flex pb-2">
+    <div className="flex pb-1 sm:pb-2">
       <DialogTrigger asChild>
         <Link
           href={`/movie/${hit.id}`}
