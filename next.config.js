@@ -1,6 +1,10 @@
+/* eslint @typescript-eslint/no-var-requires: "off" */
+const withMDX = require("@next/mdx")();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   images: {
     remotePatterns: [
       {
@@ -11,4 +15,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withMDX(nextConfig);

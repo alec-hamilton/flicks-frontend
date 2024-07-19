@@ -15,7 +15,7 @@ const Hit = ({ hit, handleClose }: HitProps) => {
       >
         {hit.title}
       </Link>
-      <p className="text-heading">{hit.year}</p>
+      <p className="text-heading">{hit.date_1}</p>
     </div>
   );
 };

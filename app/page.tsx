@@ -5,8 +5,8 @@ import ExternalLink from "@/components/links/ExternalLink";
 import StandardButton from "@/components/buttons/StandardButton";
 import PageContentHeader from "@/components/surfaces/PageContentHeader";
 import NewToRent from "@/app/components/home/NewToRent";
-import StaffFavorites from "@/app/components/home/StaffFavorites";
 import OurCinemas from "@/app/components/home/OurCinemas";
+import FeaturedFilms from "./components/home/FeaturedFilms";
 import { globalConstants } from "@/constants/globalConstants";
 
 const {
@@ -36,7 +36,7 @@ export default function Home() {
         </ExternalLink>
       </PageContentHeader>
       <NewToRent />
-      <StaffFavorites />
+      <FeaturedFilms />
       <OurCinemas />
     </>
   );
