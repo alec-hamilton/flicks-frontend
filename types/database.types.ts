@@ -27,6 +27,21 @@ export type Database = {
         };
         Relationships: [];
       };
+      featured: {
+        Row: {
+          description: string | null;
+          id: number;
+        };
+        Insert: {
+          description?: string | null;
+          id?: number;
+        };
+        Update: {
+          description?: string | null;
+          id?: number;
+        };
+        Relationships: [];
+      };
       languages: {
         Row: {
           id: number;

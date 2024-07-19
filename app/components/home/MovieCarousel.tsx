@@ -13,11 +13,13 @@ import type { Tables } from "@/types/database.types";
 
 type MovieCarouselProps = {
   movies: Tables<"titles">[];
+  description?: string;
 };
 
-const MovieCarousel = ({ movies }: MovieCarouselProps) => {
+const MovieCarousel = ({ movies, description }: MovieCarouselProps) => {
   return (
     <Carousel>
+      {description ? <p className="pb-6">{description}</p> : null}
       <div className="absolute right-0 -top-7 md:-top-9 flex gap-x-2">
         <CarouselPrevious />
         <CarouselNext />
