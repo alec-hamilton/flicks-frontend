@@ -1,23 +1,23 @@
 import Link from "next/link";
 import { DialogTrigger } from "../ui/dialog";
 
-type HitProps = {
+type MovieHitProps = {
   hit: any;
 };
 
-const PersonHit = ({ hit }: HitProps) => {
+const MovieHit = ({ hit }: MovieHitProps) => {
   return (
-    <div className="flex justify-between pb-2">
+    <div className="flex pb-2">
       <DialogTrigger asChild>
         <Link
-          href={`/person/${hit.id}`}
+          href={`/movie/${hit.id}`}
           className="text-foreground underline lg:hover:text-fuchsia-400"
         >
-          {hit.full_name}
+          {hit.title}
         </Link>
       </DialogTrigger>
     </div>
   );
 };
 
-export default PersonHit;
+export default MovieHit;

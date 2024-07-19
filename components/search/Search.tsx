@@ -8,7 +8,7 @@ import {
   Hits,
   Index,
 } from "react-instantsearch";
-import Hit from "./Hit";
+import MovieHit from "./MovieHit";
 import PersonHit from "./PersonHit";
 import EmptyQueryBoundary from "./EmptyQueryBoundary";
 import NoResultsBoundary from "./NoResultsBoundary";
@@ -19,11 +19,7 @@ const searchClient = algoliasearch(
   "d5cfb49854f8f559bcd9eae76b6b44e1"
 );
 
-type SearchProps = {
-  handleClose: () => void;
-};
-
-const Search = ({ handleClose }: SearchProps) => {
+const Search = () => {
   return (
     <InstantSearch searchClient={searchClient}>
       <Configure hitsPerPage={5} />
@@ -43,11 +39,7 @@ const Search = ({ handleClose }: SearchProps) => {
         <NoResultsBoundary fallback={<NoResults />}>
           <Index indexName="titles_csv">
             <h3 className="pb-4">Movies</h3>
-            <Hits
-              hitComponent={({ hit }) => (
-                <Hit hit={hit} handleClose={handleClose} />
-              )}
-            />
+            <Hits hitComponent={({ hit }) => <MovieHit hit={hit} />} />
           </Index>
         </NoResultsBoundary>
       </EmptyQueryBoundary>
@@ -55,11 +47,7 @@ const Search = ({ handleClose }: SearchProps) => {
         <NoResultsBoundary fallback={<NoResults />}>
           <Index indexName="people_csv">
             <h3 className="py-4">People</h3>
-            <Hits
-              hitComponent={({ hit }) => (
-                <PersonHit hit={hit} handleClose={handleClose} />
-              )}
-            />
+            <Hits hitComponent={({ hit }) => <PersonHit hit={hit} />} />
           </Index>
         </NoResultsBoundary>
       </EmptyQueryBoundary>
