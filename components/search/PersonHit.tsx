@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { DialogTrigger } from "../ui/dialog";
 
-type HitProps = {
+type PersonHitProps = {
   hit: any;
 };
 
-const PersonHit = ({ hit }: HitProps) => {
+const PersonHit = ({ hit }: PersonHitProps) => {
   return (
     <div className="flex pb-1 sm:pb-2">
       <DialogTrigger asChild>
