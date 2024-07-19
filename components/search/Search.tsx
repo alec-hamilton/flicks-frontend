@@ -1,8 +1,15 @@
 "use client";
 
 import algoliasearch from "algoliasearch/lite";
-import { Configure, InstantSearch, SearchBox, Hits } from "react-instantsearch";
+import {
+  Configure,
+  InstantSearch,
+  SearchBox,
+  Hits,
+  Index,
+} from "react-instantsearch";
 import Hit from "./Hit";
+import PersonHit from "./PersonHit";
 import EmptyQueryBoundary from "./EmptyQueryBoundary";
 import NoResultsBoundary from "./NoResultsBoundary";
 import NoResults from "./NoResults";
@@ -18,8 +25,8 @@ type SearchProps = {
 
 const Search = ({ handleClose }: SearchProps) => {
   return (
-    <InstantSearch searchClient={searchClient} indexName="titles_csv">
-      <Configure hitsPerPage={8} />
+    <InstantSearch searchClient={searchClient}>
+      <Configure hitsPerPage={5} />
       <SearchBox
         classNames={{
           input:
@@ -34,11 +41,26 @@ const Search = ({ handleClose }: SearchProps) => {
       />
       <EmptyQueryBoundary fallback={null}>
         <NoResultsBoundary fallback={<NoResults />}>
-          <Hits
-            hitComponent={({ hit }) => (
-              <Hit hit={hit} handleClose={handleClose} />
-            )}
-          />
+          <Index indexName="titles_csv">
+            <h3 className="pb-4">Movies</h3>
+            <Hits
+              hitComponent={({ hit }) => (
+                <Hit hit={hit} handleClose={handleClose} />
+              )}
+            />
+          </Index>
+        </NoResultsBoundary>
+      </EmptyQueryBoundary>
+      <EmptyQueryBoundary fallback={null}>
+        <NoResultsBoundary fallback={<NoResults />}>
+          <Index indexName="people_csv">
+            <h3 className="py-4">People</h3>
+            <Hits
+              hitComponent={({ hit }) => (
+                <PersonHit hit={hit} handleClose={handleClose} />
+              )}
+            />
+          </Index>
         </NoResultsBoundary>
       </EmptyQueryBoundary>
     </InstantSearch>

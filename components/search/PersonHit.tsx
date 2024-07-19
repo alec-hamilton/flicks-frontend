@@ -5,18 +5,18 @@ type HitProps = {
   handleClose: () => void;
 };
 
-const Hit = ({ hit, handleClose }: HitProps) => {
+const PersonHit = ({ hit, handleClose }: HitProps) => {
   return (
-    <div className="flex pb-2">
+    <div className="flex justify-between pb-2">
       <Link
-        href={`/movie/${hit.id}`}
+        href={`/person/${hit.id}`}
         onClick={() => handleClose()}
         className="text-foreground underline lg:hover:text-fuchsia-400"
       >
-        {hit.title}
+        {hit.full_name}
       </Link>
     </div>
   );
 };
 
-export default Hit;
+export default PersonHit;
