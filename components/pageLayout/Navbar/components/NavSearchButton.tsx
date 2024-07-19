@@ -1,10 +1,11 @@
 "use client";
 
 import Search from "@/components/search/Search";
-
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -36,7 +37,12 @@ const NavSearchButton = () => {
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Search the catalogue</DialogTitle>
+            <DialogTitle>Search our database</DialogTitle>
+            <DialogDescription>
+              <VisuallyHidden.Root>
+                Search our database for a movie or cast member
+              </VisuallyHidden.Root>
+            </DialogDescription>
             <Search />
           </DialogHeader>
         </DialogContent>
