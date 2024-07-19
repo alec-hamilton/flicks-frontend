@@ -10,21 +10,16 @@ import Image from "next/image";
 import Rating from "@/components/ratings/Rating";
 import movieNotFound from "@/assets/images/movie-not-found.svg";
 import type { Tables } from "@/types/database.types";
-import FeaturedMarkdown from "@/constants/FeaturedMarkdown.mdx";
 
 type MovieCarouselProps = {
   movies: Tables<"titles">[];
-  isFeatured?: boolean;
+  description?: string;
 };
 
-const MovieCarousel = ({ movies, isFeatured }: MovieCarouselProps) => {
+const MovieCarousel = ({ movies, description }: MovieCarouselProps) => {
   return (
     <Carousel>
-      {isFeatured ? (
-        <div className="pb-6">
-          <FeaturedMarkdown />
-        </div>
-      ) : null}
+      {description ? <p className="pb-6">{description}</p> : null}
       <div className="absolute right-0 -top-7 md:-top-9 flex gap-x-2">
         <CarouselPrevious />
         <CarouselNext />
