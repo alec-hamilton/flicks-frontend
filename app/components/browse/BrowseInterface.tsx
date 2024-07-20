@@ -1,15 +1,6 @@
 "use client";
 
 import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationPrevious,
-  PaginationNext,
-  PaginationLink,
-  PaginationEllipsis,
-} from "@/components/ui/pagination";
-import {
   Select,
   SelectContent,
   SelectItem,

@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
-
 import { createClient } from "@/lib/supabase/server";
+import AddMovieForm from "@/app/components/admin/add-movie/AddMovieForm";
 
-export default async function PrivatePage() {
+export default async function AddMovie() {
   const supabase = createClient();
 
   const { data, error } = await supabase.auth.getUser();
@@ -10,5 +10,10 @@ export default async function PrivatePage() {
     redirect("/login");
   }
 
-  return <p>Hello {data.user.email}</p>;
+  return (
+    <div>
+      <p>Hello {data.user.email}</p>
+      <AddMovieForm />
+    </div>
+  );
 }
