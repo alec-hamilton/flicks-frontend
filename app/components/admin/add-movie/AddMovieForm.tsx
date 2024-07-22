@@ -14,12 +14,35 @@ import {
 import { queryOmdb } from "@/app/actions";
 import { useReducer } from "react";
 import { extractLastNumber } from "@/lib/helpers/helpers";
+import { OmdbResponse } from "@/types/omdbResponse.types";
 
-type ReducerAction = {
-  type: "titleInput" | "yearInput" | "omdbUpdate";
+type ReducerAction =
+  | { type: "titleInput"; payload: string }
+  | { type: "yearInput"; payload: string }
+  | { type: "formatInput"; payload: string }
+  | { type: "certificationInput"; payload: string }
+  | { type: "reviewInput"; payload: string }
+  | { type: "ratingInput"; payload: string }
+  | { type: "runningTimeInput"; payload: string }
+  | { type: "imageUrlInput"; payload: string }
+  | { type: "omdbUpdate"; payload: OmdbResponse };
+
+const ratings = ["1", "2", "3", "4", "5"];
+
+const initialState = {
+  title: "",
+  year: "",
+  format: "",
+  certification: "",
+  review: "",
+  rating: "1",
+  runningTime: "",
+  imageUrl: "",
 };
 
-const reducer = (state, action) => {
+type State = typeof initialState;
+
+const reducer = (state: State, action: ReducerAction) => {
   switch (action.type) {
     case "titleInput":
       return { ...state, title: action.payload };
@@ -48,27 +71,15 @@ const reducer = (state, action) => {
       };
 
     default:
-      throw new Error("Invalid action");
+      return state;
   }
 };
 
 const AddMovieForm = () => {
-  const ratings = [1, 2, 3, 4, 5];
-
-  const initialState = {
-    title: "",
-    year: "",
-    format: "",
-    certification: "",
-    review: "",
-    rating: 1,
-    runningTime: 0,
-    imageUrl: "",
-  };
-
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  console.log(state);
+  const [state, dispatch] = useReducer<React.Reducer<State, ReducerAction>>(
+    reducer,
+    initialState
+  );
 
   return (
     <form>
@@ -102,7 +113,6 @@ const AddMovieForm = () => {
           onClick={async (e) => {
             e.preventDefault();
             const data = await queryOmdb(state.title, state.year);
-            console.log(data);
             dispatch({ type: "omdbUpdate", payload: data });
           }}
         >
@@ -113,7 +123,7 @@ const AddMovieForm = () => {
       <Input
         type="text"
         id="format"
-        value={state.fomat}
+        value={state.format}
         onChange={(e) =>
           dispatch({ type: "formatInput", payload: e.target.value })
         }
@@ -148,7 +158,7 @@ const AddMovieForm = () => {
         <SelectContent>
           {ratings.map((rating) => {
             return (
-              <SelectItem value={rating.toString()} key={rating}>
+              <SelectItem value={rating} key={rating}>
                 {rating}
               </SelectItem>
             );
