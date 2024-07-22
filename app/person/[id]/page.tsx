@@ -1,4 +1,4 @@
-import Results from "@/app/browse/Results";
+import Results from "@/app/components/browse/Results";
 import { createClient } from "@/lib/supabase/server";
 
 type PersonPageProps = {

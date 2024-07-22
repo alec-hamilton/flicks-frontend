@@ -8,6 +8,7 @@ import NewToRent from "@/app/components/home/NewToRent";
 import OurCinemas from "@/app/components/home/OurCinemas";
 import FeaturedFilms from "./components/home/FeaturedFilms";
 import { globalConstants } from "@/constants/globalConstants";
+import Link from "next/link";
 
 const {
   homePage: { metaTitle, metaDescription, pageTitle, headerText },
@@ -34,6 +35,9 @@ export default function Home() {
         <ExternalLink href="https://cal.smoothbook.co/20thcflicks">
           <StandardButton>Book a cinema</StandardButton>
         </ExternalLink>
+        <Link href="/browse">
+          <StandardButton>Browse our movies</StandardButton>
+        </Link>
       </PageContentHeader>
       <FeaturedFilms />
       <NewToRent />

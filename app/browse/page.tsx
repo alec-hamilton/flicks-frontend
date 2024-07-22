@@ -1,5 +1,5 @@
-import BrowseInterface from "../components/browse/BrowseInterface";
 import { createClient } from "@/lib/supabase/server";
+import BrowseInterface from "../components/browse/BrowseInterface";
 
 const Browse = async () => {
   const supabase = createClient();

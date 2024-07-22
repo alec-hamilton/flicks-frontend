@@ -1,7 +1,12 @@
 "use server";
 
-export async function queryOmdb(title: string, year: string) {
-  const url = `http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&t=${title}&y=${year}`;
+import { OmdbResponse } from "@/types/omdbResponse.types";
+
+export async function queryOmdb(
+  title: string,
+  year: string
+): Promise<OmdbResponse> {
+  const url = `http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&t=${title}&y=${year}&plot=full`;
 
   try {
     const response = await fetch(url, { cache: "no-store" });
