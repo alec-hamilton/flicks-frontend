@@ -15,6 +15,14 @@ import { queryOmdb } from "@/app/actions";
 import { useReducer } from "react";
 import { extractLastNumber } from "@/lib/helpers/helpers";
 import { OmdbResponse } from "@/types/omdbResponse.types";
+import { MultiSelect } from "@/components/ui/multi-select";
+import { Tables } from "@/types/database.types";
+
+type AddMovieFormProps = {
+  categories: Tables<"categories">[];
+  languages: Tables<"languages">[];
+  nationalities: Tables<"nationalities">[];
+};
 
 type ReducerAction =
   | { type: "titleInput"; payload: string }
@@ -25,6 +33,9 @@ type ReducerAction =
   | { type: "ratingInput"; payload: string }
   | { type: "runningTimeInput"; payload: string }
   | { type: "imageUrlInput"; payload: string }
+  | { type: "categoryInput"; payload: string[] }
+  | { type: "languageInput"; payload: string[] }
+  | { type: "nationalityInput"; payload: string[] }
   | { type: "omdbUpdate"; payload: OmdbResponse };
 
 const ratings = ["1", "2", "3", "4", "5"];
@@ -38,11 +49,12 @@ const initialState = {
   rating: "1",
   runningTime: "",
   imageUrl: "",
+  categories: [] as string[],
+  languages: [] as string[],
+  nationalities: [] as string[],
 };
 
-type State = typeof initialState;
-
-const reducer = (state: State, action: ReducerAction) => {
+const reducer = (state: typeof initialState, action: ReducerAction) => {
   switch (action.type) {
     case "titleInput":
       return { ...state, title: action.payload };
@@ -60,6 +72,12 @@ const reducer = (state: State, action: ReducerAction) => {
       return { ...state, runningTime: action.payload };
     case "imageUrlInput":
       return { ...state, imageUrl: action.payload };
+    case "categoryInput":
+      return { ...state, categories: action.payload };
+    case "languageInput":
+      return { ...state, languages: action.payload };
+    case "nationalityInput":
+      return { ...state, nationalities: action.payload };
     case "omdbUpdate":
       return {
         ...state,
@@ -75,11 +93,24 @@ const reducer = (state: State, action: ReducerAction) => {
   }
 };
 
-const AddMovieForm = () => {
-  const [state, dispatch] = useReducer<React.Reducer<State, ReducerAction>>(
-    reducer,
-    initialState
-  );
+const AddMovieForm = ({
+  categories,
+  languages,
+  nationalities,
+}: AddMovieFormProps) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const categoriesList = categories.map((category) => {
+    return { label: category.description, value: category.id.toString() };
+  });
+
+  const languagesList = languages.map((language) => {
+    return { label: language.language, value: language.id.toString() };
+  });
+
+  const nationalitiesList = nationalities.map((nationality) => {
+    return { label: nationality.country, value: nationality.id.toString() };
+  });
 
   return (
     <form>
@@ -113,7 +144,9 @@ const AddMovieForm = () => {
           onClick={async (e) => {
             e.preventDefault();
             const data = await queryOmdb(state.title, state.year);
-            dispatch({ type: "omdbUpdate", payload: data });
+            if (data.Response === "True") {
+              dispatch({ type: "omdbUpdate", payload: data });
+            }
           }}
         >
           Fill from OMDb
@@ -182,6 +215,30 @@ const AddMovieForm = () => {
         onChange={(e) =>
           dispatch({ type: "imageUrlInput", payload: e.target.value })
         }
+      />
+      <MultiSelect
+        options={categoriesList}
+        onValueChange={(category) => {
+          dispatch({ type: "categoryInput", payload: category });
+        }}
+        defaultValue={state.categories}
+        placeholder="Category"
+      />
+      <MultiSelect
+        options={languagesList}
+        onValueChange={(language) => {
+          dispatch({ type: "languageInput", payload: language });
+        }}
+        defaultValue={state.languages}
+        placeholder="Languages"
+      />
+      <MultiSelect
+        options={nationalitiesList}
+        onValueChange={(nationality) => {
+          dispatch({ type: "nationalityInput", payload: nationality });
+        }}
+        defaultValue={state.nationalities}
+        placeholder="Nationality"
       />
     </form>
   );
