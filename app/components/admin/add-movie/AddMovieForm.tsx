@@ -39,12 +39,13 @@ type ReducerAction =
   | { type: "omdbUpdate"; payload: OmdbResponse };
 
 const ratings = ["1", "2", "3", "4", "5"];
+const certifications = ["U", "PG", "12", "15", "18"];
 
 const initialState = {
   title: "",
   year: "",
   format: "",
-  certification: "",
+  certification: "PG",
   review: "",
   rating: "1",
   runningTime: "",
@@ -113,7 +114,12 @@ const AddMovieForm = ({
   });
 
   return (
-    <form>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        console.log(state);
+      }}
+    >
       <div className="flex">
         <div>
           <Label htmlFor="title">Title</Label>
@@ -125,6 +131,7 @@ const AddMovieForm = ({
             onChange={(e) =>
               dispatch({ type: "titleInput", payload: e.target.value })
             }
+            required
           />
         </div>
         <div>
@@ -137,6 +144,7 @@ const AddMovieForm = ({
             onChange={(e) =>
               dispatch({ type: "yearInput", payload: e.target.value })
             }
+            required
           />
         </div>
         <Button
@@ -156,27 +164,41 @@ const AddMovieForm = ({
       <Input
         type="text"
         id="format"
+        name="format"
         value={state.format}
         onChange={(e) =>
           dispatch({ type: "formatInput", payload: e.target.value })
         }
+        required
       />
-      <Label htmlFor="certification">Certification</Label>
-      <Input
-        type="text"
-        id="certification"
+      <Select
         value={state.certification}
-        onChange={(e) =>
-          dispatch({ type: "certificationInput", payload: e.target.value })
-        }
-      />
+        onValueChange={(certification) => {
+          dispatch({ type: "certificationInput", payload: certification });
+        }}
+        name="certification"
+        required
+      >
+        <SelectTrigger>{state.certification}</SelectTrigger>
+        <SelectContent>
+          {certifications.map((certification) => {
+            return (
+              <SelectItem value={certification} key={certification}>
+                {certification}
+              </SelectItem>
+            );
+          })}
+        </SelectContent>
+      </Select>
       <Label htmlFor="review">Review</Label>
       <Textarea
         id="review"
+        name="review"
         value={state.review}
         onChange={(e) =>
           dispatch({ type: "reviewInput", payload: e.target.value })
         }
+        required
       />
       <Select
         value={state.rating}
@@ -184,6 +206,7 @@ const AddMovieForm = ({
           dispatch({ type: "ratingInput", payload: rating })
         }
         name="rating"
+        required
       >
         <SelectTrigger>
           <SelectValue>{state.rating}</SelectValue>
@@ -202,15 +225,18 @@ const AddMovieForm = ({
       <Input
         type="number"
         id="running-time"
+        name="running-time"
         value={state.runningTime}
         onChange={(e) =>
           dispatch({ type: "runningTimeInput", payload: e.target.value })
         }
+        required
       />
       <Label htmlFor="image-url">Image url</Label>
       <Input
         type="url"
         id="image-url"
+        name="image-url"
         value={state.imageUrl}
         onChange={(e) =>
           dispatch({ type: "imageUrlInput", payload: e.target.value })
@@ -222,7 +248,8 @@ const AddMovieForm = ({
           dispatch({ type: "categoryInput", payload: category });
         }}
         defaultValue={state.categories}
-        placeholder="Category"
+        placeholder="Categories"
+        name="categories"
       />
       <MultiSelect
         options={languagesList}
@@ -231,6 +258,7 @@ const AddMovieForm = ({
         }}
         defaultValue={state.languages}
         placeholder="Languages"
+        name="languages"
       />
       <MultiSelect
         options={nationalitiesList}
@@ -238,8 +266,10 @@ const AddMovieForm = ({
           dispatch({ type: "nationalityInput", payload: nationality });
         }}
         defaultValue={state.nationalities}
-        placeholder="Nationality"
+        placeholder="Nationalities"
+        name="nationalities"
       />
+      <Button type="submit">Submit</Button>
     </form>
   );
 };
