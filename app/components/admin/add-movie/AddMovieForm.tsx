@@ -40,11 +40,12 @@ type ReducerAction =
 
 const ratings = ["1", "2", "3", "4", "5"];
 const certifications = ["U", "PG", "12", "15", "18"];
+const formats = ["DVD", "BLU-R"];
 
 const initialState = {
   title: "",
   year: "",
-  format: "",
+  format: "DVD",
   certification: "PG",
   review: "",
   rating: "1",
@@ -126,7 +127,6 @@ const AddMovieForm = ({
           <Input
             type="text"
             id="title"
-            name="title"
             value={state.title}
             onChange={(e) =>
               dispatch({ type: "titleInput", payload: e.target.value })
@@ -139,7 +139,6 @@ const AddMovieForm = ({
           <Input
             type="text"
             id="year"
-            name="year"
             value={state.year}
             onChange={(e) =>
               dispatch({ type: "yearInput", payload: e.target.value })
@@ -160,23 +159,58 @@ const AddMovieForm = ({
           Fill from OMDb
         </Button>
       </div>
-      <Label htmlFor="format">Format</Label>
+      <Label htmlFor="running-time">Running time</Label>
       <Input
-        type="text"
-        id="format"
-        name="format"
-        value={state.format}
+        type="number"
+        id="running-time"
+        value={state.runningTime}
         onChange={(e) =>
-          dispatch({ type: "formatInput", payload: e.target.value })
+          dispatch({ type: "runningTimeInput", payload: e.target.value })
         }
         required
       />
+      <Label htmlFor="image-url">Image url</Label>
+      <Input
+        type="url"
+        id="image-url"
+        value={state.imageUrl}
+        onChange={(e) =>
+          dispatch({ type: "imageUrlInput", payload: e.target.value })
+        }
+      />
+      <Label htmlFor="review">Review</Label>
+      <Textarea
+        id="review"
+        value={state.review}
+        onChange={(e) =>
+          dispatch({ type: "reviewInput", payload: e.target.value })
+        }
+        required
+      />
+      <Label>Format</Label>
+      <Select
+        value={state.format}
+        onValueChange={(format) => {
+          dispatch({ type: "certificationInput", payload: format });
+        }}
+      >
+        <SelectTrigger>{state.format}</SelectTrigger>
+        <SelectContent>
+          {formats.map((format) => {
+            return (
+              <SelectItem value={format} key={format}>
+                {format}
+              </SelectItem>
+            );
+          })}
+        </SelectContent>
+      </Select>
+      <Label>Certification</Label>
       <Select
         value={state.certification}
         onValueChange={(certification) => {
           dispatch({ type: "certificationInput", payload: certification });
         }}
-        name="certification"
         required
       >
         <SelectTrigger>{state.certification}</SelectTrigger>
@@ -190,22 +224,12 @@ const AddMovieForm = ({
           })}
         </SelectContent>
       </Select>
-      <Label htmlFor="review">Review</Label>
-      <Textarea
-        id="review"
-        name="review"
-        value={state.review}
-        onChange={(e) =>
-          dispatch({ type: "reviewInput", payload: e.target.value })
-        }
-        required
-      />
+      <Label>Rating</Label>
       <Select
         value={state.rating}
         onValueChange={(rating) =>
           dispatch({ type: "ratingInput", payload: rating })
         }
-        name="rating"
         required
       >
         <SelectTrigger>
@@ -221,27 +245,7 @@ const AddMovieForm = ({
           })}
         </SelectContent>
       </Select>
-      <Label htmlFor="running-time">Running time</Label>
-      <Input
-        type="number"
-        id="running-time"
-        name="running-time"
-        value={state.runningTime}
-        onChange={(e) =>
-          dispatch({ type: "runningTimeInput", payload: e.target.value })
-        }
-        required
-      />
-      <Label htmlFor="image-url">Image url</Label>
-      <Input
-        type="url"
-        id="image-url"
-        name="image-url"
-        value={state.imageUrl}
-        onChange={(e) =>
-          dispatch({ type: "imageUrlInput", payload: e.target.value })
-        }
-      />
+      <Label>Categories</Label>
       <MultiSelect
         options={categoriesList}
         onValueChange={(category) => {
@@ -249,8 +253,8 @@ const AddMovieForm = ({
         }}
         defaultValue={state.categories}
         placeholder="Categories"
-        name="categories"
       />
+      <Label>Languages</Label>
       <MultiSelect
         options={languagesList}
         onValueChange={(language) => {
@@ -258,8 +262,8 @@ const AddMovieForm = ({
         }}
         defaultValue={state.languages}
         placeholder="Languages"
-        name="languages"
       />
+      <Label>Nationalities</Label>
       <MultiSelect
         options={nationalitiesList}
         onValueChange={(nationality) => {
@@ -267,7 +271,6 @@ const AddMovieForm = ({
         }}
         defaultValue={state.nationalities}
         placeholder="Nationalities"
-        name="nationalities"
       />
       <Button type="submit">Submit</Button>
     </form>
