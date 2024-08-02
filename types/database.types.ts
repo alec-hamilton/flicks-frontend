@@ -76,6 +76,7 @@ export type Database = {
         Row: {
           forename: string;
           fts: unknown | null;
+          full_name: string | null;
           id: number;
           pseudonyms: string | null;
           surname: string;
@@ -83,6 +84,7 @@ export type Database = {
         Insert: {
           forename: string;
           fts?: unknown | null;
+          full_name?: string | null;
           id: number;
           pseudonyms?: string | null;
           surname: string;
@@ -90,6 +92,7 @@ export type Database = {
         Update: {
           forename?: string;
           fts?: unknown | null;
+          full_name?: string | null;
           id?: number;
           pseudonyms?: string | null;
           surname?: string;

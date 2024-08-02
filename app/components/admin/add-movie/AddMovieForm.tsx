@@ -17,11 +17,13 @@ import { extractLastNumber } from "@/lib/helpers/helpers";
 import { OmdbResponse } from "@/types/omdbResponse.types";
 import { MultiSelect } from "@/components/ui/multi-select";
 import { Tables } from "@/types/database.types";
+import AddPeople from "./AddPeople";
 
 type AddMovieFormProps = {
   categories: Tables<"categories">[];
   languages: Tables<"languages">[];
   nationalities: Tables<"nationalities">[];
+  roles: Tables<"roles">[];
 };
 
 type ReducerAction =
@@ -99,6 +101,7 @@ const AddMovieForm = ({
   categories,
   languages,
   nationalities,
+  roles,
 }: AddMovieFormProps) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -272,6 +275,7 @@ const AddMovieForm = ({
         defaultValue={state.nationalities}
         placeholder="Nationalities"
       />
+      <AddPeople roles={roles} />
       <Button type="submit">Submit</Button>
     </form>
   );

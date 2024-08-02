@@ -22,10 +22,15 @@ export default async function AddMovie() {
     .from("nationalities")
     .select("*")
     .order("country", { ascending: true });
+  const { data: roles, error: rolesError } = await supabase
+    .from("roles")
+    .select("*")
+    .order("role_name", { ascending: true });
 
   if (categoriesError) return <p>{categoriesError.message}</p>;
   if (languagesError) return <p>{languagesError.message}</p>;
   if (nationalitiesError) return <p>{nationalitiesError.message}</p>;
+  if (rolesError) return <p>{rolesError.message}</p>;
 
   return (
     <div>
@@ -34,6 +39,7 @@ export default async function AddMovie() {
         categories={categories}
         languages={languages}
         nationalities={nationalities}
+        roles={roles}
       />
     </div>
   );
