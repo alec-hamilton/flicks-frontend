@@ -20,7 +20,6 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -122,9 +121,6 @@ const AddPeople = ({ roles }: AddPeopleProps) => {
           </SelectGroup>
         </SelectContent>
       </Select>
-      <Button disabled={value === ""} type="button">
-        Add another
-      </Button>
     </div>
   );
 };

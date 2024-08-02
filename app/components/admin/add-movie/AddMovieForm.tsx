@@ -14,10 +14,11 @@ import {
 import { queryOmdb } from "@/app/actions";
 import { useReducer } from "react";
 import { extractLastNumber } from "@/lib/helpers/helpers";
-import { OmdbResponse } from "@/types/omdbResponse.types";
 import { MultiSelect } from "@/components/ui/multi-select";
 import { Tables } from "@/types/database.types";
 import AddPeople from "./AddPeople";
+import { BiX } from "react-icons/bi";
+import { AddMovieReducerAction } from "@/types/reducers.types";
 
 type AddMovieFormProps = {
   categories: Tables<"categories">[];
@@ -25,20 +26,6 @@ type AddMovieFormProps = {
   nationalities: Tables<"nationalities">[];
   roles: Tables<"roles">[];
 };
-
-type ReducerAction =
-  | { type: "titleInput"; payload: string }
-  | { type: "yearInput"; payload: string }
-  | { type: "formatInput"; payload: string }
-  | { type: "certificationInput"; payload: string }
-  | { type: "reviewInput"; payload: string }
-  | { type: "ratingInput"; payload: string }
-  | { type: "runningTimeInput"; payload: string }
-  | { type: "imageUrlInput"; payload: string }
-  | { type: "categoryInput"; payload: string[] }
-  | { type: "languageInput"; payload: string[] }
-  | { type: "nationalityInput"; payload: string[] }
-  | { type: "omdbUpdate"; payload: OmdbResponse };
 
 const ratings = ["1", "2", "3", "4", "5"];
 const certifications = ["U", "PG", "12", "15", "18"];
@@ -56,9 +43,10 @@ const initialState = {
   categories: [] as string[],
   languages: [] as string[],
   nationalities: [] as string[],
+  people: [{ id: "" }],
 };
 
-const reducer = (state: typeof initialState, action: ReducerAction) => {
+const reducer = (state: typeof initialState, action: AddMovieReducerAction) => {
   switch (action.type) {
     case "titleInput":
       return { ...state, title: action.payload };
@@ -90,6 +78,25 @@ const reducer = (state: typeof initialState, action: ReducerAction) => {
         review: action.payload.Plot,
         runningTime: extractLastNumber(action.payload.Runtime),
         imageUrl: action.payload.Poster,
+      };
+    case "addPersonRow":
+      return {
+        ...state,
+        people: [...state.people, { id: "" }],
+      };
+    case "removePersonRow":
+      console.log(action.payload);
+      return {
+        ...state,
+        people: state.people.filter((_, index) => {
+          console.log(
+            "Comparing index:",
+            index,
+            "with payload:",
+            action.payload
+          );
+          return index !== action.payload;
+        }),
       };
 
     default:
@@ -275,7 +282,29 @@ const AddMovieForm = ({
         defaultValue={state.nationalities}
         placeholder="Nationalities"
       />
-      <AddPeople roles={roles} />
+      {state.people.map((person, index) => {
+        return (
+          <div key={index} className="flex">
+            <AddPeople roles={roles} />
+            <Button
+              type="button"
+              onClick={() => dispatch({ type: "addPersonRow" })}
+            >
+              add another
+            </Button>
+            <button
+              type="button"
+              onClick={() => {
+                if (state.people.length > 1) {
+                  dispatch({ type: "removePersonRow", payload: index });
+                }
+              }}
+            >
+              <BiX />
+            </button>
+          </div>
+        );
+      })}
       <Button type="submit">Submit</Button>
     </form>
   );
