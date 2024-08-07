@@ -43,7 +43,7 @@ const initialState = {
   categories: [] as string[],
   languages: [] as string[],
   nationalities: [] as string[],
-  people: [{ id: "" }],
+  people: [] as { personId: ""; roleId: "" }[],
 };
 
 const reducer = (state: typeof initialState, action: AddMovieReducerAction) => {
@@ -79,25 +79,22 @@ const reducer = (state: typeof initialState, action: AddMovieReducerAction) => {
         runningTime: extractLastNumber(action.payload.Runtime),
         imageUrl: action.payload.Poster,
       };
-    case "addPersonRow":
+    case "personInput":
       return {
         ...state,
-        people: [...state.people, { id: "" }],
       };
-    case "removePersonRow":
-      console.log(action.payload);
-      return {
-        ...state,
-        people: state.people.filter((_, index) => {
-          console.log(
-            "Comparing index:",
-            index,
-            "with payload:",
-            action.payload
-          );
-          return index !== action.payload;
-        }),
-      };
+    // case "addPersonRow":
+    //   return {
+    //     ...state,
+    //     people: [...state.people, { id: "" }],
+    //   };
+    // case "removePersonRow":
+    //   return {
+    //     ...state,
+    //     people: state.people.filter((_, index) => {
+    //       return index !== action.payload;
+    //     }),
+    //   };
 
     default:
       return state;
@@ -286,7 +283,8 @@ const AddMovieForm = ({
         return (
           <div key={index} className="flex">
             <AddPeople roles={roles} />
-            <Button
+            {/* Form itself is static. Adding a person just displays the person in text. Not editable.  */}
+            {/* <Button
               type="button"
               onClick={() => dispatch({ type: "addPersonRow" })}
             >
@@ -301,7 +299,7 @@ const AddMovieForm = ({
               }}
             >
               <BiX />
-            </button>
+            </button> */}
           </div>
         );
       })}
