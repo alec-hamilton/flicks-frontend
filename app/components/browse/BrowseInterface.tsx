@@ -1,15 +1,6 @@
 "use client";
 
 import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationPrevious,
-  PaginationNext,
-  PaginationLink,
-  PaginationEllipsis,
-} from "@/components/ui/pagination";
-import {
   Select,
   SelectContent,
   SelectItem,
@@ -17,25 +8,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import type { Tables } from "@/types/database.types";
-import { Metadata } from "next";
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import Results from "./Results";
 import { useSearchParams, useRouter } from "next/navigation";
-import { globalConstants } from "@/constants/globalConstants";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import CustomPagination from "@/components/pagination/CustomPagination";
 import LoadingSpinner from "@/components/spinners/LoadingSpinner";
-
-const {
-  browse: { metaTitle, metaDescription },
-} = globalConstants;
-
-export const metadata: Metadata = {
-  title: metaTitle,
-  description: metaDescription,
-};
 
 type BrowseInterfaceProps = {
   categories: Tables<"categories">[];
@@ -52,11 +32,14 @@ const BrowseInterface = ({
   const searchParams = useSearchParams();
   const router = useRouter();
 
+  const PER_PAGE = "10" as const;
+  const PAGE = "1" as const;
+
   const selectedCategory = searchParams.get("category") ?? "";
   const selectedLanguage = searchParams.get("language") ?? "";
   const selectedNationality = searchParams.get("nationality") ?? "";
-  const page = searchParams.get("page") ?? "1";
-  const perPage = searchParams.get("perPage") ?? "10";
+  const page = searchParams.get("page") ?? PAGE;
+  const perPage = searchParams.get("perPage") ?? PER_PAGE;
 
   const [results, setResults] = useState<Tables<"titles">[]>([]);
   const [loading, setLoading] = useState(false);
