@@ -33,7 +33,7 @@ const Search = () => {
           resetIcon: "hidden",
         }}
         autoFocus
-        loadingIconComponent={() => <div></div>}
+        loadingIconComponent={() => null}
       />
       <EmptyQueryBoundary fallback={null}>
         <NoResultsBoundary fallback={<NoResults />}>

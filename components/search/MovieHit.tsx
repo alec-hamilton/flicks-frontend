@@ -1,11 +1,9 @@
 import Link from "next/link";
 import { DialogTrigger } from "../ui/dialog";
 
+// algolia doesn't provide a type for a hit in their docs.
 type MovieHitProps = {
-  hit: {
-    id: string;
-    title: string;
-  };
+  hit: any;
 };
 
 const MovieHit = ({ hit }: MovieHitProps) => {
