@@ -1,41 +1,21 @@
 "use client";
 
 import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationPrevious,
-  PaginationNext,
-  PaginationLink,
-  PaginationEllipsis,
-} from "@/components/ui/pagination";
-import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import type { Tables } from "@/types/database.types";
-import { Metadata } from "next";
-import { useEffect, useState } from "react";
-import { createClient } from "@/lib/supabase/client";
-import Results from "./Results";
-import { useSearchParams, useRouter } from "next/navigation";
-import { globalConstants } from "@/constants/globalConstants";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import CustomPagination from "@/components/pagination/CustomPagination";
 import LoadingSpinner from "@/components/spinners/LoadingSpinner";
-
-const {
-  browse: { metaTitle, metaDescription },
-} = globalConstants;
-
-export const metadata: Metadata = {
-  title: metaTitle,
-  description: metaDescription,
-};
+import Results from "./Results";
+import Link from "next/link";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
+import type { Tables } from "@/types/database.types";
 
 type BrowseInterfaceProps = {
   categories: Tables<"categories">[];
@@ -52,11 +32,15 @@ const BrowseInterface = ({
   const searchParams = useSearchParams();
   const router = useRouter();
 
+  const PER_PAGE = "10" as const;
+  const PAGE = "1" as const;
+
+  // store filter selections in the URL so the user can use the back button and be presented with same results.
   const selectedCategory = searchParams.get("category") ?? "";
   const selectedLanguage = searchParams.get("language") ?? "";
   const selectedNationality = searchParams.get("nationality") ?? "";
-  const page = searchParams.get("page") ?? "1";
-  const perPage = searchParams.get("perPage") ?? "10";
+  const page = searchParams.get("page") ?? PAGE;
+  const perPage = searchParams.get("perPage") ?? PER_PAGE;
 
   const [results, setResults] = useState<Tables<"titles">[]>([]);
   const [loading, setLoading] = useState(false);
@@ -65,6 +49,7 @@ const BrowseInterface = ({
   const start = (Number(page) - 1) * Number(perPage);
   const end = start + Number(perPage) - 1;
 
+  // whenever a user changes their filters, fire a request to supabase for fresh data.
   useEffect(() => {
     const applyFilters = async () => {
       setLoading(true);
@@ -78,6 +63,7 @@ const BrowseInterface = ({
         .range(start, end)
         .order("id", { ascending: false });
 
+      // if a category, language or nationality has been chosen, add it to the supabase query.
       if (selectedCategory) {
         query = query.eq("categories.id", selectedCategory);
       }

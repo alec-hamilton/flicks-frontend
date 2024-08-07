@@ -1,5 +1,16 @@
-import BrowseInterface from "../components/browse/BrowseInterface";
+import BrowseInterface from "./BrowseInterface";
+import { globalConstants } from "@/constants/globalConstants";
+import { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
+
+const {
+  browse: { metaTitle, metaDescription },
+} = globalConstants;
+
+export const metadata: Metadata = {
+  title: metaTitle,
+  description: metaDescription,
+};
 
 const Browse = async () => {
   const supabase = createClient();
@@ -19,7 +30,7 @@ const Browse = async () => {
   if (categoriesError) return <p>{categoriesError.message}</p>;
   if (languagesError) return <p>{languagesError.message}</p>;
   if (nationalitiesError) return <p>{nationalitiesError.message}</p>;
-  // SEO title etc.
+
   return (
     <>
       <h1 className="mb-4">Browse</h1>

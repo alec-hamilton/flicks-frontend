@@ -1,4 +1,4 @@
-export const layoutConstants = {
+export const navigationConstants = {
   regularLinks: [
     { title: "Browse", url: "/browse" },
     { title: "Cinemas", url: "/cinemas" },
