@@ -2,7 +2,10 @@ import Link from "next/link";
 import { DialogTrigger } from "../ui/dialog";
 
 type PersonHitProps = {
-  hit: any;
+  hit: {
+    id: string;
+    full_name: string;
+  };
 };
 
 const PersonHit = ({ hit }: PersonHitProps) => {

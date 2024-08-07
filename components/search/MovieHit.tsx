@@ -2,7 +2,10 @@ import Link from "next/link";
 import { DialogTrigger } from "../ui/dialog";
 
 type MovieHitProps = {
-  hit: any;
+  hit: {
+    id: string;
+    title: string;
+  };
 };
 
 const MovieHit = ({ hit }: MovieHitProps) => {

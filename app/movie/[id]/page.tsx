@@ -29,7 +29,6 @@ export const generateMetadata = async ({ params }: MoviePageProps) => {
 
   if (!movieData) return;
 
-  // TODO: uncapitalise titles.
   return {
     title: `${movieData.title} - 20th Century Flicks`,
     description: `Rent ${movieData.title} from 20th Century Flicks, the longest running movie store in the world. Rent locally or by post.`,

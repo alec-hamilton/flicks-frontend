@@ -1,4 +1,4 @@
-import BrowseInterface from "../components/browse/BrowseInterface";
+import BrowseInterface from "./BrowseInterface";
 import { globalConstants } from "@/constants/globalConstants";
 import { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
