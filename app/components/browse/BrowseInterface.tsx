@@ -7,15 +7,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import type { Tables } from "@/types/database.types";
-import { useEffect, useState } from "react";
-import { createClient } from "@/lib/supabase/client";
-import Results from "./Results";
-import { useSearchParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import CustomPagination from "@/components/pagination/CustomPagination";
 import LoadingSpinner from "@/components/spinners/LoadingSpinner";
+import Results from "./Results";
+import Link from "next/link";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
+import type { Tables } from "@/types/database.types";
 
 type BrowseInterfaceProps = {
   categories: Tables<"categories">[];
