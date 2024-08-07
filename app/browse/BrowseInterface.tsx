@@ -35,6 +35,7 @@ const BrowseInterface = ({
   const PER_PAGE = "10" as const;
   const PAGE = "1" as const;
 
+  // store filter selections in the URL so the user can use the back button and be presented with same results.
   const selectedCategory = searchParams.get("category") ?? "";
   const selectedLanguage = searchParams.get("language") ?? "";
   const selectedNationality = searchParams.get("nationality") ?? "";
@@ -48,6 +49,7 @@ const BrowseInterface = ({
   const start = (Number(page) - 1) * Number(perPage);
   const end = start + Number(perPage) - 1;
 
+  // whenever a user changes their filters, fire a request to supabase for fresh data.
   useEffect(() => {
     const applyFilters = async () => {
       setLoading(true);
@@ -61,6 +63,7 @@ const BrowseInterface = ({
         .range(start, end)
         .order("id", { ascending: false });
 
+      // if a category, language or nationality has been chosen, add it to the supabase query.
       if (selectedCategory) {
         query = query.eq("categories.id", selectedCategory);
       }
