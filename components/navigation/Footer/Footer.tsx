@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { FiTwitter, FiInstagram } from "react-icons/fi";
-import { layoutConstants } from "../Navbar/layoutConstants";
+import { navigationConstants } from "../Navbar/navigationConstants";
 
-const { usefulLinks, aboutLinks, contactLinks } = layoutConstants;
+const { usefulLinks, aboutLinks, contactLinks } = navigationConstants;
 const footerLinks = [usefulLinks, aboutLinks];
 const contactMinusWhat3 = contactLinks.links.slice(0, -1);
 

@@ -1,10 +1,10 @@
 import React from "react";
 import { Metadata } from "next";
 import HorizontalDivider from "@/components/dividers/HorizontalDivider";
-import { layoutConstants } from "@/components/navigation/Navbar/layoutConstants";
+import { navigationConstants } from "@/components/navigation/Navbar/navigationConstants";
 import { globalConstants } from "@/constants/globalConstants";
 
-const { contactLinks } = layoutConstants;
+const { contactLinks } = navigationConstants;
 const {
   contactUs: { metaTitle, metaDescription },
 } = globalConstants;
