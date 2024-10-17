@@ -19,6 +19,7 @@ import { Tables } from "@/types/database.types";
 import AddPeople from "./AddPeople";
 import { AddMovieReducerAction } from "@/types/reducers.types";
 import { createClient } from "@/lib/supabase/client";
+import { ActionType } from "@/types/reducers.types";
 
 type AddMovieFormProps = {
   categories: Tables<"categories">[];
@@ -27,9 +28,9 @@ type AddMovieFormProps = {
   roles: Tables<"roles">[];
 };
 
-const ratings = ["1", "2", "3", "4", "5"];
-const certifications = ["U", "PG", "12", "15", "18"];
-const formats = ["DVD", "BLU-R"];
+const RATINGS = ["1", "2", "3", "4", "5"];
+const CERTIFICATIONS = ["U", "PG", "12", "15", "18"];
+const FORMATS = ["DVD", "BLU-R"];
 
 const initialState = {
   title: "",
@@ -48,29 +49,29 @@ const initialState = {
 
 const reducer = (state: typeof initialState, action: AddMovieReducerAction) => {
   switch (action.type) {
-    case "titleInput":
+    case ActionType.TitleInput:
       return { ...state, title: action.payload };
-    case "yearInput":
+    case ActionType.YearInput:
       return { ...state, year: action.payload };
-    case "formatInput":
+    case ActionType.FormatInput:
       return { ...state, format: action.payload };
-    case "certificationInput":
+    case ActionType.CertificationInput:
       return { ...state, certification: action.payload };
-    case "reviewInput":
+    case ActionType.ReviewInput:
       return { ...state, review: action.payload };
-    case "ratingInput":
+    case ActionType.RatingInput:
       return { ...state, rating: action.payload };
-    case "runningTimeInput":
+    case ActionType.RunningTimeInput:
       return { ...state, runningTime: action.payload };
-    case "imageUrlInput":
+    case ActionType.ImageUrlInput:
       return { ...state, imageUrl: action.payload };
-    case "categoryInput":
+    case ActionType.CategoryInput:
       return { ...state, categories: action.payload };
-    case "languageInput":
+    case ActionType.LanguageInput:
       return { ...state, languages: action.payload };
-    case "nationalityInput":
+    case ActionType.NationalityInput:
       return { ...state, nationalities: action.payload };
-    case "omdbUpdate":
+    case ActionType.OmdbUpdate:
       return {
         ...state,
         title: action.payload.Title,
@@ -79,7 +80,7 @@ const reducer = (state: typeof initialState, action: AddMovieReducerAction) => {
         runningTime: extractLastNumber(action.payload.Runtime),
         imageUrl: action.payload.Poster,
       };
-    case "addCastMember":
+    case ActionType.AddCastMember:
       return { ...state, cast: [...state.cast, action.payload] };
     default:
       return state;
@@ -109,7 +110,7 @@ const AddMovieForm = ({
   });
 
   async function submitForm() {
-    const { data, error } = await supabase
+    const { data: titlesData, error: titlesError } = await supabase
       .from("titles")
       .insert({
         title: state.title,
@@ -123,15 +124,72 @@ const AddMovieForm = ({
       })
       .select();
 
-    console.log(data);
-    console.log(error);
+    if (titlesError || !titlesData) throw new Error("Error inserting title");
+
+    const titleId = titlesData[0].id;
+
+    if (state.categories.length > 0) {
+      const { error: categoriesError } = await supabase
+        .from("titles2categories")
+        .insert(
+          state.categories.map((category) => {
+            return {
+              title_id: titleId,
+              cat_id: parseInt(category),
+            };
+          })
+        );
+      if (categoriesError) throw new Error("Error inserting categories");
+    }
+
+    if (state.languages.length > 0) {
+      const { error: languagesError } = await supabase
+        .from("titles2languages")
+        .insert(
+          state.languages.map((language) => {
+            return {
+              title_id: titleId,
+              language_id: parseInt(language),
+              is_primary: true,
+            };
+          })
+        );
+      if (languagesError) throw new Error("Error inserting languages");
+    }
+
+    if (state.nationalities.length > 0) {
+      const { error: nationalitiesError } = await supabase
+        .from("titles2nationalities")
+        .insert(
+          state.nationalities.map((nationality) => {
+            return {
+              title_id: titleId,
+              nationality_id: parseInt(nationality),
+            };
+          })
+        );
+      if (nationalitiesError) throw new Error("Error inserting nationalities");
+    }
+
+    if (state.cast.length > 0) {
+      const { error: castError } = await supabase.from("titles2people").insert(
+        state.cast.map((person) => {
+          return {
+            title_id: titleId,
+            person_id: parseInt(person.personId),
+            role_id: parseInt(person.roleId),
+          };
+        })
+      );
+      if (castError) throw new Error("Error inserting cast");
+    }
   }
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        console.log(state);
+        submitForm();
       }}
     >
       <div className="flex">
@@ -142,7 +200,7 @@ const AddMovieForm = ({
             id="title"
             value={state.title}
             onChange={(e) =>
-              dispatch({ type: "titleInput", payload: e.target.value })
+              dispatch({ type: ActionType.TitleInput, payload: e.target.value })
             }
             required
           />
@@ -154,7 +212,7 @@ const AddMovieForm = ({
             id="year"
             value={state.year}
             onChange={(e) =>
-              dispatch({ type: "yearInput", payload: e.target.value })
+              dispatch({ type: ActionType.YearInput, payload: e.target.value })
             }
             required
           />
@@ -165,7 +223,7 @@ const AddMovieForm = ({
             e.preventDefault();
             const data = await queryOmdb(state.title, state.year);
             if (data.Response === "True") {
-              dispatch({ type: "omdbUpdate", payload: data });
+              dispatch({ type: ActionType.OmdbUpdate, payload: data });
             }
           }}
         >
@@ -178,7 +236,10 @@ const AddMovieForm = ({
         id="running-time"
         value={state.runningTime}
         onChange={(e) =>
-          dispatch({ type: "runningTimeInput", payload: e.target.value })
+          dispatch({
+            type: ActionType.RunningTimeInput,
+            payload: e.target.value,
+          })
         }
         required
       />
@@ -188,7 +249,7 @@ const AddMovieForm = ({
         id="image-url"
         value={state.imageUrl}
         onChange={(e) =>
-          dispatch({ type: "imageUrlInput", payload: e.target.value })
+          dispatch({ type: ActionType.ImageUrlInput, payload: e.target.value })
         }
       />
       <Label htmlFor="review">Review</Label>
@@ -196,7 +257,7 @@ const AddMovieForm = ({
         id="review"
         value={state.review}
         onChange={(e) =>
-          dispatch({ type: "reviewInput", payload: e.target.value })
+          dispatch({ type: ActionType.ReviewInput, payload: e.target.value })
         }
         required
       />
@@ -204,12 +265,12 @@ const AddMovieForm = ({
       <Select
         value={state.format}
         onValueChange={(format) => {
-          dispatch({ type: "certificationInput", payload: format });
+          dispatch({ type: ActionType.FormatInput, payload: format });
         }}
       >
         <SelectTrigger>{state.format}</SelectTrigger>
         <SelectContent>
-          {formats.map((format) => {
+          {FORMATS.map((format) => {
             return (
               <SelectItem value={format} key={format}>
                 {format}
@@ -222,13 +283,16 @@ const AddMovieForm = ({
       <Select
         value={state.certification}
         onValueChange={(certification) => {
-          dispatch({ type: "certificationInput", payload: certification });
+          dispatch({
+            type: ActionType.CertificationInput,
+            payload: certification,
+          });
         }}
         required
       >
         <SelectTrigger>{state.certification}</SelectTrigger>
         <SelectContent>
-          {certifications.map((certification) => {
+          {CERTIFICATIONS.map((certification) => {
             return (
               <SelectItem value={certification} key={certification}>
                 {certification}
@@ -241,7 +305,7 @@ const AddMovieForm = ({
       <Select
         value={state.rating}
         onValueChange={(rating) =>
-          dispatch({ type: "ratingInput", payload: rating })
+          dispatch({ type: ActionType.RatingInput, payload: rating })
         }
         required
       >
@@ -249,7 +313,7 @@ const AddMovieForm = ({
           <SelectValue>{state.rating}</SelectValue>
         </SelectTrigger>
         <SelectContent>
-          {ratings.map((rating) => {
+          {RATINGS.map((rating) => {
             return (
               <SelectItem value={rating} key={rating}>
                 {rating}
@@ -262,7 +326,7 @@ const AddMovieForm = ({
       <MultiSelect
         options={categoriesList}
         onValueChange={(category) => {
-          dispatch({ type: "categoryInput", payload: category });
+          dispatch({ type: ActionType.CategoryInput, payload: category });
         }}
         defaultValue={state.categories}
         placeholder="Categories"
@@ -271,7 +335,7 @@ const AddMovieForm = ({
       <MultiSelect
         options={languagesList}
         onValueChange={(language) => {
-          dispatch({ type: "languageInput", payload: language });
+          dispatch({ type: ActionType.LanguageInput, payload: language });
         }}
         defaultValue={state.languages}
         placeholder="Languages"
@@ -280,7 +344,7 @@ const AddMovieForm = ({
       <MultiSelect
         options={nationalitiesList}
         onValueChange={(nationality) => {
-          dispatch({ type: "nationalityInput", payload: nationality });
+          dispatch({ type: ActionType.NationalityInput, payload: nationality });
         }}
         defaultValue={state.nationalities}
         placeholder="Nationalities"
@@ -296,9 +360,7 @@ const AddMovieForm = ({
           </div>
         );
       })}
-      <Button type="submit" onSubmit={submitForm}>
-        Submit
-      </Button>
+      <Button type="submit">Submit</Button>
     </form>
   );
 };

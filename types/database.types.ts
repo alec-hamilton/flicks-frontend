@@ -228,8 +228,8 @@ export type Database = {
           title_id: number;
         };
         Insert: {
-          id: number;
-          is_primary: boolean;
+          id?: number;
+          is_primary?: boolean;
           language_id: number;
           title_id: number;
         };
@@ -263,7 +263,7 @@ export type Database = {
           title_id: number;
         };
         Insert: {
-          id: number;
+          id?: number;
           nationality_id: number;
           title_id: number;
         };
@@ -297,7 +297,7 @@ export type Database = {
           title_id: number;
         };
         Insert: {
-          id: number;
+          id?: number;
           person_id: number;
           role_id: number;
           title_id: number;
