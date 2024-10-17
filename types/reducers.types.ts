@@ -13,4 +13,4 @@ export type AddMovieReducerAction =
   | { type: "languageInput"; payload: string[] }
   | { type: "nationalityInput"; payload: string[] }
   | { type: "omdbUpdate"; payload: OmdbResponse }
-  | { type: "addPersonRow" };
+  | { type: "addCastMember"; payload: { personId: string; roleId: string } };

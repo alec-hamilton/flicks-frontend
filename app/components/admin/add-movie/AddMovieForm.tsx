@@ -17,8 +17,8 @@ import { extractLastNumber } from "@/lib/helpers/helpers";
 import { MultiSelect } from "@/components/ui/multi-select";
 import { Tables } from "@/types/database.types";
 import AddPeople from "./AddPeople";
-import { BiX } from "react-icons/bi";
 import { AddMovieReducerAction } from "@/types/reducers.types";
+import { createClient } from "@/lib/supabase/client";
 
 type AddMovieFormProps = {
   categories: Tables<"categories">[];
@@ -43,7 +43,7 @@ const initialState = {
   categories: [] as string[],
   languages: [] as string[],
   nationalities: [] as string[],
-  people: [] as { personId: ""; roleId: "" }[],
+  cast: [] as { personId: string; roleId: string }[],
 };
 
 const reducer = (state: typeof initialState, action: AddMovieReducerAction) => {
@@ -79,23 +79,8 @@ const reducer = (state: typeof initialState, action: AddMovieReducerAction) => {
         runningTime: extractLastNumber(action.payload.Runtime),
         imageUrl: action.payload.Poster,
       };
-    case "personInput":
-      return {
-        ...state,
-      };
-    // case "addPersonRow":
-    //   return {
-    //     ...state,
-    //     people: [...state.people, { id: "" }],
-    //   };
-    // case "removePersonRow":
-    //   return {
-    //     ...state,
-    //     people: state.people.filter((_, index) => {
-    //       return index !== action.payload;
-    //     }),
-    //   };
-
+    case "addCastMember":
+      return { ...state, cast: [...state.cast, action.payload] };
     default:
       return state;
   }
@@ -107,6 +92,8 @@ const AddMovieForm = ({
   nationalities,
   roles,
 }: AddMovieFormProps) => {
+  const supabase = createClient();
+
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const categoriesList = categories.map((category) => {
@@ -120,6 +107,25 @@ const AddMovieForm = ({
   const nationalitiesList = nationalities.map((nationality) => {
     return { label: nationality.country, value: nationality.id.toString() };
   });
+
+  async function submitForm() {
+    const { data, error } = await supabase
+      .from("titles")
+      .insert({
+        title: state.title,
+        date_1: state.year,
+        format: state.format,
+        certification: state.certification,
+        review: state.review,
+        rating: parseInt(state.rating),
+        runningtime: parseInt(state.runningTime),
+        image_url: state.imageUrl,
+      })
+      .select();
+
+    console.log(data);
+    console.log(error);
+  }
 
   return (
     <form
@@ -279,31 +285,20 @@ const AddMovieForm = ({
         defaultValue={state.nationalities}
         placeholder="Nationalities"
       />
-      {state.people.map((person, index) => {
+      <div className="flex">
+        <AddPeople roles={roles} dispatch={dispatch} />
+      </div>
+      {state.cast.map((person, index) => {
         return (
-          <div key={index} className="flex">
-            <AddPeople roles={roles} />
-            {/* Form itself is static. Adding a person just displays the person in text. Not editable.  */}
-            {/* <Button
-              type="button"
-              onClick={() => dispatch({ type: "addPersonRow" })}
-            >
-              add another
-            </Button>
-            <button
-              type="button"
-              onClick={() => {
-                if (state.people.length > 1) {
-                  dispatch({ type: "removePersonRow", payload: index });
-                }
-              }}
-            >
-              <BiX />
-            </button> */}
+          <div key={index}>
+            <p>{person.personId}</p>
+            <p>{person.roleId}</p>
           </div>
         );
       })}
-      <Button type="submit">Submit</Button>
+      <Button type="submit" onSubmit={submitForm}>
+        Submit
+      </Button>
     </form>
   );
 };

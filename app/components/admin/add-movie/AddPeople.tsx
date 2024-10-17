@@ -1,5 +1,6 @@
-import { Check, ChevronsUpDown } from "lucide-react";
+"use client";
 
+import { Check, ChevronsUpDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,17 +24,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useEffect, useState } from "react";
+import { Dispatch, useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { Tables } from "@/types/database.types";
+import { AddMovieReducerAction } from "@/types/reducers.types";
 
 type AddPeopleProps = {
   roles: Tables<"roles">[];
+  dispatch: Dispatch<AddMovieReducerAction>;
 };
 
-const AddPeople = ({ roles }: AddPeopleProps) => {
+const AddPeople = ({ roles, dispatch }: AddPeopleProps) => {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState("");
+  const [castMember, setCastMember] = useState("");
+  const [position, setPosition] = useState("");
 
   const [searchQuery, setSearchQuery] = useState("");
   const [people, setPeople] = useState<Tables<"people">[]>([]);
@@ -53,6 +57,15 @@ const AddPeople = ({ roles }: AddPeopleProps) => {
 
     getPeople();
   }, [supabase, searchQuery]);
+
+  function addCastMember() {
+    if (castMember && position) {
+      dispatch({
+        type: "addCastMember",
+        payload: { personId: castMember, roleId: position },
+      });
+    }
+  }
   return (
     <div className="flex">
       <Popover open={open} onOpenChange={setOpen}>
@@ -63,8 +76,8 @@ const AddPeople = ({ roles }: AddPeopleProps) => {
             aria-expanded={open}
             className="w-[200px] justify-between"
           >
-            {value
-              ? people.find((person) => person.id === parseInt(value))
+            {castMember
+              ? people.find((person) => person.id === parseInt(castMember))
                   ?.full_name
               : "Select person"}
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -85,14 +98,16 @@ const AddPeople = ({ roles }: AddPeopleProps) => {
                     key={person.id}
                     value={person.id.toString()}
                     onSelect={(currentValue) => {
-                      setValue(currentValue === value ? "" : currentValue);
+                      setCastMember(
+                        currentValue === castMember ? "" : currentValue
+                      );
                       setOpen(false);
                     }}
                   >
                     <Check
                       className={cn(
                         "mr-2 h-4 w-4",
-                        value === person.id.toString()
+                        castMember === person.id.toString()
                           ? "opacity-100"
                           : "opacity-0"
                       )}
@@ -105,7 +120,11 @@ const AddPeople = ({ roles }: AddPeopleProps) => {
           </Command>
         </PopoverContent>
       </Popover>
-      <Select>
+      <Select
+        onValueChange={(position) => {
+          setPosition(position);
+        }}
+      >
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="Select a role" />
         </SelectTrigger>
@@ -121,6 +140,9 @@ const AddPeople = ({ roles }: AddPeopleProps) => {
           </SelectGroup>
         </SelectContent>
       </Select>
+      <button type="button" onClick={addCastMember}>
+        add
+      </button>
     </div>
   );
 };
