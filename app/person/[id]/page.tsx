@@ -1,5 +1,5 @@
 import Results from "@/app/components/browse/Results";
-import { createClient } from "@/lib/supabase/server";
+import { createClient } from "@/utils/supabase/server";
 
 type PersonPageProps = {
   params: {

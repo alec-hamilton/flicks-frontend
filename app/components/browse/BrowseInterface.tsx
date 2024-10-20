@@ -10,7 +10,7 @@ import {
 import type { Tables } from "@/types/database.types";
 import { Metadata } from "next";
 import { useEffect, useState } from "react";
-import { createClient } from "@/lib/supabase/client";
+import { createClient } from "@/utils/supabase/client";
 import Results from "./Results";
 import { useSearchParams, useRouter } from "next/navigation";
 import { globalConstants } from "@/constants/globalConstants";

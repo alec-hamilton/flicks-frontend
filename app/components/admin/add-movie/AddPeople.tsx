@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, ChevronsUpDown } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/utils";
 import { Button } from "@/components/ui/button";
 import {
   Command,
@@ -25,9 +25,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Dispatch, useEffect, useState } from "react";
-import { createClient } from "@/lib/supabase/client";
+import { createClient } from "@/utils/supabase/client";
 import { Tables } from "@/types/database.types";
-import { AddMovieReducerAction } from "@/types/reducers.types";
+import { ActionType, AddMovieReducerAction } from "@/types/reducers.types";
 
 type AddPeopleProps = {
   roles: Tables<"roles">[];
@@ -61,20 +61,32 @@ const AddPeople = ({ roles, dispatch }: AddPeopleProps) => {
   function addCastMember() {
     if (castMember && position) {
       dispatch({
-        type: "addCastMember",
-        payload: { personId: castMember, roleId: position },
+        type: ActionType.AddCastMember,
+        payload: {
+          person: {
+            id: castMember,
+            name:
+              people.find((person) => person.id === parseInt(castMember))
+                ?.full_name ?? "",
+          },
+          role: {
+            id: position,
+            name:
+              roles.find((role) => role.id === parseInt(position))?.role_name ??
+              "",
+          },
+        },
       });
     }
   }
   return (
-    <div className="flex">
+    <div className="grid grid-cols-3 gap-x-4">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
-            variant="outline"
             role="combobox"
             aria-expanded={open}
-            className="w-[200px] justify-between"
+            className="justify-between"
           >
             {castMember
               ? people.find((person) => person.id === parseInt(castMember))
@@ -83,7 +95,7 @@ const AddPeople = ({ roles, dispatch }: AddPeopleProps) => {
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-[200px] p-0">
+        <PopoverContent className="p-0">
           <Command shouldFilter={false}>
             <CommandInput
               value={searchQuery}
@@ -125,7 +137,7 @@ const AddPeople = ({ roles, dispatch }: AddPeopleProps) => {
           setPosition(position);
         }}
       >
-        <SelectTrigger className="w-[180px]">
+        <SelectTrigger>
           <SelectValue placeholder="Select a role" />
         </SelectTrigger>
         <SelectContent>
@@ -140,9 +152,9 @@ const AddPeople = ({ roles, dispatch }: AddPeopleProps) => {
           </SelectGroup>
         </SelectContent>
       </Select>
-      <button type="button" onClick={addCastMember}>
-        add
-      </button>
+      <Button type="button" onClick={addCastMember}>
+        Add to cast list
+      </Button>
     </div>
   );
 };

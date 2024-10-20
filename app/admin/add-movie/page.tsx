@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
+import { createClient } from "@/utils/supabase/server";
 import AddMovieForm from "@/app/components/admin/add-movie/AddMovieForm";
 
 export default async function AddMovie() {

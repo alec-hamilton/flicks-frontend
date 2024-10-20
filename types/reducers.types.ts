@@ -14,6 +14,7 @@ export enum ActionType {
   NationalityInput = "nationalityInput",
   OmdbUpdate = "omdbUpdate",
   AddCastMember = "addCastMember",
+  ResetForm = "resetForm",
 }
 
 export type AddMovieReducerAction =
@@ -31,5 +32,9 @@ export type AddMovieReducerAction =
   | { type: ActionType.OmdbUpdate; payload: OmdbResponse }
   | {
       type: ActionType.AddCastMember;
-      payload: { personId: string; roleId: string };
-    };
+      payload: {
+        person: { id: string; name: string };
+        role: { id: string; name: string };
+      };
+    }
+  | { type: ActionType.ResetForm };

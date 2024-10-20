@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Rating from "@/components/ratings/Rating";
-import { createClient } from "@/lib/supabase/server";
-import { getDirectors, getNonDirectors } from "@/lib/helpers/moviePage";
+import { createClient } from "@/utils/supabase/server";
+import { getDirectors, getNonDirectors } from "@/utils/helpers/moviePage";
 import movieNotFound from "@/assets/images/movie-not-found.svg";
 import Link from "next/link";
 

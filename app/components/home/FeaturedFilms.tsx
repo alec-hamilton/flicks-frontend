@@ -1,5 +1,5 @@
 import MovieCarousel from "./MovieCarousel";
-import { createClient } from "@/lib/supabase/server";
+import { createClient } from "@/utils/supabase/server";
 
 const FeaturedFilms = async () => {
   const supabase = createClient();
